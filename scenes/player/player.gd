@@ -1,79 +1,51 @@
-extends CharacterBody2D
+class_name Player extends CharacterBody2D
 
-class_name  Player
-enum State {
-	IDLE,
-	WALKING,
-	FALLING,
-	JUMPING
-}
+var speed := 150.0
+var jump_impulse := 170.0
+var base_gravity := 300
+var can_input := true
 
-const SPEED = 150
-const JUMP_VELOCITY = -300.0
-var direction
+# This enum lists all the possible states the character can be in.
+enum States {IDLE, RUNNING, JUMPING, FALLING, GLIDING}
 
-var current_state = State.IDLE;
+# This variable keeps track of the character's current state.
+var state: States = States.IDLE
 
-var sprite : AnimatedSprite2D
+@onready var sprite_animation_player : AnimatedSprite2D = $sprite_animation
 
-func _ready() -> void:
-	sprite = get_node("animation")
-
-func _input(event: InputEvent) -> void:
-	print("player updating: " + str(State.find_key(current_state)))
-	update_direction_state()
-	pass
-	
-func update_direction_state():
-	if is_on_floor():
-		if Input.is_action_just_pressed("jump"):  # Assuming "ui_accept" is the jump action
-			current_state = State.JUMPING
-			return 
-		if Input.get_axis("move_left", "move_right") != 0:
-			current_state = State.WALKING
-		else:
-			current_state = State.IDLE
-	else:
-		if velocity.y > 0:
-			current_state = State.FALLING
-
-func _process(delta: float) -> void:
-	update_direction_state()
-	#print("player updating: " + str(State.find_key(current_state)))
-	
-	
-	match (current_state):
-		State.IDLE:
-			sprite.play("idle")
-		State.WALKING:
-			sprite.play("run")
-		State.JUMPING:
-			sprite.play("jump")
-		State.FALLING:
-			sprite.play("fall")
-			
 
 func _physics_process(delta: float) -> void:
-	# Add the gravity.
+	# Horizontal movement and gravity.
+	var input_direction_x := get_input_direction()
+	velocity.x = input_direction_x * speed
+	velocity.y += base_gravity * delta
+
+	# Jumping.
+	var is_jumping := is_on_floor() and Input.is_action_just_pressed("jump")
+	if is_jumping:
+		velocity.y = -jump_impulse
+
+	# Animation.
 	if not is_on_floor():
-		velocity += get_gravity() * delta
-
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
-		current_state = State.JUMPING
-		velocity.y = JUMP_VELOCITY
-
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	direction = Input.get_axis("move_left", "move_right")
-	if direction:
-		sprite.flip_h = direction < 0
-		velocity.x = direction * SPEED
+		if velocity.y < 0:
+			sprite_animation_player.play("jump")
+		else:
+			sprite_animation_player.play("fall")
+	elif input_direction_x != 0.0:
+		sprite_animation_player.play("run")
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-	
-	
-
-	
+		sprite_animation_player.play("idle")
 
 	move_and_slide()
+	
+func get_input_direction() -> float:
+	if not can_input:
+		return 0.0
+	
+	var input_direction = Input.get_axis("move_left", "move_right")
+	
+	return input_direction if input_direction else 0.0
+	
+func ready_for_input() -> void:
+	can_input = true	
+	pass

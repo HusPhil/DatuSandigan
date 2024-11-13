@@ -191,29 +191,28 @@ size = Vector2(11.5, 20)
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_w5kx2")
 
-[node name="sprite_animation" type="AnimatedSprite2D" parent="."]
+[node name="animation" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 position = Vector2(1, -13)
 sprite_frames = SubResource("SpriteFrames_i87jv")
-animation = &"idle"
+animation = &"fall"
+frame_progress = 0.195875
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-0.75, 5)
 shape = SubResource("RectangleShape2D_nq3ke")
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
-
 [node name="StateMachine" type="Node" parent="."]
 script = ExtResource("3_0lsub")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_mfy73")
-
-[node name="Running" type="Node" parent="StateMachine"]
+[node name="run" type="Node" parent="StateMachine"]
 script = ExtResource("4_s14an")
 
-[node name="Jump" type="Node" parent="StateMachine"]
+[node name="idle" type="Node" parent="StateMachine"]
+script = ExtResource("5_mfy73")
+
+[node name="jump" type="Node" parent="StateMachine"]
 script = ExtResource("6_k85tt")
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="falling" type="Node" parent="StateMachine"]
 script = ExtResource("7_wvln3")
