@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://l8ksfl0hggw7"]
+
+[ext_resource type="PackedScene" uid="uid://dmns4t4ukapci" path="res://scenes/testMap.tscn" id="1_oarat"]
+[ext_resource type="PackedScene" uid="uid://jwsq13w85lo7" path="res://scenes/player/player.tscn" id="2_eltvj"]
+
+[node name="Main" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("1_oarat")]
+
+[node name="player" parent="." instance=ExtResource("2_eltvj")]
+position = Vector2(74, 580)
+
+[node name="Camera2D" type="Camera2D" parent="player"]
+offset = Vector2(0, -75)
+zoom = Vector2(2.5, 2.5)
