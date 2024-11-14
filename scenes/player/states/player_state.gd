@@ -4,7 +4,9 @@ const IDLE = "Idle"
 const RUNNING = "Running"
 const JUMPING = "Jumping"
 const FALLING = "Falling"
-const ATTACKING = "Attacking"
+const BASE_ATK1 = "BaseAttack1"
+const BASE_ATK2 = "BaseAttack2"
+const BASE_ATK3 = "BaseAttack3"
 
 var double_jump_velocity := -100
 var playback : AnimationNodeStateMachinePlayback
@@ -14,6 +16,10 @@ var fall_animation := "fall"
 var run_animation := "run"
 var idle_animation := "idle"
 var double_jump_animation := "double_jump"
+var ground_animation := "Move"
+var base_atk1_animation := "base_atk1"
+var base_atk2_animation := "base_atk2"
+var base_atk3_animation := "base_atk3"
 
 var player: Player
 

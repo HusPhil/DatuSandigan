@@ -15,6 +15,7 @@ var state: States = States.IDLE
 
 @onready var sprite : Sprite2D = $Sprite2D
 @onready var animation_tree : AnimationTree = $AnimationTree
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var state_label : Label = $Label
 
 func _ready() -> void:
@@ -24,9 +25,6 @@ func _ready() -> void:
 func _physics_process(_delta: float) -> void:
 	# Horizontal movement and gravity.
 	var input_direction_x := get_input_direction()
-	if input_direction_x:
-		sprite.flip_h = input_direction_x < 0
-		pass
 	animation_tree.set("parameters/Move/blend_position", input_direction_x)
 	
 func get_input_direction() -> float:
