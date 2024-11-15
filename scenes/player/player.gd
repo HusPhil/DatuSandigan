@@ -41,7 +41,13 @@ func get_input_direction() -> float:
 func ready_for_input() -> void:
 	can_input = true	
 	pass
+
+func handle_change_direction() -> void:
+	var input_direction_x := Input.get_axis("move_left", "move_right")
 	
-func getAnimationFromWeapon() -> String:
-	var wp_type = Item.wp_types.find_key(current_weapon.type) if current_weapon else "fist"
-	return wp_type + "_atk"
+	if input_direction_x:
+		var is_flipped_direction = input_direction_x < 0
+		sprite.flip_h = is_flipped_direction
+		weapon_sprite.flip_h = is_flipped_direction
+		print("NA FLIOP")
+		

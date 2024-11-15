@@ -1,0 +1,13 @@
+[gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bhaljfevi4cas"]
+
+[ext_resource type="Script" path="res://scenes/items/Item.gd" id="1_fxntm"]
+[ext_resource type="Texture2D" uid="uid://4astugycjapv" path="res://assets/img/player_sprites/Bardent/Sword_2.png" id="2_553d3"]
+
+[resource]
+script = ExtResource("1_fxntm")
+name = "Sword"
+type = 1
+texture = ExtResource("2_553d3")
+damage = 50.0
+animation = "wp_sword"
+projectile = 0

@@ -10,11 +10,7 @@ func physics_update(_delta: float) -> void:
 	player.velocity.y += player.base_gravity * _delta
 	player.move_and_slide()
 	
-	var input_direction_x := Input.get_axis("move_left", "move_right")
-	
-	if input_direction_x:
-		player.sprite.flip_h = input_direction_x < 0
-		player.weapon_sprite.flip_h = input_direction_x < 0
+	player.handle_change_direction()
 
 	if not player.is_on_floor():
 		#finished.emit(FALLING)

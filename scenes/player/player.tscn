@@ -1,4 +1,4 @@
-[gd_scene load_steps=83 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=84 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -21,6 +21,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/base_atk2.gd" id="9_hw7rl"]
 [ext_resource type="Resource" uid="uid://dg6b87giuxak8" path="res://res/sword.tres" id="18_fcsc2"]
 [ext_resource type="Script" path="res://scenes/player/magic_atk.gd" id="22_gqsm5"]
+[ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="22_h1lbe"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3ke"]
 size = Vector2(11.5, 20)
@@ -714,6 +715,59 @@ tracks/3/keys = {
 "values": [72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82]
 }
 
+[sub_resource type="Animation" id="Animation_cu8yk"]
+resource_name = "bow_atk2"
+length = 0.666675
+step = 0.0833333
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [4]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Sprite2D:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [13]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Sprite2D:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("8_2fbpy")]
+}
+
 [sub_resource type="Animation" id="Animation_vgwe0"]
 resource_name = "sword_atk1"
 length = 0.250008
@@ -871,59 +925,6 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [ExtResource("9_d80ap")]
-}
-
-[sub_resource type="Animation" id="Animation_cu8yk"]
-resource_name = "bow_atk2"
-length = 0.666675
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333, 0.466667, 0.5, 0.533333, 0.566667),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Sprite2D:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [4]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Sprite2D:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [13]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Sprite2D:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("8_2fbpy")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rosyk"]
@@ -1398,7 +1399,7 @@ texture_filter = 1
 texture = ExtResource("1_80ydq")
 hframes = 8
 vframes = 7
-frame = 9
+frame = 12
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -1406,6 +1407,7 @@ position = Vector2(0, 1)
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(-0.75, 5)
 shape = SubResource("RectangleShape2D_nq3ke")
 
@@ -1469,14 +1471,14 @@ one_shot = true
 [node name="MagicAttack" type="Node" parent="StateMachine"]
 script = ExtResource("22_gqsm5")
 
+[node name="HitBoxComponent" parent="." instance=ExtResource("22_h1lbe")]
+
 [node name="Label" type="Label" parent="."]
 offset_left = -22.0
 offset_top = -48.0
 offset_right = 25.0
 offset_bottom = -25.0
 text = "NONE"
-
-[node name="HitBox" type="Area2D" parent="."]
 
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BaseAttack1" method="_PLAYER_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack3" method="_on_animation_tree_animation_finished"]

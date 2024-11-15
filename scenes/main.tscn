@@ -1,14 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://l8ksfl0hggw7"]
+[gd_scene load_steps=5 format=3 uid="uid://l8ksfl0hggw7"]
 
 [ext_resource type="PackedScene" uid="uid://biv3y0ktr3jre" path="res://scenes/maps/testMap.tscn" id="1_7qt82"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="2_eltvj"]
+[ext_resource type="PackedScene" uid="uid://bivjqo01oij06" path="res://scenes/enemy/enemy.tscn" id="3_cyw3n"]
+[ext_resource type="Resource" uid="uid://bhaljfevi4cas" path="res://res/sword2.tres" id="4_qx1fl"]
 
 [node name="Main" type="Node2D"]
 
 [node name="TileMap" parent="." instance=ExtResource("1_7qt82")]
 
+[node name="Enemy" parent="." instance=ExtResource("3_cyw3n")]
+position = Vector2(232, 590)
+
 [node name="player" parent="." instance=ExtResource("2_eltvj")]
 position = Vector2(74, 580)
+current_weapon = ExtResource("4_qx1fl")
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 remote_path = NodePath("../../Camera2D")
