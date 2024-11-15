@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=87 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://s4aoh8g48ub0" path="res://assets/img/player_sprites/Bardent/Base_Fist_1.png" id="4_dq7sp"]
 [ext_resource type="Script" path="res://scenes/player/states/running.gd" id="4_s14an"]
 [ext_resource type="Texture2D" uid="uid://b3cbynr2rdq2n" path="res://assets/img/player_sprites/Bardent/Base_Fist_2.png" id="5_2m4ra"]
-[ext_resource type="Texture2D" uid="uid://4astugycjapv" path="res://assets/img/player_sprites/Bardent/Sword_2.png" id="5_gpjoe"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_mfy73"]
 [ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="6_k85tt"]
 [ext_resource type="Texture2D" uid="uid://ctc3y6votxk1v" path="res://assets/img/player_sprites/Bardent/Base_Fist_3.png" id="6_m8108"]
@@ -28,57 +27,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3ke"]
 size = Vector2(11.5, 20)
-
-[sub_resource type="Animation" id="Animation_7744s"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:vframes")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [7]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:frame")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [9]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [8]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("1_80ydq")]
-}
 
 [sub_resource type="Animation" id="Animation_uyfgl"]
 resource_name = "base_atk1"
@@ -930,6 +878,57 @@ tracks/3/keys = {
 "values": [ExtResource("9_d80ap")]
 }
 
+[sub_resource type="Animation" id="Animation_7744s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:vframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("1_80ydq")]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rosyk"]
 _data = {
 "RESET": SubResource("Animation_7744s"),
@@ -1446,7 +1445,6 @@ frame = 9
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 1)
-texture = ExtResource("5_gpjoe")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
