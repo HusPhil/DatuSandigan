@@ -1,9 +1,13 @@
 extends PlayerState
 
+
+
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state_label.text = "Idle"
-	playback.travel("Move")
 	player.velocity.x = 0.0
+	playback.travel("Move")
+	
+	
 
 
 func physics_update(_delta: float) -> void:
@@ -11,6 +15,10 @@ func physics_update(_delta: float) -> void:
 	player.move_and_slide()
 	
 	player.handle_change_direction()
+	
+	if playback.get_current_node() != "Move":
+		playback.travel("Move")
+		
 
 	if not player.is_on_floor():
 		finished.emit(FALLING)

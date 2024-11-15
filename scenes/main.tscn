@@ -19,15 +19,15 @@ zoom = Vector2(2.5, 2.5)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
 
-[node name="TouchScreenButton" parent="." instance=ExtResource("5_r1h33")]
-position = Vector2(-130, 424)
-scale = Vector2(0.320313, 0.328125)
-
 [node name="player" parent="." instance=ExtResource("2_eltvj")]
 position = Vector2(108, 525)
+
+[node name="TouchScreenButton" parent="player" instance=ExtResource("5_r1h33")]
+position = Vector2(50, -87)
+scale = Vector2(0.320313, 0.328125)
 
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 position = Vector2(-36, 12)
 remote_path = NodePath("../../Camera2D")
 
-[connection signal="pressed" from="TouchScreenButton" to="player" method="_on_touch_screen_button_pressed"]
+[connection signal="pressed" from="player/TouchScreenButton" to="player" method="_on_touch_screen_button_pressed"]

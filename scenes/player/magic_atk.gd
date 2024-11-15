@@ -20,7 +20,6 @@ func handle_input(_event: InputEvent) -> void:
 	pass	
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	print("DONE ANIM: " + anim_name + "::" + atk_animation)
 	if anim_name == atk_animation:
 		playback.travel(ground_animation)
 		finished.emit(IDLE)

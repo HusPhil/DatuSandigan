@@ -1490,7 +1490,7 @@ script = ExtResource("9_36eh7")
 atk_timer = NodePath("atk3_tmr")
 
 [node name="atk3_tmr" type="Timer" parent="StateMachine/BaseAttack3"]
-wait_time = 0.2
+wait_time = 0.5
 one_shot = true
 
 [node name="BaseAttack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("atk_timer")]
@@ -1498,7 +1498,7 @@ script = ExtResource("9_hw7rl")
 atk_timer = NodePath("atk2_tmr")
 
 [node name="atk2_tmr" type="Timer" parent="StateMachine/BaseAttack2"]
-wait_time = 0.2
+wait_time = 0.5
 one_shot = true
 
 [node name="BaseAttack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("atk_timer")]
