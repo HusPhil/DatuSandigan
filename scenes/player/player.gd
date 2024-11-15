@@ -6,6 +6,7 @@ var base_gravity := 300
 
 var can_double_jump := true
 var can_input := true
+var current_direction : float = 1.0
 
 # This enum lists all the possible states the character can be in.
 enum States {IDLE, RUNNING, JUMPING, FALLING, GLIDING}
@@ -35,9 +36,13 @@ func get_input_direction() -> float:
 	var input_direction = Input.get_axis("move_left", "move_right")
 	
 	if not can_input or not input_direction:
+		
 		return 0.0
 			
 	return input_direction 
+
+func get_current_direction() -> float:
+	return -1.0 if sprite.flip_h else 1.0
 	
 func ready_for_input() -> void:
 	can_input = true	

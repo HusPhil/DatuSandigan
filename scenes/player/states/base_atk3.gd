@@ -2,6 +2,7 @@ extends PlayerState
 
 @export var atk_timer : Timer
 var next_state := IDLE
+const MOVE_SPEED = 10.0  
 var COMBO_NUM = 3
 var atk_animation : String = "fist"
 
@@ -11,10 +12,8 @@ func enter(previous_state_path: String, data := {}) -> void:
 	player.weapon_sprite.texture = player.current_weapon.texture
 	player.weapon_animation_player.play(player.current_weapon.animation + str(COMBO_NUM))
 	
-func handle_input(_event: InputEvent) -> void:
-	# No need to check for next attack since this is the last in combo
-	pass	
-
+func physics_update(delta : float):
+	step_abit(MOVE_SPEED, delta)
 
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:

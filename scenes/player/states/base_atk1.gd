@@ -6,6 +6,7 @@ var COMBO_NUM = 1
 var next_state := BASE_ATK2
 var atk_animation : String = "fist"
 const MAX_SECS := 0.4
+const MOVE_SPEED := 5.0
 
 var current_secs := 0
 
@@ -25,8 +26,9 @@ func handle_input(_event: InputEvent) -> void:
 		playback.travel(ground_animation)
 		finished.emit(IDLE)
 
-func physics_update(_delta: float) -> void:
-	#if player.state == ""
+func physics_update(delta: float) -> void:
+	step_abit(MOVE_SPEED, delta)
+	
 	current_secs += 1.0/60.0
 	if current_secs >= MAX_SECS:
 		playback.travel(ground_animation)

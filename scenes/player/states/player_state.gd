@@ -45,3 +45,9 @@ func double_jump():
 		playback.travel(double_jump_animation)
 		player.velocity.y = double_jump_velocity;
 		player.can_double_jump = false
+
+func step_abit(move_speed : float, delta: float):
+	player.velocity.x = move_speed * player.get_current_direction()
+	player.velocity.y += player.base_gravity * delta
+	player.move_and_slide()
+	
