@@ -2,15 +2,16 @@ extends PlayerState
 
 @export var atk_timer : Timer
 @export var item : Item
+var COMBO_NUM = 1
 var next_state := BASE_ATK2
-var atk_animation := base_atk1_animation
+var atk_animation : String = "fist"
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state_label.text = "ATTACKING 1"
-	#playback.travel("sword_atk1")
-	player.animation_player.play("sword_atk1")
+	atk_animation = Item.wp_types.find_key(player.current_weapon.type) + "_atk" + str(COMBO_NUM)
+	playback.travel(atk_animation)
 	player.weapon_sprite.texture = player.current_weapon.texture
-	player.weapon_animation_player.play(player.current_weapon.animation)
+	player.weapon_animation_player.play(player.current_weapon.animation + "1")
 	
 	
 func handle_input(_event: InputEvent) -> void:
@@ -23,24 +24,10 @@ func handle_input(_event: InputEvent) -> void:
 		finished.emit(IDLE)
 		
 
-#func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
-	#print("OUTSIDE AHA AHA")
-	#
-	#if anim_name == atk_animation or true:
-		#if atk_timer.is_stopped():
-			#print("AHA AHA")
-			#playback.travel(ground_animation)
-			#finished.emit(IDLE)
-		#else:
-			#finished.emit(next_state)
-
-func _PLAYER_animation_finished(anim_name: StringName) -> void:
-	#if anim_name == atk_animation or true:
-	print("ano")
-	if atk_timer.is_stopped():
-		print("AHA AHA")
-		playback.travel(ground_animation)
-		finished.emit(IDLE)
-	else:
-		print("hihi")
-		finished.emit(next_state)
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:	
+	if anim_name == atk_animation:
+		if atk_timer.is_stopped():
+			playback.travel(ground_animation)
+			finished.emit(IDLE)
+		else:
+			finished.emit(next_state)

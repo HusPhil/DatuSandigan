@@ -41,3 +41,7 @@ func get_input_direction() -> float:
 func ready_for_input() -> void:
 	can_input = true	
 	pass
+	
+func getAnimationFromWeapon() -> String:
+	var wp_type = Item.wp_types.find_key(current_weapon.type) if current_weapon else "fist"
+	return wp_type + "_atk"

@@ -26,6 +26,10 @@ var fist_atk1_animation := "fist_atk1"
 var fist_atk2_animation := "fist_atk2"
 var fist_atk3_animation := "fist_atk3"
 
+var sword_atk1_animation := "sword_atk1"
+var sword_atk2_animation := "sword_atk2"
+var sword_atk3_animation := "sword_atk3"
+
 
 var player: Player
 

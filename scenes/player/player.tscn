@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=81 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -25,9 +25,10 @@
 [sub_resource type="Resource" id="Resource_x3vfv"]
 script = ExtResource("2_pf6ds")
 name = "MySword"
+type = 0
 texture = ExtResource("3_2kwkv")
 damage = 120.0
-animation = "wp_sword1"
+animation = "wp_sword"
 projectile = 0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3ke"]
@@ -1200,10 +1201,10 @@ tracks/2/path = NodePath("WeaponSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.333333),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1253,10 +1254,10 @@ tracks/2/path = NodePath("WeaponSprite:visible")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 0.416667),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -1317,6 +1318,15 @@ animation = &"fall"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_q3jpa"]
 animation = &"jump"
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2pf8k"]
+animation = &"sword_atk1"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_ofiwf"]
+animation = &"sword_atk2"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_okk7b"]
+animation = &"sword_atk3"
+
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_03k2a"]
 advance_mode = 2
 
@@ -1342,6 +1352,18 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_heqqw"]
 
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mdibl"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_uvgnb"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_yeowj"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8768e"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_glth6"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_5lp4h"]
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8x2hy"]
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_k2h3j")
 states/Move/position = Vector2(351, 227)
@@ -1349,7 +1371,7 @@ states/Start/position = Vector2(179, 227)
 states/base_atk1/node = SubResource("AnimationNodeAnimation_kggg6")
 states/base_atk1/position = Vector2(351, 309)
 states/base_atk2/node = SubResource("AnimationNodeAnimation_ae5ew")
-states/base_atk2/position = Vector2(536, 309)
+states/base_atk2/position = Vector2(536, 316)
 states/base_atk3/node = SubResource("AnimationNodeAnimation_30dw6")
 states/base_atk3/position = Vector2(717, 309)
 states/double_jump/node = SubResource("AnimationNodeAnimation_hxa5n")
@@ -1358,8 +1380,14 @@ states/fall/node = SubResource("AnimationNodeAnimation_b3x8u")
 states/fall/position = Vector2(578, 227)
 states/jump/node = SubResource("AnimationNodeAnimation_q3jpa")
 states/jump/position = Vector2(351, 113)
-transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_03k2a"), "Move", "jump", SubResource("AnimationNodeStateMachineTransition_my5mn"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_45ion"), "fall", "Move", SubResource("AnimationNodeStateMachineTransition_quv5m"), "jump", "double_jump", SubResource("AnimationNodeStateMachineTransition_ml164"), "double_jump", "fall", SubResource("AnimationNodeStateMachineTransition_pe18l"), "Move", "base_atk1", SubResource("AnimationNodeStateMachineTransition_dka1m"), "base_atk1", "base_atk2", SubResource("AnimationNodeStateMachineTransition_40tq1"), "base_atk2", "Move", SubResource("AnimationNodeStateMachineTransition_kirns"), "base_atk1", "Move", SubResource("AnimationNodeStateMachineTransition_4si0d"), "base_atk2", "base_atk3", SubResource("AnimationNodeStateMachineTransition_ga4iy"), "base_atk3", "Move", SubResource("AnimationNodeStateMachineTransition_heqqw")]
-graph_offset = Vector2(97, 174)
+states/sword_atk1/node = SubResource("AnimationNodeAnimation_2pf8k")
+states/sword_atk1/position = Vector2(351, 411)
+states/sword_atk2/node = SubResource("AnimationNodeAnimation_ofiwf")
+states/sword_atk2/position = Vector2(536, 411)
+states/sword_atk3/node = SubResource("AnimationNodeAnimation_okk7b")
+states/sword_atk3/position = Vector2(710, 411)
+transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_03k2a"), "Move", "jump", SubResource("AnimationNodeStateMachineTransition_my5mn"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_45ion"), "fall", "Move", SubResource("AnimationNodeStateMachineTransition_quv5m"), "jump", "double_jump", SubResource("AnimationNodeStateMachineTransition_ml164"), "double_jump", "fall", SubResource("AnimationNodeStateMachineTransition_pe18l"), "Move", "base_atk1", SubResource("AnimationNodeStateMachineTransition_dka1m"), "base_atk1", "base_atk2", SubResource("AnimationNodeStateMachineTransition_40tq1"), "base_atk2", "Move", SubResource("AnimationNodeStateMachineTransition_kirns"), "base_atk1", "Move", SubResource("AnimationNodeStateMachineTransition_4si0d"), "base_atk2", "base_atk3", SubResource("AnimationNodeStateMachineTransition_ga4iy"), "base_atk3", "Move", SubResource("AnimationNodeStateMachineTransition_heqqw"), "Move", "sword_atk1", SubResource("AnimationNodeStateMachineTransition_mdibl"), "sword_atk1", "Move", SubResource("AnimationNodeStateMachineTransition_uvgnb"), "sword_atk1", "sword_atk2", SubResource("AnimationNodeStateMachineTransition_yeowj"), "sword_atk2", "Move", SubResource("AnimationNodeStateMachineTransition_8768e"), "sword_atk2", "sword_atk3", SubResource("AnimationNodeStateMachineTransition_glth6"), "sword_atk3", "Move", SubResource("AnimationNodeStateMachineTransition_5lp4h")]
+graph_offset = Vector2(-31, 77)
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_w5kx2")
@@ -1370,7 +1398,7 @@ texture_filter = 1
 texture = ExtResource("1_80ydq")
 hframes = 8
 vframes = 7
-frame = 9
+frame = 12
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture_filter = 1
@@ -1435,7 +1463,7 @@ atk_timer = NodePath("atk1_tmr")
 item = ExtResource("18_fcsc2")
 
 [node name="atk1_tmr" type="Timer" parent="StateMachine/BaseAttack1"]
-wait_time = 0.5
+wait_time = 0.2
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
