@@ -1,5 +1,10 @@
 extends EnemyState
 
+# when enemy is idle it is wandering
+# this is where we will detect if the enemy has detected the player
+# define a point for where the enemy will wander
+# once the enemy has seen the player, it will never stop chasing it
+
 func enter(previous_state_path: String, data := {}) -> void:
 	enemy.velocity.x = 0.0
 	pass

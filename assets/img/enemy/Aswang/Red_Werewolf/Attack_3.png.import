@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b3lgaf8os4821"
-path="res://.godot/imported/PlayerMovement.png-b9d12f7d190fe5616448e1d9a9ba294b.ctex"
+uid="uid://cnocncxww8unu"
+path="res://.godot/imported/Attack_3.png-f5707aac46ccfa3cc808a3a8d0218b68.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/player_sprites/PlayerMovement.png"
-dest_files=["res://.godot/imported/PlayerMovement.png-b9d12f7d190fe5616448e1d9a9ba294b.ctex"]
+source_file="res://assets/img/enemy/Aswang/Red_Werewolf/Attack_3.png"
+dest_files=["res://.godot/imported/Attack_3.png-f5707aac46ccfa3cc808a3a8d0218b68.ctex"]
 
 [params]
 

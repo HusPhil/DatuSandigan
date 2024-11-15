@@ -5,7 +5,8 @@ extends PlayerState
 var COMBO_NUM = 1
 var next_state := BASE_ATK2
 var atk_animation : String = "fist"
-const MAX_SECS := 0.3
+const MAX_SECS := 0.4
+
 var current_secs := 0
 
 func enter(previous_state_path: String, data := {}) -> void:
