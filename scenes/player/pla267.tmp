@@ -1,4 +1,4 @@
-[gd_scene load_steps=86 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=88 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://s4aoh8g48ub0" path="res://assets/img/player_sprites/Bardent/Base_Fist_1.png" id="4_dq7sp"]
 [ext_resource type="Script" path="res://scenes/player/states/running.gd" id="4_s14an"]
 [ext_resource type="Texture2D" uid="uid://b3cbynr2rdq2n" path="res://assets/img/player_sprites/Bardent/Base_Fist_2.png" id="5_2m4ra"]
+[ext_resource type="Texture2D" uid="uid://4astugycjapv" path="res://assets/img/player_sprites/Bardent/Sword_2.png" id="5_gpjoe"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_mfy73"]
 [ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="6_k85tt"]
 [ext_resource type="Texture2D" uid="uid://ctc3y6votxk1v" path="res://assets/img/player_sprites/Bardent/Base_Fist_3.png" id="6_m8108"]
@@ -27,6 +28,57 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3ke"]
 size = Vector2(11.5, 20)
+
+[sub_resource type="Animation" id="Animation_7744s"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:vframes")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [7]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [9]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [8]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("1_80ydq")]
+}
 
 [sub_resource type="Animation" id="Animation_uyfgl"]
 resource_name = "base_atk1"
@@ -880,6 +932,7 @@ tracks/3/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rosyk"]
 _data = {
+"RESET": SubResource("Animation_7744s"),
 "base_atk1": SubResource("Animation_uyfgl"),
 "base_atk2": SubResource("Animation_7dxvh"),
 "base_atk3": SubResource("Animation_ie153"),
@@ -947,6 +1000,42 @@ tracks/3/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("HitBoxComponent/FlippableShape2D:disabled")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBoxComponent/FlippableShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(14, -7)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBoxComponent/FlippableShape2D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3.04867]
 }
 
 [sub_resource type="Animation" id="Animation_h4njg"]
@@ -1249,6 +1338,30 @@ tracks/4/keys = {
 "update": 1,
 "values": [true, false, true]
 }
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("HitBoxComponent/FlippableShape2D:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(11, 3), Vector2(14, -7), Vector2(8, 2), Vector2(11, 3)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("HitBoxComponent/FlippableShape2D:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.0833333, 0.25, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [2.31748, 3.04867, 3.04867, 2.3178]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_v2o7m"]
 _data = {
@@ -1377,8 +1490,8 @@ transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition
 graph_offset = Vector2(-202, 242)
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_0dp78"]
-radius = 23.9785
-height = 48.0
+radius = 16.0
+height = 42.0
 
 [node name="player" type="CharacterBody2D"]
 script = ExtResource("1_w5kx2")
@@ -1387,12 +1500,13 @@ current_weapon = ExtResource("2_kd5gy")
 [node name="FlippableSprite" parent="." instance=ExtResource("3_7o64b")]
 texture = ExtResource("1_80ydq")
 hframes = 8
-vframes = 11
-frame = 9
+vframes = 7
+frame = 12
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 1)
+texture = ExtResource("5_gpjoe")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -1459,14 +1573,12 @@ one_shot = true
 [node name="MagicAttack" type="Node" parent="StateMachine"]
 script = ExtResource("22_gqsm5")
 
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("22_h1lbe")]
-flippable_sprite = NodePath("../FlippableSprite")
+[node name="HitBoxComponent" parent="." instance=ExtResource("22_h1lbe")]
 
 [node name="FlippableShape2D" parent="HitBoxComponent" instance=ExtResource("25_otasi")]
-position = Vector2(10, -1)
-rotation = 1.58853
+position = Vector2(14, -7)
+rotation = 3.04867
 shape = SubResource("CapsuleShape2D_0dp78")
-disabled = true
 debug_color = Color(0, 0.648433, 0.180941, 0.42)
 
 [node name="Label" type="Label" parent="."]

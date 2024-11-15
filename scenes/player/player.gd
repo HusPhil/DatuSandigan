@@ -13,7 +13,7 @@ enum States {IDLE, RUNNING, JUMPING, FALLING, GLIDING}
 # This variable keeps track of the character's current state.
 var state: States = States.IDLE
 
-@onready var sprite : Sprite2D = $Sprite2D
+@onready var sprite : Sprite2D = $FlippableSprite
 @onready var weapon_sprite : Sprite2D = $WeaponSprite
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
@@ -29,6 +29,7 @@ func _physics_process(_delta: float) -> void:
 	# Horizontal movement and gravity.
 	var input_direction_x := get_input_direction()
 	animation_tree.set("parameters/Move/blend_position", input_direction_x)
+
 	
 func get_input_direction() -> float:
 	var input_direction = Input.get_axis("move_left", "move_right")
@@ -47,7 +48,14 @@ func handle_change_direction() -> void:
 	
 	if input_direction_x:
 		var is_flipped_direction = input_direction_x < 0
-		sprite.flip_h = is_flipped_direction
+		sprite.flipped = is_flipped_direction
 		weapon_sprite.flip_h = is_flipped_direction
-		print("NA FLIOP")
-		
+
+func _on_touch_screen_button_pressed() -> void:
+	print("TOUCHED")
+	pass # Replace with function body.
+
+
+func _on_flippable_sprite_is_flipped(flip_val: Variant) -> void:
+	state_label.text = "NA FLIP" + str (flip_val)
+	print("NA FLIP" + str (flip_val))

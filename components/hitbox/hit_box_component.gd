@@ -1,11 +1,10 @@
 extends Area2D
+class_name HitboxComponent
 
+@export var flippable_sprite: FlippableSprite
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func _ready():
+	if flippable_sprite != null:
+		for child in get_children():
+			flippable_sprite.is_flipped.connect(child._on_sprite_flipped)
+			child.disabled = true
