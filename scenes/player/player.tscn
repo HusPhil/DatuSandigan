@@ -1,4 +1,4 @@
-[gd_scene load_steps=88 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=87 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -9,7 +9,6 @@
 [ext_resource type="Texture2D" uid="uid://s4aoh8g48ub0" path="res://assets/img/player_sprites/Bardent/Base_Fist_1.png" id="4_dq7sp"]
 [ext_resource type="Script" path="res://scenes/player/states/running.gd" id="4_s14an"]
 [ext_resource type="Texture2D" uid="uid://b3cbynr2rdq2n" path="res://assets/img/player_sprites/Bardent/Base_Fist_2.png" id="5_2m4ra"]
-[ext_resource type="Texture2D" uid="uid://4astugycjapv" path="res://assets/img/player_sprites/Bardent/Sword_2.png" id="5_gpjoe"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_mfy73"]
 [ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="6_k85tt"]
 [ext_resource type="Texture2D" uid="uid://ctc3y6votxk1v" path="res://assets/img/player_sprites/Bardent/Base_Fist_3.png" id="6_m8108"]
@@ -1446,7 +1445,6 @@ frame = 9
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture_filter = 1
 position = Vector2(0, 1)
-texture = ExtResource("5_gpjoe")
 hframes = 6
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
