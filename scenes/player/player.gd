@@ -50,12 +50,3 @@ func handle_change_direction() -> void:
 		var is_flipped_direction = input_direction_x < 0
 		sprite.flipped = is_flipped_direction
 		weapon_sprite.flip_h = is_flipped_direction
-
-func _on_touch_screen_button_pressed() -> void:
-	print("TOUCHED")
-	pass # Replace with function body.
-
-
-func _on_flippable_sprite_is_flipped(flip_val: Variant) -> void:
-	state_label.text = "NA FLIP" + str (flip_val)
-	print("NA FLIP" + str (flip_val))

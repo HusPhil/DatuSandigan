@@ -1,4 +1,4 @@
-class_name StateMachine extends Node
+class_name EnemyStateMachine extends Node
 
 @export var initial_state: State = null
 

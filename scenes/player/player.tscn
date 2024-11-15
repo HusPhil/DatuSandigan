@@ -1534,3 +1534,4 @@ text = "NONE"
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack2" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack1" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/MagicAttack" method="_on_animation_tree_animation_finished"]
+[connection signal="body_entered" from="HitBoxComponent" to="HitBoxComponent" method="_on_body_entered"]

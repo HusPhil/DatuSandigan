@@ -1,55 +1,6 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmwotsgmrkf85"]
+[gd_scene load_steps=2 format=3 uid="uid://cmwotsgmrkf85"]
 
 [ext_resource type="Script" path="res://state_machine/state_machine.gd" id="1_x57wj"]
-[ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="2_enkcl"]
-[ext_resource type="Script" path="res://scenes/player/states/running.gd" id="3_4lw7e"]
-[ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="4_o2cim"]
-[ext_resource type="Script" path="res://scenes/player/states/falling.gd" id="5_3uyty"]
-[ext_resource type="Script" path="res://scenes/player/states/base_atk3.gd" id="6_sdypd"]
-[ext_resource type="Script" path="res://scenes/player/states/base_atk2.gd" id="7_f5ge0"]
-[ext_resource type="Script" path="res://scenes/player/states/base_atk1.gd" id="8_nbti8"]
-[ext_resource type="Resource" uid="uid://dg6b87giuxak8" path="res://res/sword.tres" id="9_swc40"]
-[ext_resource type="Script" path="res://scenes/player/magic_atk.gd" id="10_ec1ms"]
 
 [node name="StateMachine" type="Node"]
 script = ExtResource("1_x57wj")
-
-[node name="Idle" type="Node" parent="."]
-script = ExtResource("2_enkcl")
-
-[node name="Running" type="Node" parent="."]
-script = ExtResource("3_4lw7e")
-
-[node name="Jumping" type="Node" parent="."]
-script = ExtResource("4_o2cim")
-
-[node name="Falling" type="Node" parent="."]
-script = ExtResource("5_3uyty")
-
-[node name="BaseAttack3" type="Node" parent="." node_paths=PackedStringArray("atk_timer")]
-script = ExtResource("6_sdypd")
-atk_timer = NodePath("atk3_tmr")
-
-[node name="atk3_tmr" type="Timer" parent="BaseAttack3"]
-wait_time = 0.2
-one_shot = true
-
-[node name="BaseAttack2" type="Node" parent="." node_paths=PackedStringArray("atk_timer")]
-script = ExtResource("7_f5ge0")
-atk_timer = NodePath("atk2_tmr")
-
-[node name="atk2_tmr" type="Timer" parent="BaseAttack2"]
-wait_time = 0.2
-one_shot = true
-
-[node name="BaseAttack1" type="Node" parent="." node_paths=PackedStringArray("atk_timer")]
-script = ExtResource("8_nbti8")
-atk_timer = NodePath("atk1_tmr")
-item = ExtResource("9_swc40")
-
-[node name="atk1_tmr" type="Timer" parent="BaseAttack1"]
-wait_time = 0.2
-one_shot = true
-
-[node name="MagicAttack" type="Node" parent="."]
-script = ExtResource("10_ec1ms")

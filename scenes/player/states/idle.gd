@@ -1,14 +1,10 @@
 extends PlayerState
 
-
-
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state_label.text = "Idle"
 	player.velocity.x = 0.0
 	playback.travel("Move")
 	
-	
-
 
 func physics_update(_delta: float) -> void:
 	player.velocity.y += player.base_gravity * _delta
