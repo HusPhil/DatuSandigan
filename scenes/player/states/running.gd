@@ -11,8 +11,8 @@ func physics_update(delta: float) -> void:
 	
 	if input_direction_x:
 		player.sprite.flip_h = input_direction_x < 0
-		pass
-	
+		player.weapon_sprite.flip_h = input_direction_x < 0
+			
 	player.velocity.x = player.speed * input_direction_x
 	player.velocity.y += player.base_gravity * delta
 	player.move_and_slide()

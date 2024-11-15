@@ -14,6 +14,7 @@ func physics_update(_delta: float) -> void:
 	
 	if input_direction_x:
 		player.sprite.flip_h = input_direction_x < 0
+		player.weapon_sprite.flip_h = input_direction_x < 0
 
 	if not player.is_on_floor():
 		#finished.emit(FALLING)

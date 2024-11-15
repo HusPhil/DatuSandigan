@@ -14,9 +14,12 @@ enum States {IDLE, RUNNING, JUMPING, FALLING, GLIDING}
 var state: States = States.IDLE
 
 @onready var sprite : Sprite2D = $Sprite2D
+@onready var weapon_sprite : Sprite2D = $WeaponSprite
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var weapon_animation_player : AnimationPlayer = $WeaponFX
 @onready var state_label : Label = $Label
+@export var current_weapon : Item
 
 func _ready() -> void:
 	animation_tree.active = true
