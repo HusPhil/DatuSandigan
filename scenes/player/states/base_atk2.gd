@@ -5,7 +5,7 @@ var next_state := BASE_ATK3
 var atk_animation := base_atk2_animation
 
 func enter(previous_state_path: String, data := {}) -> void:
-	player.state_label.text = "ATTACKING"
+	player.state_label.text = "ATTACKING 2"
 	playback.travel(atk_animation)
 	
 	
