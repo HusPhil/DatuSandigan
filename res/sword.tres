@@ -1,12 +1,13 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dg6b87giuxak8"]
 
 [ext_resource type="Script" path="res://scenes/items/Item.gd" id="1_xa0cx"]
-[ext_resource type="Texture2D" uid="uid://cg64e2nm2y5t1" path="res://assets/img/player_sprites/Bardent/Bow_1.png" id="2_x4pxw"]
+[ext_resource type="Texture2D" uid="uid://trjhmf3c4s7b" path="res://assets/img/player_sprites/Bardent/Sword_1.png" id="2_y7nwj"]
 
 [resource]
 script = ExtResource("1_xa0cx")
 name = "Sword"
-texture = ExtResource("2_x4pxw")
+type = 1
+texture = ExtResource("2_y7nwj")
 damage = 50.0
-animation = "wp_bow"
+animation = "wp_sword"
 projectile = 0

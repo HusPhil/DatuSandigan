@@ -24,4 +24,9 @@ func physics_update(_delta: float) -> void:
 	elif Input.is_action_pressed("move_left") or Input.is_action_pressed("move_right"):
 		finished.emit(RUNNING)
 	elif Input.is_action_just_pressed("attack"):
-		finished.emit(BASE_ATK1)
+		if player.current_weapon.type == Item.wp_types.spell_book:
+			finished.emit(MAGIC_ATK)
+		elif player.current_weapon.type == Item.wp_types.sword:
+			finished.emit(BASE_ATK1)
+		
+		
