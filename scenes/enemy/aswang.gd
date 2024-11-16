@@ -7,7 +7,7 @@ const ACCELERATION : float = 300.0
 @onready var sprite : Sprite2D = $FlippableSprite
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var ray_cast : RayCast2D = $FlippableSprite/RayCast2D
-@onready var timer : Timer = $Timer
+@onready var timer : Timer = $ChaseTimer
 @export var player : Player
 
 @onready var state_label : Label = $Label

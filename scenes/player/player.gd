@@ -13,6 +13,7 @@ var current_direction : float = 1.0
 enum States {IDLE, RUNNING, JUMPING, FALLING, ATTACKING, HURTING}
 var state: States = States.IDLE
 
+
 @onready var state_machine : StateMachine = get_node("StateMachine")
 
 @onready var sprite : Sprite2D = $FlippableSprite

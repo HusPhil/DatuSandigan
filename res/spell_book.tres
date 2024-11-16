@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://bdmdy8bhdbegg"]
 
 [ext_resource type="Script" path="res://scenes/items/Item.gd" id="1_1s1ra"]
-[ext_resource type="Texture2D" uid="uid://c8adag64fpkre" path="res://assets/img/player_sprites/Bardent/Tome_1.png" id="2_k6q1t"]
+[ext_resource type="Texture2D" uid="uid://50frihuvd6jf" path="res://assets/img/items/magic_ball.png" id="2_vnwj1"]
 
 [resource]
 script = ExtResource("1_1s1ra")
 name = "MySpellBook"
 type = 4
-texture = ExtResource("2_k6q1t")
+texture = ExtResource("2_vnwj1")
 damage = 50.0
 animation = "wp_spell_book"
 projectile = 0

@@ -20,6 +20,7 @@ var idle_animation := "idle"
 var hurt_animation := "hurt"
 var double_jump_animation := "double_jump"
 var ground_animation := "Move"
+var magic_atk_animation := "magic_atk"
 
 var base_atk1_animation := "base_atk1"
 var base_atk2_animation := "base_atk2"

@@ -6,9 +6,8 @@ var atk_animation : String = "magic"
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state_label.text = "MAGIC_ATK"
-	
 	#DEPENDS ON THE ANIM TREE
-	atk_animation = Item.wp_types.find_key(player.current_weapon.type) + "_atk" 
+	atk_animation = magic_atk_animation
 	print(atk_animation)
 	playback.travel(atk_animation)
 	
