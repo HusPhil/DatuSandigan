@@ -4,8 +4,9 @@ var speed := 30.0
 const CHASE_SPEED : float = 200.0
 const ACCELERATION : float = 300.0
 
-@onready var sprite : AnimatedSprite2D = $AnimatedSprite2D
-@onready var ray_cast : RayCast2D = $AnimatedSprite2D/RayCast2D
+@onready var sprite : Sprite2D = $FlippableSprite
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var ray_cast : RayCast2D = $FlippableSprite/RayCast2D
 @onready var timer : Timer = $Timer
 @export var player : Player
 

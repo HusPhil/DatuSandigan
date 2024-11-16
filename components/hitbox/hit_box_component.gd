@@ -12,5 +12,9 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
-		body.take_damage(get_parent().current_weapon.damage)
+		#body.take_damage(get_parent().current_weapon.damage)
+		pass # Replace with function body.
+
+
+func _on_flippable_sprite_is_flipped(flip_val: Variant) -> void:
 	pass # Replace with function body.
