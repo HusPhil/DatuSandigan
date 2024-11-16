@@ -5,14 +5,14 @@ extends PlayerState
 var COMBO_NUM = 1
 var next_state := BASE_ATK2
 var atk_animation : String = "fist"
-const MAX_SECS := 0.4
-const MOVE_SPEED := 5.0
+const MAX_SECS := 0.45
+const MOVE_SPEED := 2.0
 
 var current_secs := 0
 
 func enter(previous_state_path: String, data := {}) -> void:
-	player.state_label.text = "ATTACKING 1"
 	atk_animation = Item.wp_types.find_key(player.current_weapon.type) + "_atk" + str(COMBO_NUM)
+	player.state_label.text = str(atk_animation)
 	playback.travel(atk_animation)
 	player.weapon_sprite.texture = player.current_weapon.texture
 	player.weapon_animation_player.play(player.current_weapon.animation + "1")

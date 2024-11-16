@@ -1,7 +1,7 @@
 extends Resource
 class_name Item
 
-enum wp_types { fist, sword, spear, bow, spell_book }
+enum wp_types { arnis, sword, spear, bow, spell_book }
 
 @export var name : String
 @export var type : wp_types

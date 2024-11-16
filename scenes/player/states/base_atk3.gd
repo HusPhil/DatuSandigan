@@ -2,7 +2,7 @@ extends PlayerState
 
 @export var atk_timer : Timer
 var next_state := IDLE
-const MOVE_SPEED = 10.0  
+const MOVE_SPEED = 5.0  
 var COMBO_NUM = 3
 var atk_animation : String = "fist"
 

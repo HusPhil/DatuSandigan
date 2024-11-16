@@ -1,17 +1,17 @@
 extends CollisionShape2D
-class_name FlippableShape2d
+class_name FlippableShape
 
-@export var default_position : Vector2:
+@export var default_position: Vector2:
 	set(new_position):
 		default_position = new_position
 		position = new_position
-		
 
-var current_flip_value : bool
+var current_flip_value: bool
 
-func _on_sprite_flipped(flip_val : bool) -> void:
-	if current_flip_value != flip_val:
-		print("WHAT THE")
-		position *= -1
-		current_flip_value = flip_val
-		
+func _on_sprite_flipped(flip_value):
+	if current_flip_value != flip_value:
+		if flip_value:
+			default_position.x *= -2
+		else:
+			default_position.x /= -2
+		current_flip_value = flip_value
