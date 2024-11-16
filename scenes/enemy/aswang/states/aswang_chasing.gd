@@ -33,9 +33,3 @@ func exit() -> void:
 func _on_timer_timeout() -> void:
 	finished.emit(WANDERING)
 	pass # Replace with function body.
-
-
-func _on_detect_player_body_exited(body: Node2D) -> void:
-	if body == enemy.player:
-		finished.emit(CHASING)
-	pass # Replace with function body.

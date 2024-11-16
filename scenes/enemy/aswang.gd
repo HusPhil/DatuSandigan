@@ -1,7 +1,7 @@
 class_name Enemy extends CharacterBody2D
 
-var speed := 30.0
-const CHASE_SPEED : float = 200.0
+var speed := 10.0
+const CHASE_SPEED : float = 50.0
 const ACCELERATION : float = 300.0
 
 @onready var sprite : Sprite2D = $FlippableSprite
@@ -12,6 +12,8 @@ const ACCELERATION : float = 300.0
 
 @onready var state_label : Label = $Label
 
+signal is_damaged(attack : Attack)
+
 var jump_impulse := 170.0
 var base_gravity := 500
 var direction : Vector2
@@ -21,8 +23,9 @@ var right_bound : Vector2
 enum States {IDLE, RUNNING, JUMPING, FALLING, ATTACKING, CHASING}
 var state: States = States.IDLE
 
-func take_damage(damage : float) -> void:
-	print(damage)
+func take_damage(attack : Attack) -> void:
+	
+	print(attack)
 
 func _ready() -> void:
 	left_bound = self.position + Vector2(-125, 0)

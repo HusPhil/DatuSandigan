@@ -38,3 +38,7 @@ func change_direction() -> void:
 	enemy.ray_cast.target_position = Vector2(-WANDER_BOUNDS,0)	
 	pass
 	
+
+
+func _on_aswang_is_damaged(attack: Attack) -> void:
+	pass # Replace with function body.
