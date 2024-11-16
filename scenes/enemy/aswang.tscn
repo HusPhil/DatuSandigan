@@ -147,8 +147,8 @@ tracks/4/path = NodePath("HitBoxComponent/FlippableShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.480038),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.411088, 0.480038),
+"transitions": PackedFloat32Array(12.1257, 48.5029, 1),
 "update": 0,
 "values": [true, false, true]
 }
@@ -328,6 +328,12 @@ one_shot = true
 [node name="Hurting" type="Node" parent="StateMachine"]
 script = ExtResource("8_i2s84")
 
+[node name="Timer" type="Timer" parent="StateMachine/Hurting"]
+wait_time = 0.5
+one_shot = true
+
+[node name="Nagluto" type="Node" parent="StateMachine"]
+
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("8_ab8tq")]
 light_mask = 2
 collision_layer = 2
@@ -370,11 +376,11 @@ default_position = Vector2(26, -13)
 [connection signal="is_damaged" from="." to="StateMachine/Wandering" method="_on_aswang_is_damaged"]
 [connection signal="is_damaged" from="." to="StateMachine/Chasing" method="_on_aswang_is_damaged"]
 [connection signal="is_damaged" from="." to="StateMachine/Attacking" method="_on_aswang_is_damaged"]
-[connection signal="is_damaged" from="." to="StateMachine/Hurting" method="_on_aswang_is_damaged"]
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
 [connection signal="animation_changed" from="AnimationPlayer" to="StateMachine/Attacking" method="_on_animation_player_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attacking" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Hurting/Timer" to="StateMachine/Hurting" method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="StateMachine/Chasing" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_entered"]

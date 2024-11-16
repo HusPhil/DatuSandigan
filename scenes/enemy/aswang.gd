@@ -24,8 +24,8 @@ enum States {IDLE, RUNNING, JUMPING, FALLING, ATTACKING, CHASING}
 var state: States = States.IDLE
 
 func take_damage(attack : Attack) -> void:
-	
-	print(attack)
+	is_damaged.emit(attack)
+	print("HINDI, wala")
 
 func _ready() -> void:
 	left_bound = self.position + Vector2(-125, 0)

@@ -39,6 +39,8 @@ func change_direction() -> void:
 	pass
 	
 
-
 func _on_aswang_is_damaged(attack: Attack) -> void:
+	
+	finished.emit(HURTING, {"attack": attack})
+	#enemy.plouy()
 	pass # Replace with function body.

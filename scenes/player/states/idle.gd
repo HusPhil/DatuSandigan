@@ -34,5 +34,5 @@ func physics_update(_delta: float) -> void:
 
 
 func _on_player_is_hurt(attack: Attack) -> void:
-	finished.emit(HURTING, {"dmg": attack.atk_damage})
+	finished.emit(HURTING, {"attack": attack})
 	pass # Replace with function body.

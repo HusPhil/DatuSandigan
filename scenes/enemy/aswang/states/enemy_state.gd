@@ -6,6 +6,7 @@ const WANDERING = "Wandering"
 const RUNNING = "Running"
 const ATTACKING = "Attacking"
 const CHASING = "Chasing"
+const HURTING = "Hurting"
 
 const run_animation := "run"
 const idle_animation := "idle"
