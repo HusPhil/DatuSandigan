@@ -1,11 +1,13 @@
 extends Area2D
 @export var flippable_sprite: FlippableSprite
 
-# Called when the node enters the scene tree for the first time.
-func _ready() -> void:
+func _ready():
+	if flippable_sprite != null:
+		for child in get_children():
+			flippable_sprite.is_flipped.connect(child._on_sprite_flipped)
+			
+
+func _on_body_entered(body: Node2D) -> void:
+	if body == get_parent().player:
+		print("MAY PLAYER")
 	pass # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass

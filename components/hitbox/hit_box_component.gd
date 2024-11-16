@@ -12,9 +12,11 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
-		#body.take_damage(get_parent().current_weapon.damage)
+		var entity := get_parent() 
+		if entity is Enemy:
+			var atk : Attack = Attack.new()
+			atk.atk_damage = 100.0;
+			atk.knockback_force = 100.0;
+			body.take_damage(atk);
+			
 		pass # Replace with function body.
-
-
-func _on_flippable_sprite_is_flipped(flip_val: Variant) -> void:
-	pass # Replace with function body.

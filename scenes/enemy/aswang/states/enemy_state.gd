@@ -22,7 +22,6 @@ func look_for_player() -> void:
 	if enemy.ray_cast.is_colliding():
 		var collider = enemy.ray_cast.get_collider()
 		if collider == enemy.player:
-			print("player")
 			chase_player()
 		
 
@@ -32,7 +31,6 @@ func chase_player() -> void:
 	pass
 
 func stop_chase() -> void:
-	print(enemy.timer.time_left)
 	if enemy.timer.time_left <= 0:
 		enemy.timer.start()
 
@@ -42,11 +40,11 @@ func change_direction() -> void:
 	
 	if enemy.direction.x == 1:
 		#flip to right
-		enemy.sprite.flip_h = false
+		enemy.sprite.flipped = false
 		enemy.ray_cast.target_position = Vector2(WANDER_BOUNDS, 0)
 		return
 	
 	#flip to move left
-	enemy.sprite.flip_h = true
+	enemy.sprite.flipped = true
 	enemy.ray_cast.target_position = Vector2(-WANDER_BOUNDS, 0)	
 	pass

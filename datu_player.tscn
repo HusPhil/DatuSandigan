@@ -1,36 +1,33 @@
-[gd_scene load_steps=101 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=98 format=3 uid="uid://qixepsu1otxt"]
 
-[ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/placeholder/char_blue_1.png" id="1_80ydq"]
-[ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
-[ext_resource type="Resource" uid="uid://dtvjx2jh8mb81" path="res://res/arnis.tres" id="2_lghn5"]
-[ext_resource type="Script" path="res://state_machine/state_machine.gd" id="3_0lsub"]
-[ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="3_7o64b"]
-[ext_resource type="Texture2D" uid="uid://de0ajoiltb7tn" path="res://assets/img/player_sprites/placeholder/char_blue_2.png" id="3_qak35"]
-[ext_resource type="Texture2D" uid="uid://s4aoh8g48ub0" path="res://assets/img/player_sprites/Bardent/Base_Fist_1.png" id="4_dq7sp"]
-[ext_resource type="Texture2D" uid="uid://de86gp760ialk" path="res://assets/img/player_sprites/datu_full.png" id="4_np1a1"]
-[ext_resource type="Script" path="res://scenes/player/states/running.gd" id="4_s14an"]
-[ext_resource type="Texture2D" uid="uid://b3cbynr2rdq2n" path="res://assets/img/player_sprites/Bardent/Base_Fist_2.png" id="5_2m4ra"]
-[ext_resource type="Texture2D" uid="uid://ba5mk0ofiw25p" path="res://assets/img/player_sprites/datu/datu_arnis_movement.png" id="5_7nhqn"]
-[ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_mfy73"]
-[ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="6_k85tt"]
-[ext_resource type="Texture2D" uid="uid://ctc3y6votxk1v" path="res://assets/img/player_sprites/Bardent/Base_Fist_3.png" id="6_m8108"]
-[ext_resource type="Texture2D" uid="uid://rfa5cb6b0vh3" path="res://assets/img/player_sprites/Bardent/Bow.png" id="7_ri3kc"]
-[ext_resource type="Script" path="res://scenes/player/states/falling.gd" id="7_wvln3"]
-[ext_resource type="Script" path="res://scenes/player/states/base_atk1.gd" id="8_0g6gp"]
-[ext_resource type="Texture2D" uid="uid://bjl5v2tqxmprj" path="res://assets/img/player_sprites/Bardent/Tome_base.png" id="8_2fbpy"]
-[ext_resource type="Script" path="res://scenes/player/states/base_atk3.gd" id="9_36eh7"]
-[ext_resource type="Script" path="res://scenes/player/states/base_atk2.gd" id="9_hw7rl"]
-[ext_resource type="Texture2D" uid="uid://01gy1d6qk4ot" path="res://assets/img/player_sprites/datu/datu_basic_movement.png" id="13_77p1r"]
-[ext_resource type="Resource" uid="uid://dg6b87giuxak8" path="res://res/sword.tres" id="18_fcsc2"]
-[ext_resource type="Script" path="res://scenes/player/states/magic_atk.gd" id="22_gqsm5"]
-[ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="24_odjir"]
-[ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="26_qkvvi"]
-[ext_resource type="Script" path="res://scenes/player/hurting.gd" id="26_wajv6"]
+[ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="1_8u4dw"]
+[ext_resource type="Texture2D" uid="uid://01gy1d6qk4ot" path="res://assets/img/player_sprites/datu/datu_basic_movement.png" id="2_fui2t"]
+[ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="3_dcktp"]
+[ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="4_5aaje"]
+[ext_resource type="Texture2D" uid="uid://ba5mk0ofiw25p" path="res://assets/img/player_sprites/datu/datu_arnis_movement.png" id="5_p1d70"]
+[ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/placeholder/char_blue_1.png" id="6_rkonr"]
+[ext_resource type="Texture2D" uid="uid://de0ajoiltb7tn" path="res://assets/img/player_sprites/placeholder/char_blue_2.png" id="7_x14pv"]
+[ext_resource type="Texture2D" uid="uid://rfa5cb6b0vh3" path="res://assets/img/player_sprites/Bardent/Bow.png" id="8_q7myo"]
+[ext_resource type="Texture2D" uid="uid://s4aoh8g48ub0" path="res://assets/img/player_sprites/Bardent/Base_Fist_1.png" id="9_w86g5"]
+[ext_resource type="Texture2D" uid="uid://b3cbynr2rdq2n" path="res://assets/img/player_sprites/Bardent/Base_Fist_2.png" id="10_2xxgw"]
+[ext_resource type="Texture2D" uid="uid://ctc3y6votxk1v" path="res://assets/img/player_sprites/Bardent/Base_Fist_3.png" id="11_4yfuu"]
+[ext_resource type="Texture2D" uid="uid://bjl5v2tqxmprj" path="res://assets/img/player_sprites/Bardent/Tome_base.png" id="12_dvbks"]
+[ext_resource type="Texture2D" uid="uid://de86gp760ialk" path="res://assets/img/player_sprites/datu_full.png" id="13_jwc3b"]
+[ext_resource type="Script" path="res://state_machine/state_machine.gd" id="14_maou8"]
+[ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="15_aiy0q"]
+[ext_resource type="Script" path="res://scenes/player/states/running.gd" id="16_a5ve0"]
+[ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="17_xnnas"]
+[ext_resource type="Script" path="res://scenes/player/states/falling.gd" id="18_63s2f"]
+[ext_resource type="Script" path="res://scenes/player/states/base_atk3.gd" id="19_08u4b"]
+[ext_resource type="Script" path="res://scenes/player/states/base_atk2.gd" id="20_fdao2"]
+[ext_resource type="Script" path="res://scenes/player/states/base_atk1.gd" id="21_n1ywx"]
+[ext_resource type="Resource" uid="uid://dg6b87giuxak8" path="res://res/sword.tres" id="22_dtf1b"]
+[ext_resource type="Script" path="res://scenes/player/states/magic_atk.gd" id="23_icn20"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_aikxa"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8oiqq"]
 size = Vector2(25, 34)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_nq3ke"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p1bjy"]
 size = Vector2(23, 34)
 
 [sub_resource type="Animation" id="Animation_7744s"]
@@ -45,7 +42,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_77p1r")]
+"values": [ExtResource("2_fui2t")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -134,7 +131,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_7nhqn")]
+"values": [ExtResource("5_p1d70")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -211,7 +208,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_7nhqn")]
+"values": [ExtResource("5_p1d70")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -276,7 +273,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("5_7nhqn")]
+"values": [ExtResource("5_p1d70")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -377,7 +374,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_80ydq")]
+"values": [ExtResource("6_rkonr")]
 }
 
 [sub_resource type="Animation" id="Animation_7dxvh"]
@@ -430,7 +427,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("1_80ydq")]
+"values": [ExtResource("6_rkonr")]
 }
 
 [sub_resource type="Animation" id="Animation_ie153"]
@@ -483,7 +480,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("3_qak35")]
+"values": [ExtResource("7_x14pv")]
 }
 
 [sub_resource type="Animation" id="Animation_af33g"]
@@ -536,7 +533,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("7_ri3kc")]
+"values": [ExtResource("8_q7myo")]
 }
 
 [sub_resource type="Animation" id="Animation_kixno"]
@@ -553,7 +550,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_77p1r")]
+"values": [ExtResource("2_fui2t")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -618,7 +615,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_77p1r")]
+"values": [ExtResource("2_fui2t")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -719,7 +716,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("4_dq7sp")]
+"values": [ExtResource("9_w86g5")]
 }
 
 [sub_resource type="Animation" id="Animation_hxijc"]
@@ -772,7 +769,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("5_2m4ra")]
+"values": [ExtResource("10_2xxgw")]
 }
 
 [sub_resource type="Animation" id="Animation_02his"]
@@ -825,7 +822,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("6_m8108")]
+"values": [ExtResource("11_4yfuu")]
 }
 
 [sub_resource type="Animation" id="Animation_2b2x4"]
@@ -843,7 +840,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_77p1r")]
+"values": [ExtResource("2_fui2t")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -908,7 +905,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_77p1r")]
+"values": [ExtResource("2_fui2t")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -974,7 +971,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("13_77p1r")]
+"values": [ExtResource("2_fui2t")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1075,7 +1072,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("8_2fbpy")]
+"values": [ExtResource("12_dvbks")]
 }
 
 [sub_resource type="Animation" id="Animation_vgwe0"]
@@ -1092,7 +1089,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_np1a1")]
+"values": [ExtResource("13_jwc3b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1145,7 +1142,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_np1a1")]
+"values": [ExtResource("13_jwc3b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1198,7 +1195,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_np1a1")]
+"values": [ExtResource("13_jwc3b")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -1697,7 +1694,7 @@ advance_mode = 2
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_8jj3e"]
 
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_8x2hy"]
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_marmg"]
 states/Move/node = SubResource("AnimationNodeBlendSpace1D_k2h3j")
 states/Move/position = Vector2(351, 227)
 states/Start/position = Vector2(179, 227)
@@ -1730,17 +1727,13 @@ states/sword_atk3/position = Vector2(710, 411)
 transitions = ["Start", "Move", SubResource("AnimationNodeStateMachineTransition_03k2a"), "Move", "jump", SubResource("AnimationNodeStateMachineTransition_my5mn"), "jump", "fall", SubResource("AnimationNodeStateMachineTransition_45ion"), "fall", "Move", SubResource("AnimationNodeStateMachineTransition_quv5m"), "jump", "double_jump", SubResource("AnimationNodeStateMachineTransition_ml164"), "double_jump", "fall", SubResource("AnimationNodeStateMachineTransition_pe18l"), "Move", "base_atk1", SubResource("AnimationNodeStateMachineTransition_dka1m"), "base_atk1", "base_atk2", SubResource("AnimationNodeStateMachineTransition_40tq1"), "base_atk2", "Move", SubResource("AnimationNodeStateMachineTransition_kirns"), "base_atk1", "Move", SubResource("AnimationNodeStateMachineTransition_4si0d"), "base_atk2", "base_atk3", SubResource("AnimationNodeStateMachineTransition_ga4iy"), "base_atk3", "Move", SubResource("AnimationNodeStateMachineTransition_heqqw"), "Move", "sword_atk1", SubResource("AnimationNodeStateMachineTransition_mdibl"), "sword_atk1", "Move", SubResource("AnimationNodeStateMachineTransition_uvgnb"), "sword_atk1", "sword_atk2", SubResource("AnimationNodeStateMachineTransition_yeowj"), "sword_atk2", "Move", SubResource("AnimationNodeStateMachineTransition_8768e"), "sword_atk2", "sword_atk3", SubResource("AnimationNodeStateMachineTransition_glth6"), "sword_atk3", "Move", SubResource("AnimationNodeStateMachineTransition_5lp4h"), "Move", "spell_book_atk", SubResource("AnimationNodeStateMachineTransition_uo5ss"), "spell_book_atk", "Move", SubResource("AnimationNodeStateMachineTransition_tl3oc"), "Move", "arnis_atk1", SubResource("AnimationNodeStateMachineTransition_6xrpl"), "arnis_atk1", "Move", SubResource("AnimationNodeStateMachineTransition_ncr61"), "arnis_atk1", "arnis_atk2", SubResource("AnimationNodeStateMachineTransition_0iyeg"), "arnis_atk2", "Move", SubResource("AnimationNodeStateMachineTransition_rc6x1"), "arnis_atk2", "arnis_atk3", SubResource("AnimationNodeStateMachineTransition_7ndd8"), "arnis_atk3", "Move", SubResource("AnimationNodeStateMachineTransition_8jj3e")]
 graph_offset = Vector2(-98, 219)
 
-[node name="player" type="CharacterBody2D"]
-collision_layer = 2
-collision_mask = 5
-script = ExtResource("1_w5kx2")
-current_weapon = ExtResource("2_lghn5")
+[node name="datu_player" type="CharacterBody2D"]
 
-[node name="FlippableSprite" parent="." instance=ExtResource("3_7o64b")]
+[node name="FlippableSprite" parent="." instance=ExtResource("1_8u4dw")]
 texture_filter = 1
-position = Vector2(-38, -41)
+position = Vector2(43, -43)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("13_77p1r")
+texture = ExtResource("2_fui2t")
 centered = false
 hframes = 20
 vframes = 3
@@ -1748,27 +1741,30 @@ frame = 1
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-3, -2)
+position = Vector2(1, 3)
 scale = Vector2(0.75, 0.75)
+centered = false
 hframes = 6
 
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("24_odjir")]
-flippable_sprite = NodePath("../FlippableSprite")
+[node name="HitBoxComponent" parent="." instance=ExtResource("3_dcktp")]
+position = Vector2(9, 9)
 
 [node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]
-light_mask = 2
-position = Vector2(24, 0)
+position = Vector2(4, -4)
 rotation = 3.14159
-shape = SubResource("RectangleShape2D_aikxa")
+scale = Vector2(-1, 1)
+shape = SubResource("RectangleShape2D_8oiqq")
 disabled = true
 debug_color = Color(0.794626, 0.279696, 0.800561, 0.42)
-script = ExtResource("26_qkvvi")
-default_position = Vector2(24, 0)
+script = ExtResource("4_5aaje")
+
+[node name="FlippableShape2" type="CollisionShape2D" parent="HitBoxComponent"]
+position = Vector2(-23, 0)
+script = ExtResource("4_5aaje")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 2
-visibility_layer = 4
-shape = SubResource("RectangleShape2D_nq3ke")
+position = Vector2(55, 2)
+shape = SubResource("RectangleShape2D_p1bjy")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -1783,30 +1779,27 @@ libraries = {
 
 [node name="AnimationTree" type="AnimationTree" parent="."]
 active = false
-tree_root = SubResource("AnimationNodeStateMachine_8x2hy")
+tree_root = SubResource("AnimationNodeStateMachine_marmg")
 anim_player = NodePath("../AnimationPlayer")
 parameters/Move/blend_position = 0.0014925
 
 [node name="StateMachine" type="Node" parent="."]
-script = ExtResource("3_0lsub")
+script = ExtResource("14_maou8")
 
 [node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("5_mfy73")
+script = ExtResource("15_aiy0q")
 
 [node name="Running" type="Node" parent="StateMachine"]
-script = ExtResource("4_s14an")
+script = ExtResource("16_a5ve0")
 
 [node name="Jumping" type="Node" parent="StateMachine"]
-script = ExtResource("6_k85tt")
+script = ExtResource("17_xnnas")
 
 [node name="Falling" type="Node" parent="StateMachine"]
-script = ExtResource("7_wvln3")
-
-[node name="Hurting" type="Node" parent="StateMachine"]
-script = ExtResource("26_wajv6")
+script = ExtResource("18_63s2f")
 
 [node name="BaseAttack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("atk_timer")]
-script = ExtResource("9_36eh7")
+script = ExtResource("19_08u4b")
 atk_timer = NodePath("atk3_tmr")
 
 [node name="atk3_tmr" type="Timer" parent="StateMachine/BaseAttack3"]
@@ -1814,7 +1807,7 @@ wait_time = 0.2
 one_shot = true
 
 [node name="BaseAttack2" type="Node" parent="StateMachine" node_paths=PackedStringArray("atk_timer")]
-script = ExtResource("9_hw7rl")
+script = ExtResource("20_fdao2")
 atk_timer = NodePath("atk2_tmr")
 
 [node name="atk2_tmr" type="Timer" parent="StateMachine/BaseAttack2"]
@@ -1822,31 +1815,24 @@ wait_time = 0.25
 one_shot = true
 
 [node name="BaseAttack1" type="Node" parent="StateMachine" node_paths=PackedStringArray("atk_timer")]
-script = ExtResource("8_0g6gp")
+script = ExtResource("21_n1ywx")
 atk_timer = NodePath("atk1_tmr")
-item = ExtResource("18_fcsc2")
+item = ExtResource("22_dtf1b")
 
 [node name="atk1_tmr" type="Timer" parent="StateMachine/BaseAttack1"]
 wait_time = 0.4
 one_shot = true
 
 [node name="MagicAttack" type="Node" parent="StateMachine"]
-script = ExtResource("22_gqsm5")
+script = ExtResource("23_icn20")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -21.0
-offset_top = -69.0
-offset_right = 26.0
-offset_bottom = -46.0
+offset_left = -12.0
+offset_top = -60.0
+offset_right = 35.0
+offset_bottom = -37.0
 text = "NONE"
 
-[connection signal="is_hurt" from="." to="StateMachine/Idle" method="_on_player_is_hurt"]
-[connection signal="is_hurt" from="." to="StateMachine/Running" method="_on_player_is_hurt"]
-[connection signal="is_hurt" from="." to="StateMachine/Jumping" method="_on_player_is_hurt"]
-[connection signal="is_hurt" from="." to="StateMachine/Falling" method="_on_player_is_hurt"]
-[connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BaseAttack1" method="_PLAYER_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack3" method="_on_animation_tree_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack2" method="_on_animation_tree_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack1" method="_on_animation_tree_animation_finished"]
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/MagicAttack" method="_on_animation_tree_animation_finished"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="."]
+position = Vector2(12, 56)
+shape = SubResource("RectangleShape2D_p1bjy")

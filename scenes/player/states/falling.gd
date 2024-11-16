@@ -30,3 +30,8 @@ func physics_update(delta: float) -> void:
 		else:
 			finished.emit(RUNNING)
 		player.can_double_jump = true
+
+
+func _on_player_is_hurt(attack: Attack) -> void:
+	finished.emit(HURTING, {"attack": attack})
+	pass # Replace with function body.

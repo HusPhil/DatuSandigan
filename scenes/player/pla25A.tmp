@@ -1802,9 +1802,6 @@ script = ExtResource("6_k85tt")
 [node name="Falling" type="Node" parent="StateMachine"]
 script = ExtResource("7_wvln3")
 
-[node name="Hurting" type="Node" parent="StateMachine"]
-script = ExtResource("26_wajv6")
-
 [node name="BaseAttack3" type="Node" parent="StateMachine" node_paths=PackedStringArray("atk_timer")]
 script = ExtResource("9_36eh7")
 atk_timer = NodePath("atk3_tmr")
@@ -1833,6 +1830,9 @@ one_shot = true
 [node name="MagicAttack" type="Node" parent="StateMachine"]
 script = ExtResource("22_gqsm5")
 
+[node name="Hurting" type="Node" parent="StateMachine"]
+script = ExtResource("26_wajv6")
+
 [node name="Label" type="Label" parent="."]
 offset_left = -21.0
 offset_top = -69.0
@@ -1840,10 +1840,7 @@ offset_right = 26.0
 offset_bottom = -46.0
 text = "NONE"
 
-[connection signal="is_hurt" from="." to="StateMachine/Idle" method="_on_player_is_hurt"]
-[connection signal="is_hurt" from="." to="StateMachine/Running" method="_on_player_is_hurt"]
-[connection signal="is_hurt" from="." to="StateMachine/Jumping" method="_on_player_is_hurt"]
-[connection signal="is_hurt" from="." to="StateMachine/Falling" method="_on_player_is_hurt"]
+[connection signal="is_hurt" from="." to="StateMachine/Hurting" method="_on_player_is_hurt"]
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BaseAttack1" method="_PLAYER_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack3" method="_on_animation_tree_animation_finished"]

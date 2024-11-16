@@ -12,25 +12,13 @@ func enter(previous_state_path: String, data := {}) -> void:
 	#enemy.state_label.text = "ATTACKING"
 	pass
 
-func physics_update(delta : float) -> void:
-	var collision_point = enemy.ray_cast.get_collision_point()
-	var origin = enemy.ray_cast.global_transform.origin
-	var distance = origin.distance_to(collision_point)
-	
-	enemy.state_label.text = str(distance)
-	
-	if distance >= 26:
-		finished.emit(CHASING)
-	
-
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == attack_animation:
-		finished.emit(CHASING)
-		print(anim_name)
+		stop_chase()
+		
 	pass # Replace with function body.
 
 
 func _on_timer_timeout() -> void:
-	finished.emit(CHASING)
 	stop_chase()
 	pass # Replace with function body.

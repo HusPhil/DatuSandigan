@@ -20,6 +20,11 @@ func physics_update(_delta: float) -> void:
 		
 	enemy.move_and_slide()
 	pass
+	
+func _on_detect_player_body_entered(body: Node2D) -> void:
+	if body == enemy.player:
+		finished.emit(ATTACKING)
+	pass # Replace with function body.
 
 func exit() -> void:
 	pass
@@ -27,4 +32,10 @@ func exit() -> void:
 
 func _on_timer_timeout() -> void:
 	finished.emit(WANDERING)
+	pass # Replace with function body.
+
+
+func _on_detect_player_body_exited(body: Node2D) -> void:
+	if body == enemy.player:
+		finished.emit(CHASING)
 	pass # Replace with function body.

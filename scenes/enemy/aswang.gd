@@ -13,7 +13,7 @@ const ACCELERATION : float = 300.0
 @onready var state_label : Label = $Label
 
 var jump_impulse := 170.0
-var base_gravity := 300
+var base_gravity := 500
 var direction : Vector2
 var left_bound : Vector2
 var right_bound : Vector2
@@ -35,9 +35,3 @@ func handle_gravity(delta : float) -> void:
 	if not is_on_floor():
 		velocity.y += base_gravity * delta
 	pass
-
-
-
-func _on_timer_timeout() -> void:
-	
-	pass # Replace with function body.

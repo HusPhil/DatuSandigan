@@ -89,7 +89,6 @@ tracks/5/keys = {
 [sub_resource type="Animation" id="Animation_rg1gx"]
 resource_name = "attack"
 length = 0.500008
-loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -224,7 +223,7 @@ size = Vector2(98, 12.75)
 size = Vector2(20, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu5ks"]
-size = Vector2(6.5, 49)
+size = Vector2(15, 49)
 
 [node name="Aswang" type="CharacterBody2D"]
 collision_layer = 4
@@ -268,13 +267,9 @@ script = ExtResource("7_4vutb")
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("8_ab8tq")]
 light_mask = 2
-collision_layer = 2
-collision_mask = 2
 flippable_sprite = NodePath("../FlippableSprite")
 
 [node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]
-light_mask = 2
-visibility_layer = 2
 position = Vector2(36, -13)
 shape = SubResource("RectangleShape2D_fdh32")
 disabled = true
@@ -300,14 +295,13 @@ script = ExtResource("10_7tn44")
 flippable_sprite = NodePath("../FlippableSprite")
 
 [node name="FlippableShape" type="CollisionShape2D" parent="DetectPlayer"]
-position = Vector2(28.75, -13)
+position = Vector2(33, -13)
 shape = SubResource("RectangleShape2D_cu5ks")
 script = ExtResource("9_y0fll")
-default_position = Vector2(26, -13)
+default_position = Vector2(33, -13)
 
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attacking" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="Timer" to="StateMachine/Chasing" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_entered"]
-[connection signal="body_exited" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_exited"]

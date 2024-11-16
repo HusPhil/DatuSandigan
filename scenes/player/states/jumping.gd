@@ -29,3 +29,8 @@ func physics_update(delta: float) -> void:
 		finished.emit(FALLING)
 		
 		
+
+
+func _on_player_is_hurt(attack: Attack) -> void:
+	finished.emit(HURTING, {"attack": attack})
+	pass # Replace with function body.

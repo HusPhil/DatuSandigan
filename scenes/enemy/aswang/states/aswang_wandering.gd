@@ -24,7 +24,7 @@ func change_direction() -> void:
 			return
 			
 		#flip the raycast and enemy sprite to left
-		enemy.sprite.flip_h = false
+		enemy.sprite.flipped = false
 		enemy.ray_cast.target_position = Vector2(WANDER_BOUNDS,0)
 		return
 		
@@ -34,7 +34,7 @@ func change_direction() -> void:
 		return
 	
 #	flip to move right
-	enemy.sprite.flip_h = true
+	enemy.sprite.flipped = true
 	enemy.ray_cast.target_position = Vector2(-WANDER_BOUNDS,0)	
 	pass
 	
