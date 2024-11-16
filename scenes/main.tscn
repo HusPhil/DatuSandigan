@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://l8ksfl0hggw7"]
+[gd_scene load_steps=6 format=3 uid="uid://l8ksfl0hggw7"]
 
 [ext_resource type="PackedScene" uid="uid://biv3y0ktr3jre" path="res://scenes/maps/testMap.tscn" id="1_7qt82"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="2_eltvj"]
+[ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://scenes/controls/touch_controls.tscn" id="2_icalj"]
 [ext_resource type="PackedScene" uid="uid://btco8640jytd1" path="res://scenes/enemy/aswang.tscn" id="4_8mkxt"]
 [ext_resource type="PackedScene" uid="uid://c6phromlku4e7" path="res://testbutton.tscn" id="5_r1h33"]
 
@@ -15,6 +16,8 @@ offset = Vector2(0, -75)
 zoom = Vector2(2.5, 2.5)
 drag_horizontal_enabled = true
 drag_vertical_enabled = true
+
+[node name="TouchControls" parent="Camera2D" instance=ExtResource("2_icalj")]
 
 [node name="TouchScreenButton" parent="Camera2D" instance=ExtResource("5_r1h33")]
 position = Vector2(-202, -12)
@@ -30,5 +33,15 @@ position = Vector2(263, 576)
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
 position = Vector2(-36, 12)
 remote_path = NodePath("../../Camera2D")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = -27.0
+offset_top = 220.0
+offset_right = 604.0
+offset_bottom = 644.0
+
+[node name="TouchControls" parent="Control" instance=ExtResource("2_icalj")]
 
 [connection signal="pressed" from="Camera2D/TouchScreenButton" to="player" method="_on_touch_screen_button_pressed"]
