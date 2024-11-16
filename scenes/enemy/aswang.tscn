@@ -1,10 +1,11 @@
-[gd_scene load_steps=30 format=3 uid="uid://btco8640jytd1"]
+[gd_scene load_steps=31 format=3 uid="uid://btco8640jytd1"]
 
-[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_st8ni"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang.gd" id="1_st8ni"]
 [ext_resource type="Texture2D" uid="uid://dr0kskl81ky0d" path="res://assets/img/enemy/Aswang/aswang_all_movementspng.png" id="2_xeh48"]
 [ext_resource type="Texture2D" uid="uid://csqcajv3cw4ja" path="res://assets/img/enemy/Boar/Walk/Walk-Base-SheetBlack.png" id="4_wh5av"]
 [ext_resource type="PackedScene" uid="uid://cmwotsgmrkf85" path="res://scenes/state_machine/state_machine.tscn" id="5_clq5g"]
-[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_idle.gd" id="6_tjrt2"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_wandering.gd" id="6_jjj5m"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_chasing.gd" id="7_4vayu"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pqsi0"]
 atlas = ExtResource("2_xeh48")
@@ -195,20 +196,36 @@ rotation = -0.00336929
 sprite_frames = SubResource("SpriteFrames_71lo1")
 animation = &"run"
 autoplay = "run"
-frame_progress = 0.0423632
+frame_progress = 0.976334
+
+[node name="RayCast2D" type="RayCast2D" parent="AnimatedSprite2D"]
+position = Vector2(1.95619, 13.0067)
+target_position = Vector2(125, 0.404)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 16)
 rotation = -3.13243
 shape = SubResource("RectangleShape2D_gkatm")
 
-[node name="StateMachine" parent="." instance=ExtResource("5_clq5g")]
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_clq5g")]
+initial_state = NodePath("Wandering")
 
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("6_tjrt2")
+[node name="Wandering" type="Node" parent="StateMachine"]
+script = ExtResource("6_jjj5m")
 
-[node name="Running" type="Node" parent="StateMachine"]
+[node name="Chasing" type="Node" parent="StateMachine"]
+script = ExtResource("7_4vayu")
 
-[node name="Jumping" type="Node" parent="StateMachine"]
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
 
-[node name="Falling" type="Node" parent="StateMachine"]
+[node name="Label" type="Label" parent="."]
+offset_left = -22.0
+offset_top = -36.0
+offset_right = 25.0
+offset_bottom = -13.0
+text = "STATE"
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="Timer" to="StateMachine/Chasing" method="_on_timer_timeout"]

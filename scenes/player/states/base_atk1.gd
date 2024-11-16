@@ -11,6 +11,7 @@ const MOVE_SPEED := 2.0
 var current_secs := 0
 
 func enter(previous_state_path: String, data := {}) -> void:
+	player.state = player.States.ATTACKING
 	atk_animation = Item.wp_types.find_key(player.current_weapon.type) + "_atk" + str(COMBO_NUM)
 	player.state_label.text = str(atk_animation)
 	playback.travel(atk_animation)

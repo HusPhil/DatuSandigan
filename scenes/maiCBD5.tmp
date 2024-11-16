@@ -21,7 +21,7 @@ position = Vector2(-202, -12)
 scale = Vector2(0.320313, 0.328125)
 
 [node name="Aswang" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_8mkxt")]
-position = Vector2(360, 574)
+position = Vector2(323, 563)
 player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("2_eltvj")]

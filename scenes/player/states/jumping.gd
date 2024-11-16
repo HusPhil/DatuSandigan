@@ -2,6 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	playback.travel(jump_animation)
+	player.state = player.States.JUMPING
 	player.state_label.text = "Jumping"
 
 	player.velocity.y = -player.jump_impulse

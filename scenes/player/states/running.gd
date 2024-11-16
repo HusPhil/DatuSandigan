@@ -2,6 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state_label.text = "Running"
+	player.state = player.States.RUNNING
 	playback.travel("Move")
 
 	pass

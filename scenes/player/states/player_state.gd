@@ -9,7 +9,7 @@ const BASE_ATK2 = "BaseAttack2"
 const BASE_ATK3 = "BaseAttack3"
 const MAGIC_ATK = "MagicAttack"
 
-var double_jump_velocity := -100
+var double_jump_velocity := -150
 var playback : AnimationNodeStateMachinePlayback
 
 var jump_animation := "jump"

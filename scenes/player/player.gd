@@ -8,10 +8,7 @@ var can_double_jump := true
 var can_input := true
 var current_direction : float = 1.0
 
-# This enum lists all the possible states the character can be in.
-enum States {IDLE, RUNNING, JUMPING, FALLING, GLIDING}
-
-# This variable keeps track of the character's current state.
+enum States {IDLE, RUNNING, JUMPING, FALLING, ATTACKING}
 var state: States = States.IDLE
 
 @onready var sprite : Sprite2D = $FlippableSprite

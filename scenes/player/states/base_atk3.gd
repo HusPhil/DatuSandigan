@@ -7,6 +7,7 @@ var COMBO_NUM = 3
 var atk_animation : String = "fist"
 
 func enter(previous_state_path: String, data := {}) -> void:
+	player.state = player.States.ATTACKING
 	atk_animation = Item.wp_types.find_key(player.current_weapon.type) + "_atk" + str(COMBO_NUM)
 	playback.travel(atk_animation)
 	player.weapon_sprite.texture = player.current_weapon.texture

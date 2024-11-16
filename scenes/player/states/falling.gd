@@ -2,6 +2,7 @@ extends PlayerState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state_label.text = "FALLING"
+	player.state = player.States.FALLING
 	playback.travel(fall_animation)
 
 
