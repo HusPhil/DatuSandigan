@@ -21,7 +21,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/base_atk3.gd" id="19_08u4b"]
 [ext_resource type="Script" path="res://scenes/player/states/base_atk2.gd" id="20_fdao2"]
 [ext_resource type="Script" path="res://scenes/player/states/base_atk1.gd" id="21_n1ywx"]
-[ext_resource type="Resource" uid="uid://dg6b87giuxak8" path="res://res/sword.tres" id="22_dtf1b"]
+[ext_resource type="Resource" uid="uid://dg6b87giuxak8" path="res://res/kampilan.tres" id="22_dtf1b"]
 [ext_resource type="Script" path="res://scenes/player/states/magic_atk.gd" id="23_icn20"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_8oiqq"]

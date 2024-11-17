@@ -1,13 +1,13 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dg6b87giuxak8"]
 
 [ext_resource type="Script" path="res://scenes/items/Item.gd" id="1_xa0cx"]
-[ext_resource type="Texture2D" uid="uid://trjhmf3c4s7b" path="res://assets/img/player_sprites/Bardent/Sword_1.png" id="2_y7nwj"]
+[ext_resource type="Texture2D" uid="uid://c7y5kx0ykv6rb" path="res://assets/img/items/wp_kampilan.png" id="2_bdv0b"]
 
 [resource]
 script = ExtResource("1_xa0cx")
-name = "Sword"
+name = "Kampilan"
 type = 1
-texture = ExtResource("2_y7nwj")
+texture = ExtResource("2_bdv0b")
 damage = 50.0
 animation = "wp_sword"
 projectile = 0

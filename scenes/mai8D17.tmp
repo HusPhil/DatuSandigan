@@ -11,5 +11,6 @@ metadata/_edit_vertical_guides_ = [-460.0]
 [node name="Node2D" parent="." instance=ExtResource("2_dpjgf")]
 
 [node name="Missile" parent="." instance=ExtResource("3_vlply")]
-position = Vector2(146, 515)
+position = Vector2(270, 363)
+scale = Vector2(0.1, 0.1)
 script = null

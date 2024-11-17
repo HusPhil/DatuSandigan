@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Item" load_steps=3 format=3 uid="uid://dtvjx2jh8mb81"]
 
 [ext_resource type="Script" path="res://scenes/items/Item.gd" id="1_sg731"]
-[ext_resource type="Texture2D" uid="uid://bfwoqx4vktry8" path="res://assets/img/player_sprites/datu/wp_arnis.png" id="2_gtwbd"]
+[ext_resource type="Texture2D" uid="uid://bfwoqx4vktry8" path="res://assets/img/items/wp_arnis.png" id="2_gtwbd"]
 
 [resource]
 script = ExtResource("1_sg731")
@@ -9,5 +9,5 @@ name = "my arnnis"
 type = 0
 texture = ExtResource("2_gtwbd")
 damage = 50.0
-animation = "wp_sword"
+animation = "wp_arnis"
 projectile = 0
