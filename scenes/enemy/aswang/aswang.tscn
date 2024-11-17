@@ -286,6 +286,7 @@ collision_layer = 4
 script = ExtResource("1_st8ni")
 
 [node name="FlippableSprite" parent="." instance=ExtResource("2_2l1wn")]
+texture_filter = 1
 position = Vector2(3, -18)
 texture = ExtResource("2_xeh48")
 hframes = 8
