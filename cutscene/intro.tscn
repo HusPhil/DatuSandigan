@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://cg7l7mfohua7f"]
+
+[ext_resource type="VideoStream" path="res://assets/vid/TitleCard.HIshResogv.ogv" id="1_0fo2b"]
+[ext_resource type="Script" path="res://cutscene/video_stream_player.gd" id="2_yc2jn"]
+
+[node name="Intro" type="Node"]
+
+[node name="VideoStreamPlayer" type="VideoStreamPlayer" parent="."]
+offset_right = 1152.0
+offset_bottom = 647.0
+stream = ExtResource("1_0fo2b")
+autoplay = true
+expand = true
+script = ExtResource("2_yc2jn")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(575, 324)
+
+[connection signal="finished" from="VideoStreamPlayer" to="VideoStreamPlayer" method="_on_finished"]

@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://beukphs7343fc"]
+
+[ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="1_xsn6o"]
+[ext_resource type="PackedScene" uid="uid://dpq3teg1422w2" path="res://stages/LEVEL3/desert_world.tscn" id="2_4mw42"]
+
+[node name="Desert" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(186, 151)
+zoom = Vector2(2.75, 2.75)
+
+[node name="Node2D" parent="." instance=ExtResource("2_4mw42")]
+position = Vector2(-14, -18)
+
+[node name="player" parent="." instance=ExtResource("1_xsn6o")]
+position = Vector2(186, 151)
+
+[node name="RemoteTransform2D" type="RemoteTransform2D" parent="player"]
+remote_path = NodePath("../../Camera2D")

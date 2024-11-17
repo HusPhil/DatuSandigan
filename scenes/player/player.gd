@@ -2,7 +2,7 @@ class_name Player extends CharacterBody2D
 
 const NAME := "DATU"
 
-var speed := 100.0
+var speed := 200.0
 var jump_impulse := 170.0
 var base_gravity := 300
 
