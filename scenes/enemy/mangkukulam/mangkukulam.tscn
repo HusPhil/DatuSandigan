@@ -267,8 +267,8 @@ size = Vector2(82.5, 11.375)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdh32"]
 size = Vector2(31, 49)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_cu5ks"]
-size = Vector2(42, 49)
+[sub_resource type="CircleShape2D" id="CircleShape2D_52kuq"]
+radius = 79.1581
 
 [node name="Mangkukulam" type="CharacterBody2D"]
 collision_layer = 4
@@ -356,7 +356,7 @@ flippable_sprite = NodePath("../FlippableSprite")
 [node name="FlippableShape" type="CollisionShape2D" parent="DetectPlayer"]
 light_mask = 0
 position = Vector2(0, -13)
-shape = SubResource("RectangleShape2D_cu5ks")
+shape = SubResource("CircleShape2D_52kuq")
 script = ExtResource("11_4ok5v")
 default_position = Vector2(0, -13)
 
