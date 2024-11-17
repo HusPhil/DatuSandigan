@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://l8ksfl0hggw7"]
+[gd_scene load_steps=8 format=3 uid="uid://l8ksfl0hggw7"]
 
 [ext_resource type="PackedScene" uid="uid://biv3y0ktr3jre" path="res://scenes/maps/testMap.tscn" id="1_7qt82"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="2_eltvj"]
 [ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://scenes/controls/touch_controls.tscn" id="2_icalj"]
 [ext_resource type="PackedScene" uid="uid://crqc8tf4jq1qh" path="res://scenes/enemy/manananggal/mananaggal.tscn" id="3_pua6l"]
 [ext_resource type="PackedScene" uid="uid://btco8640jytd1" path="res://scenes/enemy/aswang/aswang.tscn" id="4_8mkxt"]
+[ext_resource type="PackedScene" uid="uid://50wiqjkiibly" path="res://scenes/enemy/kapre/kapre.tscn" id="4_uw61i"]
+[ext_resource type="PackedScene" uid="uid://d2r2nx3k6r40c" path="res://scenes/enemy/mangkukulam/mangkukulam.tscn" id="5_ojs44"]
 
 [node name="Main" type="Node2D"]
 
@@ -23,6 +25,14 @@ player = NodePath("../player")
 
 [node name="Manananggal" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_pua6l")]
 position = Vector2(39.8307, 2.47186)
+player = NodePath("../player")
+
+[node name="Kapre" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_uw61i")]
+position = Vector2(152, 277)
+player = NodePath("../player")
+
+[node name="Mangkukulam" parent="." node_paths=PackedStringArray("player") instance=ExtResource("5_ojs44")]
+position = Vector2(159, 594)
 player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("2_eltvj")]
