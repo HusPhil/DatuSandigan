@@ -32,6 +32,7 @@ func _ready() -> void:
 	right_bound = self.position + Vector2(125, 0)
 
 func _physics_process(delta: float) -> void:
+	
 	handle_gravity(delta)
 	
 func handle_gravity(delta : float) -> void:

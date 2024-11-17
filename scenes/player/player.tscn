@@ -1861,7 +1861,6 @@ graph_offset = Vector2(-183, 211)
 
 [node name="player" type="CharacterBody2D"]
 collision_layer = 2
-collision_mask = 5
 script = ExtResource("1_w5kx2")
 current_projectile = ExtResource("28_0ia63")
 current_weapon = ExtResource("2_bjh01")
@@ -1897,8 +1896,8 @@ script = ExtResource("26_qkvvi")
 default_position = Vector2(20, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-light_mask = 2
-visibility_layer = 4
+light_mask = 7
+visibility_layer = 7
 shape = SubResource("RectangleShape2D_nq3ke")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
