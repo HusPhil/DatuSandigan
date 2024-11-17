@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://l8ksfl0hggw7"]
+[gd_scene load_steps=6 format=3 uid="uid://l8ksfl0hggw7"]
 
 [ext_resource type="PackedScene" uid="uid://biv3y0ktr3jre" path="res://scenes/maps/testMap.tscn" id="1_7qt82"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="2_eltvj"]
 [ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://scenes/controls/touch_controls.tscn" id="2_icalj"]
-[ext_resource type="PackedScene" uid="uid://btco8640jytd1" path="res://scenes/enemy/aswang.tscn" id="4_8mkxt"]
+[ext_resource type="PackedScene" uid="uid://crqc8tf4jq1qh" path="res://scenes/enemy/manananggal/mananaggal.tscn" id="3_pua6l"]
+[ext_resource type="PackedScene" uid="uid://btco8640jytd1" path="res://scenes/enemy/aswang/aswang.tscn" id="4_8mkxt"]
 
 [node name="Main" type="Node2D"]
 
@@ -18,6 +19,10 @@ drag_vertical_enabled = true
 
 [node name="Aswang" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_8mkxt")]
 position = Vector2(360, 574)
+player = NodePath("../player")
+
+[node name="Manananggal" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_pua6l")]
+position = Vector2(39.8307, 2.47186)
 player = NodePath("../player")
 
 [node name="player" parent="." instance=ExtResource("2_eltvj")]
