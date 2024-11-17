@@ -10,4 +10,4 @@ type = 4
 texture = ExtResource("2_vnwj1")
 damage = 50.0
 animation = "wp_spell_book"
-projectile = 0
+projectile = 200

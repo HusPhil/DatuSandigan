@@ -1,4 +1,4 @@
-[gd_scene load_steps=111 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=110 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/placeholder/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -27,7 +27,6 @@
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="24_odjir"]
 [ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="26_qkvvi"]
 [ext_resource type="Script" path="res://scenes/player/hurting.gd" id="26_wajv6"]
-[ext_resource type="PackedScene" uid="uid://byfogc7xoykel" path="res://scenes/items/projectile.tscn" id="28_0ia63"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aikxa"]
 size = Vector2(17.5, 10)
@@ -1863,7 +1862,6 @@ graph_offset = Vector2(-183, 211)
 collision_layer = 2
 collision_mask = 5
 script = ExtResource("1_w5kx2")
-current_projectile = ExtResource("28_0ia63")
 current_weapon = ExtResource("2_bjh01")
 
 [node name="FlippableSprite" parent="." instance=ExtResource("3_7o64b")]

@@ -24,6 +24,7 @@ var state: States = States.IDLE
 
 @onready var state_label : Label = $Label
 
+@export var current_projectile : PackedScene
 @export var current_weapon : Item
 
 signal is_hurt(attack : Attack)
@@ -65,3 +66,10 @@ func handle_change_direction() -> void:
 		var is_flipped_direction = input_direction_x < 0
 		sprite.flipped = is_flipped_direction
 		weapon_sprite.flip_h = is_flipped_direction
+
+func shoot_projectile():
+	var projectile = current_projectile.instantiate()
+	projectile.position = position
+	projectile.set_direction(sprite.flip_h, current_weapon.projectile)
+	projectile.damage = current_weapon.damage
+	get_tree().current_scene.add_child(projectile)

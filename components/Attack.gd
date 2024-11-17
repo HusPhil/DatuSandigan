@@ -3,8 +3,8 @@ class_name Attack
 var atk_damage : float
 var knockback_force : float
 var atk_position : Vector2
-var target_entity : CharacterBody2D
-var source_entity : CharacterBody2D
+var target_entity : Node
+var source_entity : Node
 
 func knockBack(up_force : float):
 	if not target_entity or not source_entity:
