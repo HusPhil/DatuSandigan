@@ -1,8 +1,10 @@
-[gd_scene load_steps=4 format=4 uid="uid://l8ksfl0hggw7"]
+[gd_scene load_steps=6 format=4 uid="uid://l8ksfl0hggw7"]
 
 [ext_resource type="Script" path="res://scenes/main.gd" id="1_bnprb"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="2_eltvj"]
-[ext_resource type="TileSet" uid="uid://7bt46rcq3u5y" path="res://new_env.tres" id="2_lnuqd"]
+[ext_resource type="TileSet" uid="uid://y826votfrytg" path="res://new_env.tres" id="2_lnuqd"]
+[ext_resource type="PackedScene" uid="uid://d2r2nx3k6r40c" path="res://scenes/enemy/mangkukulam/mangkukulam.tscn" id="4_rq35x"]
+[ext_resource type="PackedScene" uid="uid://btco8640jytd1" path="res://scenes/enemy/aswang/aswang.tscn" id="5_8gpha"]
 
 [node name="Main" type="Node2D"]
 script = ExtResource("1_bnprb")
@@ -20,3 +22,11 @@ position = Vector2(57, 538)
 [node name="Camera2D" type="Camera2D" parent="Node2D/player"]
 position = Vector2(4, -88)
 zoom = Vector2(2, 2)
+
+[node name="Mangkukulam" parent="Node2D" node_paths=PackedStringArray("player") instance=ExtResource("4_rq35x")]
+position = Vector2(197, 529)
+player = NodePath("../player")
+
+[node name="Aswang" parent="Node2D" node_paths=PackedStringArray("player") instance=ExtResource("5_8gpha")]
+position = Vector2(682, 394)
+player = NodePath("../player")
