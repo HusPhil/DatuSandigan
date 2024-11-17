@@ -7,6 +7,7 @@ func _ready():
 			flippable_sprite.is_flipped.connect(child._on_sprite_flipped)
 			
 
+
 func _on_body_entered(body: Node2D) -> void:
 	if body == get_parent().player:
 		print("MAY PLAYER")
