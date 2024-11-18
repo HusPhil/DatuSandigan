@@ -38,6 +38,9 @@ func chase_player() -> void:
 	finished.emit(CHASING)
 	pass
 
+func face_player() -> void:
+	enemy.sprite.flipped = enemy.player.global_position.x < enemy.global_position.x
+
 func stop_chase() -> void:
 	if enemy.timer.time_left <= 0:
 		enemy.timer.start()
