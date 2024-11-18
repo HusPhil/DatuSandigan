@@ -9,7 +9,7 @@
 script = ExtResource("1_n3kjv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(1, -1)
+position = Vector2(1, -2)
 texture = ExtResource("1_inu7d")
 hframes = 4
 vframes = 8

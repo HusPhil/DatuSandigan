@@ -29,6 +29,8 @@ var state: States = States.IDLE
 @export var current_projectile : PackedScene
 @export var current_weapon : Item
 
+@export var camera : Camera2D
+
 const MissileScene := preload("res://scenes/items/Missile.tscn")
 
 signal is_hurt(attack : Attack)

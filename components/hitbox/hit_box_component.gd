@@ -3,6 +3,8 @@ class_name HitboxComponent
 
 @export var flippable_sprite: FlippableSprite
 
+signal has_taget_hit(target : CharacterBody2D)
+
 func _ready():
 	if flippable_sprite != null:
 		for child in get_children():
@@ -30,6 +32,7 @@ func _on_body_entered(body: Node2D) -> void:
 			atk.knockback_force = 30.0;
 			atk.source_entity = entity
 			atk.target_entity = body as CharacterBody2D
+			has_taget_hit.emit(body)
 			body.take_damage(atk);
 			
 		pass # Replace with function body.

@@ -12,6 +12,9 @@ func enter(previous_state_path: String, data := {}) -> void:
 	playback.travel(atk_animation)
 	player.weapon_sprite.texture = player.current_weapon.texture
 	player.weapon_animation_player.play(player.current_weapon.animation + str(COMBO_NUM))
+	if not player.camera:
+		assert("ERROR: You must give CAMERA to PLAYER.");
+	player.camera.apply_shake(5.0)
 	
 func physics_update(delta : float):
 	step_abit(MOVE_SPEED, delta)

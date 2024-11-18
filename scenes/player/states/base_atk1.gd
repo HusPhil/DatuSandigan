@@ -12,11 +12,18 @@ var current_secs := 0
 
 func enter(previous_state_path: String, data := {}) -> void:
 	player.state = player.States.ATTACKING
-	atk_animation = Item.wp_types.find_key(player.current_weapon.type) + "_atk" + str(COMBO_NUM)
 	player.state_label.text = str(atk_animation)
+	
+	atk_animation = Item.wp_types.find_key(player.current_weapon.type) + "_atk" + str(COMBO_NUM)
 	playback.travel(atk_animation)
+	
 	player.weapon_sprite.texture = player.current_weapon.texture
 	player.weapon_animation_player.play(player.current_weapon.animation + "1")
+	
+	if not player.camera:
+		assert("ERROR: You must give CAMERA to PLAYER.");
+	player.camera.apply_shake(1.5)
+	
 	
 	
 func handle_input(_event: InputEvent) -> void:

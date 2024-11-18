@@ -349,6 +349,7 @@ texture = ExtResource("3_6jjhr")
 hframes = 7
 vframes = 4
 frame = 7
+region_rect = Rect2(0, 0, 1050, 600)
 
 [node name="RayCast2D" type="RayCast2D" parent="FlippableSprite"]
 position = Vector2(0, 38)
