@@ -1,4 +1,4 @@
-[gd_scene load_steps=114 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=117 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/placeholder/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -6,10 +6,12 @@
 [ext_resource type="Resource" uid="uid://bhaljfevi4cas" path="res://res/torch.tres" id="3_4nbqn"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="3_7o64b"]
 [ext_resource type="Texture2D" uid="uid://de0ajoiltb7tn" path="res://assets/img/player_sprites/placeholder/char_blue_2.png" id="3_qak35"]
+[ext_resource type="PackedScene" uid="uid://dsino0hflx5po" path="res://HUD/moon_bar.tscn" id="4_0776y"]
 [ext_resource type="Texture2D" uid="uid://s4aoh8g48ub0" path="res://assets/img/player_sprites/Bardent/Base_Fist_1.png" id="4_dq7sp"]
 [ext_resource type="Texture2D" uid="uid://de86gp760ialk" path="res://assets/img/player_sprites/datu_full.png" id="4_np1a1"]
 [ext_resource type="Script" path="res://scenes/player/states/running.gd" id="4_s14an"]
 [ext_resource type="Texture2D" uid="uid://b3cbynr2rdq2n" path="res://assets/img/player_sprites/Bardent/Base_Fist_2.png" id="5_2m4ra"]
+[ext_resource type="PackedScene" uid="uid://dkoy4oocq480a" path="res://HUD/pause_menu.tscn" id="5_5o0kg"]
 [ext_resource type="Texture2D" uid="uid://ba5mk0ofiw25p" path="res://assets/img/player_sprites/datu/datu_arnis_movement.png" id="5_7nhqn"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_mfy73"]
 [ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="6_k85tt"]
@@ -28,6 +30,7 @@
 [ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="26_qkvvi"]
 [ext_resource type="Script" path="res://scenes/player/hurting.gd" id="26_wajv6"]
 [ext_resource type="PackedScene" uid="uid://byfogc7xoykel" path="res://scenes/items/projectile.tscn" id="28_0ia63"]
+[ext_resource type="PackedScene" uid="uid://d3g3bhciw8gw3" path="res://HUD/health_bar.tscn" id="29_t8hds"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_aikxa"]
 size = Vector2(17.5, 10)
@@ -2182,6 +2185,19 @@ collision_layer = 2
 script = ExtResource("1_w5kx2")
 current_projectile = ExtResource("28_0ia63")
 current_weapon = ExtResource("3_4nbqn")
+
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="MoonBar" parent="CanvasLayer2" instance=ExtResource("4_0776y")]
+
+[node name="HealthBar" parent="CanvasLayer2" instance=ExtResource("29_t8hds")]
+offset_left = 14.0
+offset_top = 21.0
+offset_right = 101.0
+offset_bottom = 26.0
+value = 0.0
+
+[node name="PauseMenu" parent="CanvasLayer2" instance=ExtResource("5_5o0kg")]
 
 [node name="FlippableSprite" parent="." instance=ExtResource("3_7o64b")]
 texture_filter = 1

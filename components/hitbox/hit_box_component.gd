@@ -21,7 +21,7 @@ func _on_body_entered(body: Node2D) -> void:
 			atk.knockback_force = 40.0;
 			atk.source_entity = entity
 			atk.target_entity = body as CharacterBody2D
-			body.take_damage(atk);
+			body.take_damage(atk)
 			return
 			
 		if entity is Player:

@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3g3bhciw8gw3"]
+
+[ext_resource type="Script" path="res://HUD/health_bar_tunay.gd" id="1_bdgpf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7ppd"]
+bg_color = Color(1, 0.336026, 0.333935, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_84n3l"]
+bg_color = Color(0, 0.719139, 0.349388, 1)
+
+[node name="HealthBar" type="ProgressBar"]
+offset_left = -44.0
+offset_right = 44.0
+offset_bottom = 27.0
+theme_override_styles/background = SubResource("StyleBoxFlat_y7ppd")
+theme_override_styles/fill = SubResource("StyleBoxFlat_84n3l")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_bdgpf")

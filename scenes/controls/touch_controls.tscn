@@ -1,11 +1,13 @@
-[gd_scene load_steps=5 format=3 uid="uid://dngivgyn5hrfx"]
+[gd_scene load_steps=6 format=3 uid="uid://dngivgyn5hrfx"]
 
+[ext_resource type="Script" path="res://scenes/controls/touch_controls.gd" id="1_b1nyh"]
 [ext_resource type="Texture2D" uid="uid://x1vuykh8liak" path="res://assets/img/controls/transparentDark22.png" id="1_kb6bh"]
 [ext_resource type="Texture2D" uid="uid://bfdm4smay0shb" path="res://assets/img/controls/transparentDark43.png" id="2_x52we"]
 [ext_resource type="Texture2D" uid="uid://c8r3tby0w6am2" path="res://assets/img/controls/transparentDark23.png" id="3_e4b1u"]
 [ext_resource type="Texture2D" uid="uid://c6flcpolfk3mq" path="res://assets/img/controls/transparentDark26.png" id="4_gdxup"]
 
 [node name="TouchControls" type="CanvasLayer"]
+script = ExtResource("1_b1nyh")
 
 [node name="tbtn_left" type="TouchScreenButton" parent="."]
 position = Vector2(22, 551)
@@ -26,3 +28,10 @@ action = "move_right"
 position = Vector2(1004, 433)
 texture_normal = ExtResource("4_gdxup")
 action = "attack"
+
+[node name="tbtn_pause" type="TouchScreenButton" parent="."]
+position = Vector2(1050, 18)
+texture_normal = ExtResource("4_gdxup")
+action = "pause_menu"
+
+[connection signal="pressed" from="tbtn_pause" to="." method="_on_tbtn_pause_pressed"]

@@ -4,7 +4,7 @@ extends Node2D
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	animation_player.play("boss_intro")
+	#animation_player.play("boss_intro")
 	pass # Replace with function body.
 	
 
