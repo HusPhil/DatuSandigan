@@ -1,4 +1,4 @@
-[gd_scene load_steps=115 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=116 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/placeholder/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_mfy73"]
 [ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="6_k85tt"]
 [ext_resource type="Texture2D" uid="uid://ctc3y6votxk1v" path="res://assets/img/player_sprites/Bardent/Base_Fist_3.png" id="6_m8108"]
+[ext_resource type="Script" path="res://components/hitbox/player_hitbox.gd" id="7_h4jwq"]
 [ext_resource type="Texture2D" uid="uid://rfa5cb6b0vh3" path="res://assets/img/player_sprites/Bardent/Bow.png" id="7_ri3kc"]
 [ext_resource type="Script" path="res://scenes/player/states/falling.gd" id="7_wvln3"]
 [ext_resource type="Script" path="res://scenes/player/states/base_atk1.gd" id="8_0g6gp"]
@@ -2213,6 +2214,7 @@ hframes = 6
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("24_odjir")]
 collision_layer = 4
 collision_mask = 4
+script = ExtResource("7_h4jwq")
 flippable_sprite = NodePath("../FlippableSprite")
 
 [node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]

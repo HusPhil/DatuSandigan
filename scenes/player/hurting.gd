@@ -27,7 +27,6 @@ func physics_update(delta : float):
 
 func _on_timer_timeout() -> void:
 	finished.emit(IDLE)
-	print("DONE NA")
 	pass # Replace with function body.
 
 

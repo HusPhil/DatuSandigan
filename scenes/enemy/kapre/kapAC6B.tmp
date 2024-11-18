@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://50wiqjkiibly"]
+[gd_scene load_steps=28 format=3 uid="uid://50wiqjkiibly"]
 
 [ext_resource type="Script" path="res://scenes/enemy/kapre/kapre.gd" id="1_f8p7u"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_6c2ch"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="11_eusts"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/dashing.gd" id="12_bsb6w"]
 [ext_resource type="Script" path="res://components/hitbox/detect_player.gd" id="12_fa120"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/teleport_1.gd" id="13_x613o"]
 [ext_resource type="Script" path="res://components/hitbox/enemy_hitbox.gd" id="14_1nyxt"]
 
 [sub_resource type="Animation" id="Animation_4gowi"]
@@ -465,13 +464,6 @@ one_shot = true
 script = ExtResource("12_bsb6w")
 
 [node name="Timer" type="Timer" parent="StateMachine/Dashing"]
-wait_time = 3.0
-one_shot = true
-
-[node name="Teleport1" type="Node" parent="StateMachine"]
-script = ExtResource("13_x613o")
-
-[node name="Timer" type="Timer" parent="StateMachine/Teleport1"]
 wait_time = 3.0
 one_shot = true
 

@@ -1,6 +1,5 @@
 extends HitboxComponent
-@export var enemy: Enemy
-signal has_taget_hit(target : CharacterBody2D)
+
 
 func _ready():
 	if flippable_sprite != null:
@@ -12,16 +11,14 @@ func _ready():
 
 func _on_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
-		var enemy := get_parent() 
-		body = body as Player
-		
+		var player : Player = get_parent()
+		var enemy : Enemy = body as Enemy
 		var atk : Attack = Attack.new()
-		atk.atk_damage = 100.0;
-		atk.knockback_force = 40.0;
-		atk.source_entity = enemy
-		atk.target_entity = body as CharacterBody2D
-		
-		body.take_damage(atk)
+		atk.atk_damage = player.current_weapon.damage;
+		atk.knockback_force = player.current_weapon.knock_back_force;
+		atk.source_entity = player
+		atk.target_entity = enemy
+		enemy.state_label.text = "h: " + str(enemy.health)
 			
-			
+		body.take_damage(atk);
 		pass # Replace with function body.

@@ -9,5 +9,6 @@ name = "my arnnis"
 type = 0
 texture = ExtResource("2_gtwbd")
 damage = 50.0
+knock_back_force = 30.0
 animation = "wp_arnis"
 projectile = 0

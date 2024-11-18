@@ -4,13 +4,22 @@ var speed := 10.0
 const CHASE_SPEED : float = 50.0
 const ACCELERATION : float = 300.0
 
+var health: float 
+var max_health: float
+var hit_box_shape : FlippableShape
+
+var damage : float = 100;
+var knock_back_force : float = 200;
+
+var current_state : String 
+
 @onready var sprite : Sprite2D = $FlippableSprite
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var ray_cast : RayCast2D = $FlippableSprite/RayCast2D
 @onready var timer : Timer = $ChaseTimer
 @export var player : Player
 
-@onready var state_label : Label = $Label
+@onready var state_label: Label
 
 signal is_damaged(attack : Attack)
 
@@ -25,6 +34,7 @@ var state: States = States.IDLE
 
 func take_damage(attack : Attack) -> void:
 	is_damaged.emit(attack)
+	health -= attack.atk_damage
 
 func _ready() -> void:
 	left_bound = self.position + Vector2(-125, 0)

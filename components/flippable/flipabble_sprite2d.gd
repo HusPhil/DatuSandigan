@@ -9,3 +9,5 @@ var flipped : bool = false:
 			flipped = new_flip_val
 			self.flip_h = flipped
 			is_flipped.emit(flipped)
+			
+			

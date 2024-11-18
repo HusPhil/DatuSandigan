@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://50wiqjkiibly"]
+[gd_scene load_steps=28 format=3 uid="uid://50wiqjkiibly"]
 
 [ext_resource type="Script" path="res://scenes/enemy/kapre/kapre.gd" id="1_f8p7u"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_6c2ch"]
@@ -15,7 +15,6 @@
 [ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="11_eusts"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/dashing.gd" id="12_bsb6w"]
 [ext_resource type="Script" path="res://components/hitbox/detect_player.gd" id="12_fa120"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/teleport_1.gd" id="13_x613o"]
 [ext_resource type="Script" path="res://components/hitbox/enemy_hitbox.gd" id="14_1nyxt"]
 
 [sub_resource type="Animation" id="Animation_4gowi"]
@@ -468,13 +467,6 @@ script = ExtResource("12_bsb6w")
 wait_time = 3.0
 one_shot = true
 
-[node name="Teleport1" type="Node" parent="StateMachine"]
-script = ExtResource("13_x613o")
-
-[node name="Timer" type="Timer" parent="StateMachine/Teleport1"]
-wait_time = 3.0
-one_shot = true
-
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
 light_mask = 2
 collision_layer = 2
@@ -527,7 +519,6 @@ default_position = Vector2(23, -13)
 [connection signal="timeout" from="StateMachine/Smashing/Timer" to="StateMachine/Smashing" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/PrepareSmash/Timer" to="StateMachine/PrepareSmash" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_timer_timeout"]
-[connection signal="body_entered" from="HitBoxComponent" to="StateMachine/Dashing" method="_on_hit_box_component_body_entered"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="StateMachine/Chasing" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_entered"]

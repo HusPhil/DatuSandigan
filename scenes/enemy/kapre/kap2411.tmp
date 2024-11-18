@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://50wiqjkiibly"]
+[gd_scene load_steps=25 format=3 uid="uid://50wiqjkiibly"]
 
 [ext_resource type="Script" path="res://scenes/enemy/kapre/kapre.gd" id="1_f8p7u"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_6c2ch"]
@@ -11,12 +11,8 @@
 [ext_resource type="Script" path="res://scenes/enemy/kapre/idle.gd" id="10_aij13"]
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_qohqf"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/melee_attack.gd" id="10_r6llu"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/prepare_smash.gd" id="11_78tmy"]
 [ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="11_eusts"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/dashing.gd" id="12_bsb6w"]
 [ext_resource type="Script" path="res://components/hitbox/detect_player.gd" id="12_fa120"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/teleport_1.gd" id="13_x613o"]
-[ext_resource type="Script" path="res://components/hitbox/enemy_hitbox.gd" id="14_1nyxt"]
 
 [sub_resource type="Animation" id="Animation_4gowi"]
 length = 0.001
@@ -420,13 +416,14 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 light_mask = 4
 position = Vector2(2.5, 4.5)
 scale = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_gkatm")
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_nkgfu")]
-initial_state = NodePath("PrepareSmash")
+initial_state = NodePath("Smashing")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
 script = ExtResource("7_pu8us")
@@ -449,40 +446,18 @@ one_shot = true
 script = ExtResource("10_r6llu")
 
 [node name="Timer" type="Timer" parent="StateMachine/Smashing"]
-wait_time = 3.0
 
 [node name="Idle" type="Node" parent="StateMachine"]
 script = ExtResource("10_aij13")
-
-[node name="PrepareSmash" type="Node" parent="StateMachine"]
-script = ExtResource("11_78tmy")
-
-[node name="Timer" type="Timer" parent="StateMachine/PrepareSmash"]
-wait_time = 2.0
-one_shot = true
-
-[node name="Dashing" type="Node" parent="StateMachine"]
-script = ExtResource("12_bsb6w")
-
-[node name="Timer" type="Timer" parent="StateMachine/Dashing"]
-wait_time = 3.0
-one_shot = true
-
-[node name="Teleport1" type="Node" parent="StateMachine"]
-script = ExtResource("13_x613o")
-
-[node name="Timer" type="Timer" parent="StateMachine/Teleport1"]
-wait_time = 3.0
-one_shot = true
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
 light_mask = 2
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("14_1nyxt")
 flippable_sprite = NodePath("../FlippableSprite")
 
 [node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]
+visible = false
 light_mask = 0
 position = Vector2(10, 14.875)
 shape = SubResource("RectangleShape2D_fdh32")
@@ -524,10 +499,6 @@ default_position = Vector2(23, -13)
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Throwing" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StateMachine/Throwing/Timer" to="StateMachine/Throwing" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Hurting/Timer" to="StateMachine/Hurting" method="_on_timer_timeout"]
-[connection signal="timeout" from="StateMachine/Smashing/Timer" to="StateMachine/Smashing" method="_on_timer_timeout"]
-[connection signal="timeout" from="StateMachine/PrepareSmash/Timer" to="StateMachine/PrepareSmash" method="_on_timer_timeout"]
-[connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_timer_timeout"]
-[connection signal="body_entered" from="HitBoxComponent" to="StateMachine/Dashing" method="_on_hit_box_component_body_entered"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="StateMachine/Chasing" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_entered"]

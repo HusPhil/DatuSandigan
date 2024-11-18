@@ -9,5 +9,6 @@ name = "Kampilan"
 type = 1
 texture = ExtResource("2_bdv0b")
 damage = 50.0
+knock_back_force = 30.0
 animation = "wp_sword"
 projectile = 0

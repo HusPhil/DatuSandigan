@@ -12,11 +12,11 @@ func knockBack(up_force : float):
 		return
 	
 	if source_entity.global_position.x < target_entity.global_position.x:
-		target_entity.velocity = Vector2(knockback_force * 2, -knockback_force * up_force)
+		target_entity.velocity = Vector2(knockback_force * 5, -knockback_force * up_force)
 		target_entity.move_and_slide()
 		return
 		
-	target_entity.velocity = Vector2(-knockback_force * 2, -knockback_force * up_force)
+	target_entity.velocity = Vector2(-knockback_force * 5, -knockback_force * up_force)
 	target_entity.move_and_slide()
 	
 	pass
