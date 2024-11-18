@@ -1,11 +1,29 @@
-[gd_scene load_steps=5 format=4 uid="uid://ghcu3u1la6gy"]
+[gd_scene load_steps=10 format=4 uid="uid://ghcu3u1la6gy"]
 
-[ext_resource type="TileSet" uid="uid://7bt46rcq3u5y" path="res://new_env.tres" id="1_cv1bv"]
+[ext_resource type="TileSet" uid="uid://y826votfrytg" path="res://new_env.tres" id="1_cv1bv"]
+[ext_resource type="PackedScene" uid="uid://dh6p5hb3ewfky" path="res://light_test.tscn" id="1_whtij"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="2_k4cx3"]
 [ext_resource type="Texture2D" uid="uid://d2c6datmedcvu" path="res://assets/img/environment/light.png" id="3_l45nl"]
 [ext_resource type="PackedScene" uid="uid://50wiqjkiibly" path="res://scenes/enemy/kapre/kapre.tscn" id="4_atjo2"]
+[ext_resource type="Texture2D" uid="uid://d0wgyqdhjmaw6" path="res://icon.svg" id="6_owffg"]
+
+[sub_resource type="Gradient" id="Gradient_u3ua8"]
+offsets = PackedFloat32Array(0, 0.634328, 0.843284, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.61194, 0.61194, 0.61194, 1, 0.873287, 0.873287, 0.873287, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0q6ox"]
+gradient = SubResource("Gradient_u3ua8")
+
+[sub_resource type="Environment" id="Environment_08hb4"]
+background_mode = 3
+tonemap_mode = 3
+tonemap_white = 4.69
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_0q6ox")
 
 [node name="Node2D" type="Node2D"]
+
+[node name="Sprite2D" parent="." instance=ExtResource("1_whtij")]
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]
 position = Vector2(-59, -102)
@@ -14,15 +32,36 @@ tile_set = ExtResource("1_cv1bv")
 
 [node name="CanvasModulate" type="CanvasModulate" parent="."]
 position = Vector2(13, 19)
-color = Color(0.509286, 0.509286, 0.509286, 1)
+color = Color(0.271004, 0.207506, 0.730334, 1)
 
 [node name="player" parent="." instance=ExtResource("2_k4cx3")]
 position = Vector2(265, 426)
 
+[node name="LIght" type="Node2D" parent="player"]
+position = Vector2(-6.00006, -3.00001)
+rotation = -0.261799
+scale = Vector2(2.01563, 2.11719)
+
+[node name="TextureLight" type="PointLight2D" parent="player/LIght"]
+texture = ExtResource("3_l45nl")
+texture_scale = 0.7
+
+[node name="Shadow" type="PointLight2D" parent="player/LIght"]
+position = Vector2(-4.69145, 20.3186)
+energy = 0.5
+shadow_enabled = true
+shadow_filter = 1
+shadow_filter_smooth = 3.0
+texture = ExtResource("3_l45nl")
+texture_scale = 0.5
+
 [node name="PointLight2D" type="PointLight2D" parent="player"]
+visible = false
 position = Vector2(2, -2)
 energy = 0.5
 shadow_enabled = true
+shadow_color = Color(0.000113828, 0.000113828, 0.000113828, 1)
+shadow_item_cull_mask = 1023
 texture = ExtResource("3_l45nl")
 texture_scale = 0.5
 
@@ -34,3 +73,14 @@ position_smoothing_enabled = true
 [node name="Kapre" parent="." node_paths=PackedStringArray("player") instance=ExtResource("4_atjo2")]
 position = Vector2(1906, 113)
 player = NodePath("../player")
+
+[node name="Background" type="Sprite2D" parent="."]
+position = Vector2(684, 508)
+scale = Vector2(2.01563, 2.11719)
+texture = ExtResource("6_owffg")
+
+[node name="Sprite2D2" parent="." instance=ExtResource("1_whtij")]
+position = Vector2(436, 400)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_08hb4")

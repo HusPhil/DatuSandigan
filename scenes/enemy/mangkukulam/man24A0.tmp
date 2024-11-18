@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d2r2nx3k6r40c"]
+[gd_scene load_steps=24 format=3 uid="uid://d2r2nx3k6r40c"]
 
 [ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_dhxca"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_dnkmc"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_3qryp"]
 [ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="11_4ok5v"]
 [ext_resource type="Script" path="res://components/hitbox/detect_player.gd" id="12_j0lc8"]
+[ext_resource type="Script" path="res://scenes/enemy/mangkukulam/detect_teleport.gd" id="13_e434s"]
 
 [sub_resource type="Animation" id="Animation_4gowi"]
 length = 0.001
@@ -264,11 +265,14 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkatm"]
 size = Vector2(82.5, 11.375)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_fdh32"]
-size = Vector2(31, 49)
+[sub_resource type="CircleShape2D" id="CircleShape2D_1rllu"]
+radius = 109.3
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_52kuq"]
-radius = 79.1581
+radius = 112.071
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_oesg2"]
+radius = 113.018
 
 [node name="Mangkukulam" type="CharacterBody2D"]
 collision_layer = 4
@@ -312,6 +316,9 @@ script = ExtResource("8_qt8nu")
 wait_time = 0.5
 one_shot = true
 
+[node name="TimerBall" type="Timer" parent="StateMachine/Attacking"]
+wait_time = 0.5
+
 [node name="Hurting" type="Node" parent="StateMachine"]
 script = ExtResource("9_xvmc5")
 
@@ -321,6 +328,8 @@ one_shot = true
 
 [node name="Nagluto" type="Node" parent="StateMachine"]
 
+[node name="Attack" type="Node" parent="StateMachine"]
+
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_3qryp")]
 light_mask = 2
 collision_layer = 2
@@ -329,8 +338,8 @@ flippable_sprite = NodePath("../FlippableSprite")
 
 [node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]
 light_mask = 0
-position = Vector2(10.5, -13)
-shape = SubResource("RectangleShape2D_fdh32")
+position = Vector2(-0.5, -13)
+shape = SubResource("CircleShape2D_1rllu")
 disabled = true
 debug_color = Color(0.334819, 0.622371, 7.70092e-07, 0.42)
 script = ExtResource("11_4ok5v")
@@ -360,6 +369,16 @@ shape = SubResource("CircleShape2D_52kuq")
 script = ExtResource("11_4ok5v")
 default_position = Vector2(0, -13)
 
+[node name="DetectTeleport" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 2
+script = ExtResource("13_e434s")
+
+[node name="FlippableShape" type="CollisionShape2D" parent="DetectTeleport"]
+position = Vector2(0, -15)
+shape = SubResource("CircleShape2D_oesg2")
+script = ExtResource("11_4ok5v")
+
 [connection signal="is_damaged" from="." to="StateMachine/Wandering" method="_on_aswang_is_damaged"]
 [connection signal="is_damaged" from="." to="StateMachine/Chasing" method="_on_aswang_is_damaged"]
 [connection signal="is_damaged" from="." to="StateMachine/Attacking" method="_on_aswang_is_damaged"]
@@ -367,9 +386,12 @@ default_position = Vector2(0, -13)
 [connection signal="animation_changed" from="AnimationPlayer" to="StateMachine/Attacking" method="_on_animation_player_animation_changed"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attacking" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
+[connection signal="timeout" from="StateMachine/Attacking/TimerBall" to="StateMachine/Attacking" method="_on_timer_ball_timeout"]
+[connection signal="timeout" from="StateMachine/Attacking/TimerBall" to="DetectPlayer" method="_on_timer_ball_timeout"]
 [connection signal="timeout" from="StateMachine/Hurting/Timer" to="StateMachine/Hurting" method="_on_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="StateMachine/Chasing" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_entered"]
 [connection signal="body_exited" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_exited"]
 [connection signal="body_exited" from="DetectPlayer" to="StateMachine/Attacking" method="_on_detect_player_body_exited"]
+[connection signal="body_entered" from="DetectTeleport" to="DetectTeleport" method="_on_body_entered"]
