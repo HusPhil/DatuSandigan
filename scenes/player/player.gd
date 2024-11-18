@@ -2,9 +2,10 @@ class_name Player extends CharacterBody2D
 
 const NAME := "DATU"
 
-var speed := 200.0
+var speed := 150.0
 var jump_impulse := 170.0
 var base_gravity := 300
+
 
 var can_double_jump := true
 var can_input := true
@@ -23,9 +24,12 @@ var state: States = States.IDLE
 @onready var weapon_animation_player : AnimationPlayer = $WeaponFX
 
 @onready var state_label : Label = $Label
+@onready var _shoot_position : Marker2D = $ShootPosition
 
 @export var current_projectile : PackedScene
 @export var current_weapon : Item
+
+const MissileScene := preload("res://scenes/items/Missile.tscn")
 
 signal is_hurt(attack : Attack)
 
@@ -67,9 +71,15 @@ func handle_change_direction() -> void:
 		sprite.flipped = is_flipped_direction
 		weapon_sprite.flip_h = is_flipped_direction
 
-func shoot_projectile():
-	var projectile = current_projectile.instantiate()
-	projectile.position = position
-	projectile.set_direction(sprite.flip_h, current_weapon.projectile)
-	projectile.damage = current_weapon.damage
-	get_tree().current_scene.add_child(projectile)
+
+func shoot() -> void:
+	var missile := MissileScene.instantiate() as Projectile
+
+	missile.drag_factor = 0.15
+	missile.max_speed = 200.0
+	missile.initial_direction = 180 if sprite.flip_h else 0
+
+	missile.global_position = _shoot_position.global_position
+	missile.rotation = rotation
+
+	add_child(missile)

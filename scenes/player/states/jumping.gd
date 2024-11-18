@@ -19,7 +19,9 @@ func physics_update(delta: float) -> void:
 	if Input.is_action_just_pressed("jump"):
 		double_jump()
 		return
-
+	if Input.is_action_just_pressed("attack2"):
+		player.shoot()
+		return
 		
 	if player.velocity.y >= 0:
 		finished.emit(FALLING)

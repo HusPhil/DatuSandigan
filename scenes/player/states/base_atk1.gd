@@ -6,7 +6,7 @@ var COMBO_NUM = 1
 var next_state := BASE_ATK2
 var atk_animation : String = "fist"
 const MAX_SECS := 0.45
-const MOVE_SPEED := 2.0
+const MOVE_SPEED := 10.0
 
 var current_secs := 0
 

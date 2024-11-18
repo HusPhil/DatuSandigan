@@ -17,10 +17,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 func _on_timer_timeout() -> void:
 	finished.emit(CHASING)
 	pass # Replace with function body.
-
-
-
-
+	
 func _on_aswang_is_damaged(attack: Attack) -> void:
 	finished.emit(HURTING, {"attack": attack})
 	pass # Replace with function body.

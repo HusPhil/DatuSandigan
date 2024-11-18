@@ -1,18 +1,17 @@
-[gd_scene load_steps=24 format=3 uid="uid://50wiqjkiibly"]
+[gd_scene load_steps=22 format=3 uid="uid://d2r2nx3k6r40c"]
 
-[ext_resource type="Script" path="res://scenes/enemy/kapre/kapre.gd" id="1_f8p7u"]
-[ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_6c2ch"]
-[ext_resource type="Texture2D" uid="uid://cs3k30lsw7wsd" path="res://scenes/enemy/kapre/kapre_all_movement.png" id="3_6jjhr"]
-[ext_resource type="Texture2D" uid="uid://dr0kskl81ky0d" path="res://assets/img/enemy/Aswang/aswang_all_movementspng.png" id="4_farpc"]
-[ext_resource type="PackedScene" uid="uid://cmwotsgmrkf85" path="res://scenes/state_machine/state_machine.tscn" id="5_nkgfu"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/chasing.gd" id="7_pu8us"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/throwing.gd" id="8_uv62s"]
-[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_hurting.gd" id="9_ds20t"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/idle.gd" id="10_aij13"]
-[ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_qohqf"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/melee_attack.gd" id="10_r6llu"]
-[ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="11_eusts"]
-[ext_resource type="Script" path="res://components/hitbox/detect_player.gd" id="12_fa120"]
+[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_dhxca"]
+[ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_dnkmc"]
+[ext_resource type="Texture2D" uid="uid://4vhdikr6fhdt" path="res://scenes/enemy/mangkukulam/mangkukulaml_all_movements.png" id="3_mjoqn"]
+[ext_resource type="Texture2D" uid="uid://dr0kskl81ky0d" path="res://assets/img/enemy/Aswang/aswang_all_movementspng.png" id="4_t7683"]
+[ext_resource type="PackedScene" uid="uid://cmwotsgmrkf85" path="res://scenes/state_machine/state_machine.tscn" id="5_41fec"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_wandering.gd" id="6_1304j"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_chasing.gd" id="7_yit0j"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_attacking.gd" id="8_qt8nu"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_hurting.gd" id="9_xvmc5"]
+[ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_3qryp"]
+[ext_resource type="Script" path="res://components/flippable/flippable_shape_2d.gd" id="11_4ok5v"]
+[ext_resource type="Script" path="res://components/hitbox/detect_player.gd" id="12_j0lc8"]
 
 [sub_resource type="Animation" id="Animation_4gowi"]
 length = 0.001
@@ -26,7 +25,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_6jjhr")]
+"values": [ExtResource("3_mjoqn")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -38,7 +37,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [7]
+"values": [13]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -62,7 +61,7 @@ tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [21]
+"values": [26]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -76,22 +75,10 @@ tracks/4/keys = {
 "update": 1,
 "values": [true]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("FlippableSprite:frame_coords")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [Vector2i(0, 1)]
-}
 
 [sub_resource type="Animation" id="Animation_rg1gx"]
 resource_name = "attack"
-length = 0.46
+length = 0.95
 loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
@@ -104,7 +91,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_6jjhr")]
+"values": [ExtResource("3_mjoqn")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -116,7 +103,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [7]
+"values": [13]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -137,10 +124,10 @@ tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.2499, 0.3332, 0.4165),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666666, 0.75, 0.833333, 0.916666),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [21, 22, 23, 24, 25, 26]
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -149,10 +136,10 @@ tracks/4/path = NodePath("HitBoxComponent/FlippableShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 0.333333, 0.46),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.666666),
+"transitions": PackedFloat32Array(1, 1),
 "update": 1,
-"values": [true, false, true]
+"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_jg87r"]
@@ -160,9 +147,9 @@ resource_name = "die"
 
 [sub_resource type="Animation" id="Animation_pbpbm"]
 resource_name = "run"
-length = 0.55
+length = 0.9
 loop_mode = 1
-step = 0.0733
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -173,7 +160,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("3_6jjhr")]
+"values": [ExtResource("3_mjoqn")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -185,7 +172,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [7]
+"values": [13]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -206,10 +193,10 @@ tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0733, 0.1466, 0.2199, 0.2932, 0.3665, 0.4398),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5, 0.583333, 0.666666, 0.75, 0.833),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"values": [26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 37]
 }
 
 [sub_resource type="Animation" id="Animation_4kjr2"]
@@ -226,7 +213,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(-0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("4_farpc")]
+"values": [ExtResource("4_t7683")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -265,95 +252,38 @@ tracks/3/keys = {
 "values": [8, 9, 10, 11, 12, 13, 8]
 }
 
-[sub_resource type="Animation" id="Animation_p6scn"]
-resource_name = "idle"
-length = 0.333342
-loop_mode = 1
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_6jjhr")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [7]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame_coords")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdwbq"]
 _data = {
 "RESET": SubResource("Animation_4gowi"),
 "attack": SubResource("Animation_rg1gx"),
 "die": SubResource("Animation_jg87r"),
-"idle": SubResource("Animation_p6scn"),
 "run": SubResource("Animation_pbpbm"),
 "test": SubResource("Animation_4kjr2")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkatm"]
-size = Vector2(114, 42.5)
+size = Vector2(82.5, 11.375)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fdh32"]
-size = Vector2(52, 64.25)
+size = Vector2(31, 49)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu5ks"]
-size = Vector2(16, 64.25)
+size = Vector2(42, 49)
 
-[node name="Kapre" type="CharacterBody2D"]
+[node name="Mangkukulam" type="CharacterBody2D"]
 collision_layer = 4
-collision_mask = 3
-script = ExtResource("1_f8p7u")
+script = ExtResource("1_dhxca")
 
-[node name="FlippableSprite" parent="." instance=ExtResource("2_6c2ch")]
-position = Vector2(1, -7)
-texture = ExtResource("3_6jjhr")
-hframes = 7
+[node name="FlippableSprite" parent="." instance=ExtResource("2_dnkmc")]
+position = Vector2(3, -18)
+texture = ExtResource("3_mjoqn")
+hframes = 13
 vframes = 4
-frame = 7
+frame = 26
 
 [node name="RayCast2D" type="RayCast2D" parent="FlippableSprite"]
-position = Vector2(0, 38)
-rotation = -0.00336929
-target_position = Vector2(125, 0.404)
+position = Vector2(-23, 6)
+target_position = Vector2(190, 1.627)
 collision_mask = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -362,55 +292,49 @@ libraries = {
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-light_mask = 4
-position = Vector2(2.5, 4.5)
+light_mask = 0
 scale = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_gkatm")
 
-[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_nkgfu")]
-initial_state = NodePath("Idle")
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_41fec")]
+initial_state = NodePath("Wandering")
+
+[node name="Wandering" type="Node" parent="StateMachine"]
+script = ExtResource("6_1304j")
 
 [node name="Chasing" type="Node" parent="StateMachine"]
-script = ExtResource("7_pu8us")
+script = ExtResource("7_yit0j")
 
-[node name="Throwing" type="Node" parent="StateMachine"]
-script = ExtResource("8_uv62s")
+[node name="Attacking" type="Node" parent="StateMachine"]
+script = ExtResource("8_qt8nu")
 
-[node name="Timer" type="Timer" parent="StateMachine/Throwing"]
+[node name="Timer" type="Timer" parent="StateMachine/Attacking"]
 wait_time = 0.5
 one_shot = true
 
 [node name="Hurting" type="Node" parent="StateMachine"]
-script = ExtResource("9_ds20t")
+script = ExtResource("9_xvmc5")
 
 [node name="Timer" type="Timer" parent="StateMachine/Hurting"]
 wait_time = 0.5
 one_shot = true
 
-[node name="Attacking" type="Node" parent="StateMachine"]
-script = ExtResource("10_r6llu")
+[node name="Nagluto" type="Node" parent="StateMachine"]
 
-[node name="Timer" type="Timer" parent="StateMachine/Attacking"]
-
-[node name="Idle" type="Node" parent="StateMachine"]
-script = ExtResource("10_aij13")
-
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_3qryp")]
 light_mask = 2
 collision_layer = 2
 collision_mask = 2
 flippable_sprite = NodePath("../FlippableSprite")
 
 [node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]
-visible = false
 light_mask = 0
-position = Vector2(10, 14.875)
+position = Vector2(10.5, -13)
 shape = SubResource("RectangleShape2D_fdh32")
 disabled = true
 debug_color = Color(0.334819, 0.622371, 7.70092e-07, 0.42)
-script = ExtResource("11_eusts")
-default_position = Vector2(23, -14)
+script = ExtResource("11_4ok5v")
+default_position = Vector2(10, -14)
 
 [node name="ChaseTimer" type="Timer" parent="."]
 wait_time = 5.0
@@ -423,29 +347,29 @@ offset_right = 24.0
 offset_bottom = -40.0
 text = "STATE"
 
-[node name="DetectPlayer" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
-collision_layer = 2
+[node name="DetectPlayer" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_3qryp")]
+collision_layer = 0
 collision_mask = 2
-script = ExtResource("12_fa120")
+script = ExtResource("12_j0lc8")
 flippable_sprite = NodePath("../FlippableSprite")
 
 [node name="FlippableShape" type="CollisionShape2D" parent="DetectPlayer"]
-visible = false
 light_mask = 0
-position = Vector2(28, 15.125)
+position = Vector2(0, -13)
 shape = SubResource("RectangleShape2D_cu5ks")
-script = ExtResource("11_eusts")
-default_position = Vector2(23, -13)
+script = ExtResource("11_4ok5v")
+default_position = Vector2(0, -13)
 
+[connection signal="is_damaged" from="." to="StateMachine/Wandering" method="_on_aswang_is_damaged"]
 [connection signal="is_damaged" from="." to="StateMachine/Chasing" method="_on_aswang_is_damaged"]
-[connection signal="is_damaged" from="." to="StateMachine/Throwing" method="_on_aswang_is_damaged"]
-[connection signal="is_damaged" from="." to="StateMachine/Attacking" method="_on_kapre_is_damaged"]
+[connection signal="is_damaged" from="." to="StateMachine/Attacking" method="_on_aswang_is_damaged"]
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
-[connection signal="animation_changed" from="AnimationPlayer" to="StateMachine/Throwing" method="_on_animation_player_animation_changed"]
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Throwing" method="_on_animation_player_animation_finished"]
-[connection signal="timeout" from="StateMachine/Throwing/Timer" to="StateMachine/Throwing" method="_on_timer_timeout"]
+[connection signal="animation_changed" from="AnimationPlayer" to="StateMachine/Attacking" method="_on_animation_player_animation_changed"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Attacking" method="_on_animation_player_animation_finished"]
+[connection signal="timeout" from="StateMachine/Attacking/Timer" to="StateMachine/Attacking" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Hurting/Timer" to="StateMachine/Hurting" method="_on_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_timer_timeout"]
 [connection signal="timeout" from="ChaseTimer" to="StateMachine/Chasing" method="_on_timer_timeout"]
 [connection signal="body_entered" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_entered"]
 [connection signal="body_exited" from="DetectPlayer" to="StateMachine/Chasing" method="_on_detect_player_body_exited"]
+[connection signal="body_exited" from="DetectPlayer" to="StateMachine/Attacking" method="_on_detect_player_body_exited"]

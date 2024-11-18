@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bfwoqx4vktry8"
-path="res://.godot/imported/wp_arnis.png-8c59e7a85fb32f604197ab5d80c45769.ctex"
+uid="uid://f2y7661dwuul"
+path="res://.godot/imported/wp_torch.png-36249cae1629c13f2aa010737e575f72.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/img/player_sprites/datu/wp_arnis.png"
-dest_files=["res://.godot/imported/wp_arnis.png-8c59e7a85fb32f604197ab5d80c45769.ctex"]
+source_file="res://assets/img/items/wp_torch.png"
+dest_files=["res://.godot/imported/wp_torch.png-36249cae1629c13f2aa010737e575f72.ctex"]
 
 [params]
 
