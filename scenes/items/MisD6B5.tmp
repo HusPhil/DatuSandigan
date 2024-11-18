@@ -1,0 +1,114 @@
+[gd_scene load_steps=12 format=3 uid="uid://i08qeqvuqoav"]
+
+[ext_resource type="Script" path="res://scenes/items/Projectile.gd" id="1_idh6m"]
+[ext_resource type="Texture2D" uid="uid://dmhc5j0l3tw83" path="res://assets/img/player_sprites/Bardent/Projectiles.png" id="1_qp1ub"]
+
+[sub_resource type="Gradient" id="10"]
+offsets = PackedFloat32Array(0, 0.31339, 0.777778, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.930664, 0.798064, 0.112698, 1, 0.933594, 0.072937, 0.072937, 1, 1, 0, 0, 0)
+
+[sub_resource type="GradientTexture1D" id="11"]
+gradient = SubResource("10")
+
+[sub_resource type="Curve" id="13"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.475936, 0.418182), -2.6093, -2.6093, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="14"]
+curve = SubResource("13")
+
+[sub_resource type="ParticleProcessMaterial" id="12"]
+lifetime_randomness = 0.65
+emission_shape = 1
+emission_sphere_radius = 10.0
+direction = Vector3(-1, 0, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+scale_min = 0.0
+scale_max = 0.0
+scale_curve = SubResource("14")
+color_ramp = SubResource("11")
+
+[sub_resource type="ShaderMaterial" id="15"]
+
+[sub_resource type="CapsuleShape2D" id="9"]
+radius = 3.0
+height = 6.0
+
+[sub_resource type="ShaderMaterial" id="16"]
+
+[sub_resource type="CircleShape2D" id="5"]
+radius = 1371.27
+
+[node name="Missile" type="Node2D"]
+texture_filter = 1
+rotation = 3.14159
+scale = Vector2(5, 5)
+script = ExtResource("1_idh6m")
+
+[node name="Particles2D" type="GPUParticles2D" parent="."]
+position = Vector2(-32, 0)
+amount = 200
+process_material = SubResource("12")
+lifetime = 0.5
+randomness = 0.57
+
+[node name="Sprite" type="Sprite2D" parent="."]
+scale = Vector2(0.250331, 0.250331)
+texture = ExtResource("1_qp1ub")
+hframes = 5
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(-3, 0)
+collision_layer = 4
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+self_modulate = Color(0.690196, 0.188235, 0.360784, 1)
+material = SubResource("15")
+position = Vector2(3, 0)
+rotation = 1.57079
+shape = SubResource("9")
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+position = Vector2(42, 0)
+collision_layer = 4
+collision_mask = 4
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+self_modulate = Color(0.690196, 0.188235, 0.360784, 1)
+light_mask = 4
+visibility_layer = 4
+material = SubResource("16")
+position = Vector2(4, 0)
+rotation = 3.14159
+shape = SubResource("5")
+
+[node name="AimLine" type="Line2D" parent="." groups=["GVTNavigation"]]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.247059, 0.576471, 0.941176, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="TargetLine" type="Line2D" parent="." groups=["GVTNavigation"]]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.854902, 0.411765, 0.294118, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ChangeLine" type="Line2D" parent="." groups=["GVTNavigation"]]
+visible = false
+points = PackedVector2Array(0, 0, 0, 0)
+width = 2.0
+default_color = Color(0.290196, 1, 0, 1)
+begin_cap_mode = 2
+end_cap_mode = 2
+
+[node name="ActivationtTime" type="Timer" parent="."]
+wait_time = 0.5
+one_shot = true

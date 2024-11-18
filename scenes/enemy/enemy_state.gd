@@ -5,6 +5,7 @@ class_name EnemyState extends State
 const WANDERING = "Wandering"
 const RUNNING = "Running"
 const ATTACKING = "Attacking"
+const MELEE = "Melee"
 const CHASING = "Chasing"
 const HURTING = "Hurting"
 
@@ -12,12 +13,18 @@ const run_animation := "run"
 const idle_animation := "idle"
 const attack_animation := "attack"
 
-const WANDER_BOUNDS = 125
+const WANDER_BOUNDS = 120
 
 func _ready() -> void:
 	await owner.ready
 	enemy = owner as Enemy
 	assert(enemy != null, "The EnemyState state type must be used only in the enemy scene. It needs the owner to be a Enemy node.")
+
+func physics_update(_delta: float) -> void:
+	enemy.velocity = enemy.velocity.move_toward(enemy.direction * enemy.speed, enemy.ACCELERATION * _delta)
+	look_for_player()
+	change_direction()
+	enemy.move_and_slide()
 
 func look_for_player() -> void:
 	if enemy.ray_cast.is_colliding():

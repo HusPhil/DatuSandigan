@@ -57,6 +57,7 @@ func _physics_process(delta: float) -> void:
 	# Update position based on current velocity
 	position += _current_velocity * delta
 	look_at(global_position + _current_velocity)
+	
 
 	# Update the drawing of lines following the missile
 	_aim_line.set_point_position(0, global_position)

@@ -3,6 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/placeholder/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
 [ext_resource type="Script" path="res://state_machine/state_machine.gd" id="3_0lsub"]
+[ext_resource type="Resource" uid="uid://bhaljfevi4cas" path="res://res/torch.tres" id="3_4nbqn"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="3_7o64b"]
 [ext_resource type="Texture2D" uid="uid://de0ajoiltb7tn" path="res://assets/img/player_sprites/placeholder/char_blue_2.png" id="3_qak35"]
 [ext_resource type="Texture2D" uid="uid://s4aoh8g48ub0" path="res://assets/img/player_sprites/Bardent/Base_Fist_1.png" id="4_dq7sp"]
@@ -11,7 +12,6 @@
 [ext_resource type="Texture2D" uid="uid://b3cbynr2rdq2n" path="res://assets/img/player_sprites/Bardent/Base_Fist_2.png" id="5_2m4ra"]
 [ext_resource type="Texture2D" uid="uid://ba5mk0ofiw25p" path="res://assets/img/player_sprites/datu/datu_arnis_movement.png" id="5_7nhqn"]
 [ext_resource type="Script" path="res://scenes/player/states/idle.gd" id="5_mfy73"]
-[ext_resource type="Texture2D" uid="uid://c7y5kx0ykv6rb" path="res://assets/img/items/wp_kampilan.png" id="6_cr0xe"]
 [ext_resource type="Script" path="res://scenes/player/states/jumping.gd" id="6_k85tt"]
 [ext_resource type="Texture2D" uid="uid://ctc3y6votxk1v" path="res://assets/img/player_sprites/Bardent/Base_Fist_3.png" id="6_m8108"]
 [ext_resource type="Texture2D" uid="uid://rfa5cb6b0vh3" path="res://assets/img/player_sprites/Bardent/Bow.png" id="7_ri3kc"]
@@ -2183,7 +2183,7 @@ graph_offset = Vector2(-110, 264)
 collision_layer = 2
 script = ExtResource("1_w5kx2")
 current_projectile = ExtResource("28_0ia63")
-current_weapon = ExtResource("18_fcsc2")
+current_weapon = ExtResource("3_4nbqn")
 
 [node name="FlippableSprite" parent="." instance=ExtResource("3_7o64b")]
 texture_filter = 1
@@ -2195,9 +2195,8 @@ frame = 1
 
 [node name="WeaponSprite" type="Sprite2D" parent="."]
 texture_filter = 1
-position = Vector2(-3, -2)
+position = Vector2(-1, -3)
 scale = Vector2(0.75, 0.75)
-texture = ExtResource("6_cr0xe")
 hframes = 6
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("24_odjir")]

@@ -10,11 +10,6 @@ func enter(previous_state_path: String, data := {}) -> void:
 	enemy.state_label.text = "WANDERING"
 	enemy.animation_player.play(run_animation)
 
-func physics_update(_delta: float) -> void:
-	enemy.velocity = enemy.velocity.move_toward(enemy.direction * enemy.speed, enemy.ACCELERATION * _delta)
-	look_for_player()
-	change_direction()
-	enemy.move_and_slide()
 	
 func change_direction() -> void:
 #	moving left

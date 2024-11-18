@@ -1,6 +1,6 @@
 class_name Enemy extends CharacterBody2D
 
-var speed := 10.0
+var speed := 10.0 
 const CHASE_SPEED : float = 50.0
 const ACCELERATION : float = 300.0
 
@@ -32,7 +32,6 @@ func _ready() -> void:
 	right_bound = self.position + Vector2(125, 0)
 
 func _physics_process(delta: float) -> void:
-	
 	handle_gravity(delta)
 	
 func handle_gravity(delta : float) -> void:
