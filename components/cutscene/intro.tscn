@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://cg7l7mfohua7f"]
 
 [ext_resource type="VideoStream" path="res://assets/vid/TitleCard.HIshResogv.ogv" id="1_0fo2b"]
-[ext_resource type="Script" path="res://cutscene/video_stream_player.gd" id="2_yc2jn"]
+[ext_resource type="Script" path="res://components/cutscene/video_stream_player.gd" id="2_yc2jn"]
 
 [node name="Intro" type="Node"]
 
