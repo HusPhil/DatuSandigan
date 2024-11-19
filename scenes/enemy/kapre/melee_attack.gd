@@ -10,10 +10,8 @@ var has_jumped = false
 
 func enter(previous_state_path: String, data := {}) -> void:
 	has_jumped = false
-	enemy.state_label.text = "Smashing"
-	print("has_jumped ", has_jumped)
-	
 	enemy.current_state = SMASHING
+	enemy.animation_player.play(smash_animation)
 	pass
 
 ## Called by the state machine on the engine's physics update tick.
@@ -22,7 +20,8 @@ func physics_update(_delta: float) -> void:
 	
 	if enemy.is_on_floor():
 		if has_jumped:
-			finished.emit(DASHING)
+			enemy.animation_player.play(smash_done_animation)
+			
 		enemy.player.camera.apply_shake(SMASH_SHAKE)
 	else:
 		enemy.velocity.x = enemy.speed * direction
@@ -39,3 +38,15 @@ func physics_update(_delta: float) -> void:
 #func exit() -> void:
 	#has_jumped = false
 	#pass
+
+
+func _on_kapre_is_enraged() -> void:
+	#prepare_atk.stop()
+	finished.emit(TELEPORT1)
+	pass # Replace with function body.
+
+
+func _on_animation_player_animation_finished(anim_name: StringName) -> void:
+	if anim_name == smash_done_animation:
+		finished.emit(DASHING)
+	pass # Replace with function body.

@@ -14,7 +14,7 @@ var knock_back_force : float = 200;
 var current_state : String 
 
 @onready var sprite : Sprite2D = $FlippableSprite
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var animation_player : AnimationPlayer
 @onready var ray_cast : RayCast2D = $FlippableSprite/RayCast2D
 @onready var timer : Timer = $ChaseTimer
 @export var player : Player
@@ -22,6 +22,7 @@ var current_state : String
 @onready var state_label: Label
 
 signal is_damaged(attack : Attack)
+signal is_enraged()
 
 var jump_impulse := 170.0
 var base_gravity := 500

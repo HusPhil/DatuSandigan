@@ -2,7 +2,7 @@ extends KapreState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	enemy.animation_player.play(idle_animation)
-	enemy.current_state = HURTING
+	enemy.current_state = SMASHING
 
 	pass
 

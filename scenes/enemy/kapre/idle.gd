@@ -13,3 +13,9 @@ func physics_update(_delta : float) -> void:
 	finished.emit(DASHING)
 	pass
 	
+
+
+func _on_kapre_is_enraged() -> void:
+	#prepare_atk.stop()
+	finished.emit(TELEPORT1)
+	pass # Replace with function body.

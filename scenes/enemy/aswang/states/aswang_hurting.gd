@@ -1,4 +1,4 @@
-extends EnemyState
+extends KapreState
 
 # when enemy is idle it is wandering
 # this is where we will detect if the enemy has detected the player
@@ -31,3 +31,8 @@ func _on_timer_timeout() -> void:
 	finished.emit(CHASING)
 	print("DONE NA")
 	#pass # Replace with function body.
+
+
+func _on_kapre_is_enraged() -> void:
+	finished.emit(TELEPORT1)
+	pass # Replace with function body.

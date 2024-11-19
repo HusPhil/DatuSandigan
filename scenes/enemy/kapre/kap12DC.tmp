@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://50wiqjkiibly"]
+[gd_scene load_steps=29 format=3 uid="uid://50wiqjkiibly"]
 
 [ext_resource type="Script" path="res://scenes/enemy/kapre/kapre.gd" id="1_f8p7u"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_6c2ch"]
@@ -6,8 +6,6 @@
 [ext_resource type="Texture2D" uid="uid://dr0kskl81ky0d" path="res://assets/img/enemy/Aswang/aswang_all_movementspng.png" id="4_farpc"]
 [ext_resource type="PackedScene" uid="uid://cmwotsgmrkf85" path="res://scenes/state_machine/state_machine.tscn" id="5_nkgfu"]
 [ext_resource type="Texture2D" uid="uid://cov7fui2huhcp" path="res://scenes/enemy/kapre/kapre_jump_roar.png" id="5_qdult"]
-[ext_resource type="Texture2D" uid="uid://6unc6amwrckl" path="res://scenes/enemy/kapre/kapre_dash_jump.png" id="5_wx12m"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/throwing.gd" id="8_uv62s"]
 [ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_hurting.gd" id="9_ds20t"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/idle.gd" id="10_aij13"]
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_qohqf"]
@@ -24,26 +22,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
+tracks/0/path = NodePath("FlippableSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [21]
+"update": 1,
+"values": [ExtResource("3_6jjhr")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:frame_coords")
+tracks/1/path = NodePath("FlippableSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2i(0, 1)]
+"update": 1,
+"values": [7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -54,44 +52,44 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:hframes")
+tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [7]
+"update": 1,
+"values": [21]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("FlippableSprite:texture")
+tracks/4/path = NodePath("HitBoxComponent/FlippableShape:disabled")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("3_6jjhr")]
+"update": 1,
+"values": [true]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitBoxComponent/FlippableShape:disabled")
+tracks/5/path = NodePath("FlippableSprite:frame_coords")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [Vector2i(0, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_rg1gx"]
@@ -102,50 +100,50 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
+tracks/0/path = NodePath("FlippableSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.2499, 0.3332, 0.4165),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [21, 22, 23, 24, 25, 26]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_6jjhr")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:vframes")
+tracks/1/path = NodePath("FlippableSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [4]
+"update": 1,
+"values": [7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
+tracks/2/path = NodePath("FlippableSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [7]
+"update": 1,
+"values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
+tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("3_6jjhr")]
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.2499, 0.3332, 0.4165),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [21, 22, 23, 24, 25, 26]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -165,6 +163,8 @@ resource_name = "die"
 
 [sub_resource type="Animation" id="Animation_p6scn"]
 resource_name = "idle"
+length = 0.333342
+loop_mode = 1
 step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -175,8 +175,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("5_qdult")]
+"update": 1,
+"values": [ExtResource("3_6jjhr")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -187,8 +187,8 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5]
+"update": 1,
+"values": [7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -199,20 +199,20 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2]
+"update": 1,
+"values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame")
+tracks/3/path = NodePath("FlippableSprite:frame_coords")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
-"transitions": PackedFloat32Array(1e-05, 1, 1, 1, 1, 1, 1, 1e-05),
-"update": 0,
-"values": [6, 1, 0, 1, 0, 1, 0, 1]
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1), Vector2i(3, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_pbpbm"]
@@ -223,50 +223,50 @@ step = 0.0733
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
+tracks/0/path = NodePath("FlippableSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0733, 0.1466, 0.2199, 0.2932, 0.3665, 0.4398),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [0, 1, 2, 3, 4, 5, 6]
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_6jjhr")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:vframes")
+tracks/1/path = NodePath("FlippableSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [4]
+"update": 1,
+"values": [7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
+tracks/2/path = NodePath("FlippableSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [7]
+"update": 1,
+"values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
+tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("3_6jjhr")]
+"times": PackedFloat32Array(0, 0.0733, 0.1466, 0.2199, 0.2932, 0.3665, 0.4398),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6]
 }
 
 [sub_resource type="Animation" id="Animation_4kjr2"]
@@ -276,55 +276,54 @@ step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
+tracks/0/path = NodePath("FlippableSprite:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [8, 9, 10, 11, 12, 13, 8]
+"times": PackedFloat32Array(-0.0333333),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_farpc")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:vframes")
+tracks/1/path = NodePath("FlippableSprite:hframes")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3]
+"update": 1,
+"values": [8]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
+tracks/2/path = NodePath("FlippableSprite:vframes")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [8]
+"update": 1,
+"values": [3]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
+tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(-0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("4_farpc")]
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11, 12, 13, 8]
 }
 
 [sub_resource type="Animation" id="Animation_yaweu"]
 resource_name = "smash"
-length = 0.20002
 step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -335,8 +334,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("5_wx12m")]
+"update": 1,
+"values": [ExtResource("3_6jjhr")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -347,8 +346,8 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3]
+"update": 1,
+"values": [7]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -359,96 +358,26 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2]
+"update": 1,
+"values": [4]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame_coords")
+tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2i(1, 0)]
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 1,
+"values": [26, 16, 23, 24, 25]
 }
 
 [sub_resource type="Animation" id="Animation_medbc"]
 resource_name = "prepare_smash"
-length = 1.50001
+length = 0.500013
 step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1e-05, 1, 1, 1),
-"update": 0,
-"values": [6, 1, 0, 1, 0, 1, 0, 1, 5, 6, 6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("5_qdult")]
-}
-
-[sub_resource type="Animation" id="Animation_j4nua"]
-resource_name = "smash_done"
-length = 0.2
-step = 0.2
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2i(2, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_uf0un"]
-resource_name = "dash"
-length = 0.5
-step = 0.2
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -458,8 +387,8 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("5_wx12m")]
+"update": 1,
+"values": [ExtResource("5_qdult")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -470,8 +399,8 @@ tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3]
+"update": 1,
+"values": [5]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -482,86 +411,31 @@ tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 0,
+"update": 1,
 "values": [2]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame_coords")
+tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.394019, 0.443635),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
-}
-
-[sub_resource type="Animation" id="Animation_5qq14"]
-resource_name = "prepare_teleport"
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.375),
-"transitions": PackedFloat32Array(0.000357442, 1, 1, 1, 1, 1, 1, 1e-05, 1, 1, 1),
-"update": 0,
-"values": [6, 1, 0, 1, 0, 1, 0, 1, 5, 6, 6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("5_qdult")]
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [5, 6, 5, 6]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdwbq"]
 _data = {
 "RESET": SubResource("Animation_4gowi"),
 "attack": SubResource("Animation_rg1gx"),
-"dash": SubResource("Animation_uf0un"),
 "die": SubResource("Animation_jg87r"),
 "idle": SubResource("Animation_p6scn"),
 "prepare_smash": SubResource("Animation_medbc"),
-"prepare_teleport": SubResource("Animation_5qq14"),
 "run": SubResource("Animation_pbpbm"),
 "smash": SubResource("Animation_yaweu"),
-"smash_done": SubResource("Animation_j4nua"),
 "test": SubResource("Animation_4kjr2")
 }
 
@@ -629,7 +503,6 @@ script = ExtResource("11_78tmy")
 [node name="Timer" type="Timer" parent="StateMachine/PrepareSmash"]
 wait_time = 2.0
 one_shot = true
-script = ExtResource("8_uv62s")
 
 [node name="Dashing" type="Node" parent="StateMachine"]
 script = ExtResource("12_bsb6w")
@@ -693,10 +566,7 @@ default_position = Vector2(23, -13)
 [connection signal="is_enraged" from="." to="StateMachine/PrepareSmash" method="_on_kapre_is_enraged"]
 [connection signal="is_enraged" from="." to="StateMachine/Dashing" method="_on_kapre_is_enraged"]
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Smashing" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/PrepareSmash" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Dashing" method="_on_animation_player_animation_finished"]
-[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Teleport1" method="_on_animation_player_animation_finished"]
 [connection signal="timeout" from="StateMachine/Hurting/Timer" to="StateMachine/Hurting" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Smashing/Timer" to="StateMachine/Smashing" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/PrepareSmash/Timer" to="StateMachine/PrepareSmash" method="_on_timer_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://50wiqjkiibly"]
+[gd_scene load_steps=33 format=3 uid="uid://50wiqjkiibly"]
 
 [ext_resource type="Script" path="res://scenes/enemy/kapre/kapre.gd" id="1_f8p7u"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_6c2ch"]
@@ -7,7 +7,6 @@
 [ext_resource type="PackedScene" uid="uid://cmwotsgmrkf85" path="res://scenes/state_machine/state_machine.tscn" id="5_nkgfu"]
 [ext_resource type="Texture2D" uid="uid://cov7fui2huhcp" path="res://scenes/enemy/kapre/kapre_jump_roar.png" id="5_qdult"]
 [ext_resource type="Texture2D" uid="uid://6unc6amwrckl" path="res://scenes/enemy/kapre/kapre_dash_jump.png" id="5_wx12m"]
-[ext_resource type="Script" path="res://scenes/enemy/kapre/throwing.gd" id="8_uv62s"]
 [ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_hurting.gd" id="9_ds20t"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/idle.gd" id="10_aij13"]
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_qohqf"]
@@ -629,7 +628,6 @@ script = ExtResource("11_78tmy")
 [node name="Timer" type="Timer" parent="StateMachine/PrepareSmash"]
 wait_time = 2.0
 one_shot = true
-script = ExtResource("8_uv62s")
 
 [node name="Dashing" type="Node" parent="StateMachine"]
 script = ExtResource("12_bsb6w")
