@@ -8,7 +8,21 @@ func enter(previous_state_path: String, data := {}) -> void:
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 	if anim_name == casting_animation:
 		playback.travel(shoot_animation)
+		var missile := enemy.MagicBallScene.instantiate() as Projectile
+
+		missile.lifetime = 5
+		missile.initial_direction = enemy.spawnMagicPoint.rotation
+		missile.global_position = enemy.global_position 
+
+		missile.drag_factor = 0.15
+		missile.max_speed = 500.0
+		missile.scale *= 2
+
+		print(missile._attack)
 		
+		enemy.player.camera.apply_shake(5.4)
+		
+		add_child(missile)
 
 	elif anim_name == shoot_animation:
 		finished.emit(IDLE)
