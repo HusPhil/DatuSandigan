@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://bnl4sh1w8hpn5"]
+[gd_scene load_steps=36 format=3 uid="uid://bnl4sh1w8hpn5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/bakunawa.gd" id="1_2dgd2"]
 [ext_resource type="Texture2D" uid="uid://bf4p3e0nhg5cr" path="res://assets/img/enemy/Bakunawa/bakunawa-Sheet.png" id="1_raad1"]
@@ -10,12 +10,10 @@
 [ext_resource type="Texture2D" uid="uid://bubuclovbmqn" path="res://assets/img/enemy/Bakunawa/bakunawa_chant.png" id="5_rhy13"]
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/idle.gd" id="6_e5wdj"]
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/attack.gd" id="7_5w4nc"]
-[ext_resource type="Texture2D" uid="uid://b4tb2paoxrlms" path="res://scenes/enemy/bakunawa/bakunawa_stunned.png" id="7_wo1qh"]
 [ext_resource type="Script" path="res://scenes/enemy/hit_box_component.gd" id="9_xyo5n"]
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_cxe2o"]
 [ext_resource type="Script" path="res://components/hitbox/hurt_box_component.gd" id="11_6cc7o"]
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/heavy_cast.gd" id="11_wkmp3"]
-[ext_resource type="Script" path="res://scenes/enemy/bakunawa/melee.gd" id="12_suwbb"]
 
 [sub_resource type="Animation" id="Animation_ge15b"]
 length = 0.001
@@ -381,58 +379,6 @@ tracks/3/keys = {
 "values": [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 }
 
-[sub_resource type="Animation" id="Animation_xbuxc"]
-resource_name = "melee"
-length = 0.500003
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("7_wo1qh")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [13]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [1]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.0333333, 0.0666667, 0.1, 0.133333, 0.166667, 0.2, 0.233333, 0.266667, 0.3, 0.333333, 0.366667, 0.4, 0.433333),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 11, 12, 0, 1]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owy8q"]
 _data = {
 "RESET": SubResource("Animation_ge15b"),
@@ -440,7 +386,6 @@ _data = {
 "casting": SubResource("Animation_kti66"),
 "heavy_casting_animation": SubResource("Animation_om0et"),
 "idle": SubResource("Animation_80rtm"),
-"melee": SubResource("Animation_xbuxc"),
 "shoot": SubResource("Animation_urcjc")
 }
 
@@ -452,9 +397,6 @@ animation = &"casting"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2erqo"]
 animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_yhoem"]
-animation = &"melee"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dxlti"]
 animation = &"shoot"
@@ -471,10 +413,6 @@ animation = &"shoot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_birm4"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7ulxw"]
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_mpnhe"]
-
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ie6mx"]
 states/End/position = Vector2(908, 100)
 states/attack/node = SubResource("AnimationNodeAnimation_to51h")
@@ -483,11 +421,9 @@ states/casting/node = SubResource("AnimationNodeAnimation_r6ybw")
 states/casting/position = Vector2(321, 202)
 states/idle/node = SubResource("AnimationNodeAnimation_2erqo")
 states/idle/position = Vector2(439, 100)
-states/melee/node = SubResource("AnimationNodeAnimation_yhoem")
-states/melee/position = Vector2(347, 270)
 states/shoot/node = SubResource("AnimationNodeAnimation_dxlti")
 states/shoot/position = Vector2(490, 237)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bkapt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_2uafn"), "idle", "casting", SubResource("AnimationNodeStateMachineTransition_s8cxj"), "casting", "idle", SubResource("AnimationNodeStateMachineTransition_48etb"), "casting", "shoot", SubResource("AnimationNodeStateMachineTransition_7vpwu"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_birm4"), "idle", "melee", SubResource("AnimationNodeStateMachineTransition_7ulxw"), "melee", "idle", SubResource("AnimationNodeStateMachineTransition_mpnhe")]
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bkapt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_2uafn"), "idle", "casting", SubResource("AnimationNodeStateMachineTransition_s8cxj"), "casting", "idle", SubResource("AnimationNodeStateMachineTransition_48etb"), "casting", "shoot", SubResource("AnimationNodeStateMachineTransition_7vpwu"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_birm4")]
 graph_offset = Vector2(-37, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_r1k4p"]
@@ -546,9 +482,6 @@ script = ExtResource("11_wkmp3")
 
 [node name="Timer" type="Timer" parent="StateMachine/HeavyCast"]
 
-[node name="Melee" type="Node" parent="StateMachine"]
-script = ExtResource("12_suwbb")
-
 [node name="HitboxComponent" type="Area2D" parent="."]
 collision_layer = 4
 collision_mask = 4
@@ -559,7 +492,6 @@ position = Vector2(-11, -7)
 shape = SubResource("CircleShape2D_isl2f")
 
 [node name="HurtBoxComponent" parent="." instance=ExtResource("10_cxe2o")]
-visible = false
 collision_layer = 4
 collision_mask = 7
 script = ExtResource("11_6cc7o")

@@ -14,6 +14,7 @@ const HEALING = "Healing"
 const CASTING_MAGIC_BALL = "CastingMagicball"
 const HEAVY_CAST = "HeavyCast"
 
+
 const prepare_smash_animation = "prepare_smash"
 const prepare_teleport_animation = "prepare_teleport"
 const smash_animation = "smash"
@@ -22,6 +23,7 @@ const dash_animation = "dash"
 const teleport1_animation = "teleport1"
 const smoking_animation = "smoking"
 const casting_animation = "casting"
+const melee_animation = "melee"
 const heavy_casting_animation = "heavy_casting"
 const shoot_animation = "shoot"
 

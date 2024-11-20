@@ -1,20 +1,11 @@
-extends BakunawaState
-
-@onready var timer : Timer  = $Timer
 const MAX_SAMPLES: int = 10
 var record_live_index: int
 var volume_samples: Array = []
 
-
-
-func enter(previous_state_path: String, data := {}) -> void:
+func _ready() -> void:
 	record_live_index = AudioServer.get_bus_index('Record')
-	playback.travel(heavy_casting_animation)
-	enemy.state_label. text = "HEAVY"
-	pass
 
-
-func physics_update(delta: float) -> void: 
+func _process(delta: float) -> void:
 	var sample = db_to_linear(AudioServer.get_bus_peak_volume_left_db(record_live_index, 0))
 	volume_samples.push_front(sample)
 
@@ -22,7 +13,6 @@ func physics_update(delta: float) -> void:
 		volume_samples.pop_back()
 
 	var sample_avg = average_array(volume_samples)
-	enemy.state_label.text = str('%sdb' % round(db_to_linear(sample_avg)))
 	print('%sdb' % round(db_to_linear(sample_avg)))
 
 func average_array(arr: Array) -> float:
