@@ -470,7 +470,7 @@ scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_krxcd")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.325098
+frame_progress = 0.0338492
 
 [node name="HitBox" type="Area2D" parent="."]
 position = Vector2(-3, 0)
