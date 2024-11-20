@@ -9,11 +9,10 @@ const PREPARE_SMASH = "PrepareSmash"
 const DASHING = "Dashing"
 const THROWING = "Throwing"
 const IDLE = "Idle"
-const TELEPORT1 = "Teleport1"
 const SMOKING = "Smoking"
 const HEALING = "Healing"
 const CASTING_MAGIC_BALL = "CastingMagicball"
-const HEACY_CAST = "HeavyCast"
+const HEAVY_CAST = "HeavyCast"
 
 const prepare_smash_animation = "prepare_smash"
 const prepare_teleport_animation = "prepare_teleport"
@@ -33,7 +32,6 @@ func update(delta: float) -> void:
 	if enemy.health <= (enemy.max_health / 2) and not rage_on:
 		rage_on = true
 		enemy.is_enraged.emit()
-		finished.emit(TELEPORT1)
 		
 func physics_update(_delta: float) -> void:
 	pass
