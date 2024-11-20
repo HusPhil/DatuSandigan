@@ -1817,8 +1817,9 @@ shape = SubResource("RectangleShape2D_em5ir")
 one_way_collision = true
 script = ExtResource("5_2q7o5")
 
-[node name="Kapre" parent="." instance=ExtResource("2_bdc68")]
+[node name="Kapre" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_bdc68")]
 position = Vector2(501, 143)
+player = NodePath("../player")
 
 [node name="PointLight2D" type="PointLight2D" parent="Kapre"]
 visible = false
