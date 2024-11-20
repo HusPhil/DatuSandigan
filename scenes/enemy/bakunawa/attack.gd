@@ -9,7 +9,9 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		
 		if !rage_on:
 			playback.travel(shoot_animation)
-			var missile := enemy.Explosion.instantiate() as Projectile
+			var missile := enemy.MagicBall.instantiate() as Projectile
+
+			missile._target = enemy.player
 
 			missile.lifetime = 5
 			missile.initial_direction = enemy.spawnMagicPoint.rotation
