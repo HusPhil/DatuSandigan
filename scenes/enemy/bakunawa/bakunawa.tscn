@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://bnl4sh1w8hpn5"]
+[gd_scene load_steps=35 format=3 uid="uid://bnl4sh1w8hpn5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/bakunawa.gd" id="1_2dgd2"]
 [ext_resource type="Texture2D" uid="uid://bf4p3e0nhg5cr" path="res://assets/img/enemy/Bakunawa/bakunawa-Sheet.png" id="1_raad1"]
@@ -13,6 +13,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/hit_box_component.gd" id="9_xyo5n"]
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_cxe2o"]
 [ext_resource type="Script" path="res://components/hitbox/hurt_box_component.gd" id="11_6cc7o"]
+[ext_resource type="Script" path="res://scenes/enemy/bakunawa/heavy_cast.gd" id="11_wkmp3"]
 
 [sub_resource type="Animation" id="Animation_ge15b"]
 length = 0.001
@@ -424,8 +425,10 @@ one_shot = true
 [node name="CastingMagicball" type="Node" parent="StateMachine"]
 script = ExtResource("7_5w4nc")
 
+[node name="HeavyCast" type="Node" parent="StateMachine"]
+script = ExtResource("11_wkmp3")
+
 [node name="HitboxComponent" type="Area2D" parent="."]
-visible = false
 collision_layer = 4
 collision_mask = 4
 script = ExtResource("9_xyo5n")
@@ -451,6 +454,8 @@ offset_top = -91.0
 offset_right = 27.0
 offset_bottom = -68.0
 text = "STATE"
+
+[node name="Timer" type="Timer" parent="."]
 
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/CastingMagicball" method="_on_animation_tree_animation_finished"]
 [connection signal="area_entered" from="HurtBoxComponent" to="." method="_on_hurt_box_component_area_entered"]

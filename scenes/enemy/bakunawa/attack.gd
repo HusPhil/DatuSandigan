@@ -1,6 +1,8 @@
 extends BakunawaState
 
 func enter(previous_state_path: String, data := {}) -> void:
+	if rage_on:
+		finished.emit(HEAVY_CAST)
 	playback.travel(casting_animation)
 	pass
 
