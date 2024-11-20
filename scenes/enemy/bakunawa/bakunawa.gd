@@ -7,7 +7,7 @@ const MagicBallScene := preload("res://scenes/magic_ball.tscn")
 func _ready() -> void:
 	# redefine the values from the enemy class	
 	speed = 300
-	max_health = 1000
+	max_health = 50000
 	health = max_health
 	animation_player = $AnimationPlayer
 	smoke_fx = $SmokeFX
@@ -19,6 +19,8 @@ func _ready() -> void:
 	
 	#hit_box_shape.disabled = false
 
+func _process(delta: float) -> void:
+	state_label.text = str(health)
 
 func _on_hurt_box_component_body_entered(body: Node2D) -> void:
 	print("HITBOx NG BAKUNAWA: ", body)

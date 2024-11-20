@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4vhdikr6fhdt"
-path="res://.godot/imported/mangkukulaml_all_movements.png-0890557a556df2902133abad63bd5b01.ctex"
+uid="uid://bxtjmsux54ico"
+path="res://.godot/imported/mangkukulaml_all_movements.png-83bbe8f4462bfd8d90ac7a8b2e49c199.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://scenes/enemy/mangkukulam/mangkukulaml_all_movements.png"
-dest_files=["res://.godot/imported/mangkukulaml_all_movements.png-0890557a556df2902133abad63bd5b01.ctex"]
+source_file="res://scenes/enemy/mangkukulam/sprites/mangkukulaml_all_movements.png"
+dest_files=["res://.godot/imported/mangkukulaml_all_movements.png-83bbe8f4462bfd8d90ac7a8b2e49c199.ctex"]
 
 [params]
 
