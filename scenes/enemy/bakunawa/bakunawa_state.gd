@@ -13,6 +13,7 @@ const SMOKING = "Smoking"
 const HEALING = "Healing"
 const CASTING_MAGIC_BALL = "CastingMagicball"
 const HEAVY_CAST = "HeavyCast"
+const BEAM_ATTACK = "BeamAttack"
 
 
 const prepare_smash_animation = "prepare_smash"
@@ -25,6 +26,7 @@ const smoking_animation = "smoking"
 const casting_animation = "casting"
 const melee_animation = "melee"
 const heavy_casting_animation = "heavy_casting"
+const beam_attack_animation = "beam_attack"
 const shoot_animation = "shoot"
 
 var rage_on = false

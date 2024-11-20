@@ -11,12 +11,12 @@ func enter(previous_state_path: String, data := {}) -> void:
 
 	
 func physics_update(_delta : float):
-	
+	print("WHAT IS HEAPP")
 	if atk_tmr.is_stopped():
 		if !rage_on:
-			finished.emit(CASTING_MAGIC_BALL)
+			finished.emit([CASTING_MAGIC_BALL, MELEE].pick_random())
 		else:
-			finished.emit(HEAVY_CAST) 
+			finished.emit(BEAM_ATTACK) 
 	
 	pass
 	
