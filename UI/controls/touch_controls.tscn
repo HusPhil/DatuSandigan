@@ -1,0 +1,92 @@
+[gd_scene load_steps=6 format=3 uid="uid://dngivgyn5hrfx"]
+
+[ext_resource type="Texture2D" uid="uid://c2vykuci4nckd" path="res://UI/control_buttons/SolidArrow-Left@2x.png" id="2_arxk8"]
+[ext_resource type="Texture2D" uid="uid://cps12eofpkqb7" path="res://UI/control_buttons/SolidArrow-Right@2x.png" id="3_l14y8"]
+[ext_resource type="Texture2D" uid="uid://cq80exhry8fo7" path="res://UI/control_buttons/Pause@2x.png" id="5_w72yo"]
+[ext_resource type="Texture2D" uid="uid://bmfy1guepakk0" path="res://UI/control_buttons/attack_btn.png" id="6_6wgjc"]
+[ext_resource type="Texture2D" uid="uid://dwp26yox7cxyy" path="res://UI/control_buttons/newwepaon.png" id="7_w771j"]
+
+[node name="TouchControls" type="CanvasLayer"]
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -40.0
+offset_right = 40.0
+grow_vertical = 0
+alignment = 1
+
+[node name="tbtn_left" type="TouchScreenButton" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.52549)
+position = Vector2(23, -122)
+scale = Vector2(1.31068, 1.32039)
+texture_normal = ExtResource("2_arxk8")
+action = "move_left"
+
+[node name="tbtn_right" type="TouchScreenButton" parent="HBoxContainer"]
+modulate = Color(1, 1, 1, 0.52549)
+position = Vector2(178, -121)
+scale = Vector2(1.311, 1.311)
+texture_normal = ExtResource("3_l14y8")
+texture_pressed = ExtResource("3_l14y8")
+action = "move_right"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -374.0
+offset_top = -317.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="tbtn_jump" type="TouchScreenButton" parent="HBoxContainer2"]
+modulate = Color(1, 1, 1, 0.52549)
+position = Vector2(161, 154)
+rotation = 1.5708
+scale = Vector2(1.311, 1.311)
+texture_normal = ExtResource("2_arxk8")
+action = "jump"
+
+[node name="tbtn_otherweapon" type="TouchScreenButton" parent="HBoxContainer2"]
+self_modulate = Color(1, 1, 1, 0.52549)
+position = Vector2(204, -15)
+scale = Vector2(1.0147, 0.990852)
+texture_normal = ExtResource("7_w771j")
+
+[node name="tbtn_atk" type="TouchScreenButton" parent="HBoxContainer2"]
+modulate = Color(1, 1, 1, 0.52549)
+position = Vector2(194, 143)
+scale = Vector2(0.752525, 0.758756)
+texture_normal = ExtResource("6_6wgjc")
+action = "attack"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 40.0
+grow_horizontal = 0
+
+[node name="tbtn_pause" type="TouchScreenButton" parent="HBoxContainer3"]
+modulate = Color(1, 1, 1, 0.52549)
+position = Vector2(-95, 22)
+texture_normal = ExtResource("5_w72yo")
+action = "pause_menu"
+
+[connection signal="pressed" from="HBoxContainer/tbtn_left" to="." method="_on_tbtn_left_pressed"]
+[connection signal="released" from="HBoxContainer/tbtn_left" to="." method="_on_tbtn_left_released"]
+[connection signal="pressed" from="HBoxContainer/tbtn_right" to="." method="_on_tbtn_right_pressed"]
+[connection signal="released" from="HBoxContainer/tbtn_right" to="." method="_on_tbtn_right_released"]
+[connection signal="pressed" from="HBoxContainer2/tbtn_jump" to="." method="_on_tbtn_jump_pressed"]
+[connection signal="released" from="HBoxContainer2/tbtn_jump" to="." method="_on_tbtn_jump_released"]
+[connection signal="pressed" from="HBoxContainer2/tbtn_otherweapon" to="." method="_on_tbtn_otherweapon_pressed"]
+[connection signal="released" from="HBoxContainer2/tbtn_otherweapon" to="." method="_on_tbtn_otherweapon_released"]
+[connection signal="pressed" from="HBoxContainer2/tbtn_atk" to="." method="_on_tbtn_atk_pressed"]
+[connection signal="released" from="HBoxContainer2/tbtn_atk" to="." method="_on_tbtn_atk_released"]
+[connection signal="pressed" from="HBoxContainer3/tbtn_pause" to="." method="_on_tbtn_pause_pressed"]
+[connection signal="released" from="HBoxContainer3/tbtn_pause" to="." method="_on_tbtn_pause_released"]

@@ -8,9 +8,10 @@ var max_speed := 500.0
 var initial_direction := 0
 @export var drag_factor: float = 0.15
 
-var _target: Enemy
-
+var _target : CharacterBody2D
+var _is_deflected : bool
 var _current_velocity := Vector2.ZERO
+var _attack : Attack
 
 @onready var _sprite := $Sprite
 @onready var activation_time : Timer = $ActivationtTime
@@ -20,6 +21,7 @@ var _current_velocity := Vector2.ZERO
 @onready var _aim_line := $AimLine
 @onready var _target_line := $TargetLine
 @onready var _change_line := $ChangeLine
+
 
 func _ready():
 	set_as_top_level(true)
@@ -69,14 +71,14 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_HitBox_body_entered(_body: Node) -> void:
-	queue_free()
-
+	if _body == _target:
+		queue_free()
+		
 func _on_ActivationTime_timeout():
 	
 	pass
 
 func _on_EnemyDetector_body_entered(enemy: Enemy):
-	print("enemy: " + str(enemy))
 	if _target != null:
 		return
 		

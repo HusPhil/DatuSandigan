@@ -13,13 +13,16 @@ var knock_back_force : float = 200;
 
 var current_state : String 
 
+
 @onready var sprite : Sprite2D = $FlippableSprite
 @onready var animation_player : AnimationPlayer
+@onready var animation_tree : AnimationTree
+@onready var smoke_fx : AnimationPlayer
 @onready var ray_cast : RayCast2D = $FlippableSprite/RayCast2D
 @onready var timer : Timer = $ChaseTimer
 @export var player : Player
-
 @onready var state_label: Label
+@onready var spawnMagicPoint : Marker2D
 
 signal is_damaged(attack : Attack)
 signal is_enraged()

@@ -5,7 +5,7 @@ extends KapreState
 const FRICTION : float = 10
 const DASH_SPEED: float = 600.0
 
-const tree_pos_x = 368	
+const tree_pos_x = 501
 const tree_pos_y = 143
 
 var has_jumped: bool = false
@@ -26,10 +26,10 @@ func physics_update(_delta: float) -> void:
 		enemy.position.x = tree_pos_x
 	elif enemy.is_on_floor() and has_jumped:
 		enemy.player.camera.apply_shake(12.3)
-		finished.emit(PREPARE_SMASH)
+		finished.emit(SMOKING)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == prepare_teleport_animation:
+	if anim_name == prepare_teleport_animation and enemy.current_state == TELEPORT1:
 		enemy.velocity.y = -JUMP_IMPULSE * 3
 		has_jumped = true
 		enemy.move_and_slide()

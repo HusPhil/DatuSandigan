@@ -36,7 +36,7 @@ func _on_kapre_is_enraged() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == prepare_smash_animation:
+	if anim_name == prepare_smash_animation and enemy.current_state == PREPARE_SMASH:
 		enemy.velocity.y = -JUMP_IMPULSE
 		face_player()
 		finished.emit(SMASHING)

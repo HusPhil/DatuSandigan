@@ -6,6 +6,13 @@ var speed := 150.0
 var jump_impulse := 170.0
 var base_gravity := 300
 
+var health = 100
+var max_health = 100
+var min_health = 0
+
+var moon = 100
+var max_moon = 100
+var min_moon = 0
 
 var can_double_jump := true
 var can_input := true
@@ -20,8 +27,8 @@ var state: States = States.IDLE
 @onready var sprite : Sprite2D = $FlippableSprite
 @onready var weapon_sprite : Sprite2D = $WeaponSprite
 @onready var animation_tree : AnimationTree = $AnimationTree
-@onready var animation_player : AnimationPlayer = $AnimationPlayer
 @onready var weapon_animation_player : AnimationPlayer = $WeaponFX
+@onready var animation_player : AnimationPlayer = $AnimationPlayer
 
 @onready var state_label : Label = $Label
 @onready var _shoot_position : Marker2D = $ShootPosition
@@ -72,8 +79,7 @@ func handle_change_direction() -> void:
 		var is_flipped_direction = input_direction_x < 0
 		sprite.flipped = is_flipped_direction
 		weapon_sprite.flip_h = is_flipped_direction
-
-
+	
 func shoot() -> void:
 	var missile := MissileScene.instantiate() as Projectile
 

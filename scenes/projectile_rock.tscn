@@ -1,12 +1,36 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxg4hwb17ll6g"]
+[gd_scene load_steps=4 format=3 uid="uid://dcelgwqt77yrq"]
 
 [ext_resource type="Texture2D" uid="uid://c72xpaoodv3k7" path="res://assets/img/player_sprites/128x256.png" id="1_inu7d"]
-[ext_resource type="Script" path="res://scenes/projectile_rock.gd" id="1_n3kjv"]
+
+[sub_resource type="GDScript" id="GDScript_kab0e"]
+script/source = "extends CharacterBody2D
+
+const THROW_VELOCITY = Vector2(800, -400)
+@onready var GRAVITY = ProjectSettings.get_setting(\"physics/2d/default_gravity\")
+
+
+func _physics_process(delta):
+	velocity.y += GRAVITY * delta
+	var collision = move_and_collide(velocity * delta)
+	
+
+func launch(direction):
+	var temp = global_transform
+	var scene = get_tree().current_scene
+	get_parent().remove_child(self)
+	scene.add_child(self)
+	global_transform = temp
+	velocity = THROW_VELOCITY
+
+func _on_impact(normal: Vector2):
+	velocity = velocity.bounce(normal)
+	velocity *= 0.5 + randf_range(-0.05, 0.05)
+"
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_uvilj"]
 
 [node name="CharacterBody2D" type="CharacterBody2D"]
-script = ExtResource("1_n3kjv")
+script = SubResource("GDScript_kab0e")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(1, -2)

@@ -8,7 +8,7 @@ const DASH_SPEED: float = 600.0
 func enter(previous_state_path: String, data := {}) -> void:
 	prepare_atk.start()
 	face_player()
-	enemy.state_label.text = "PREPARE TO DASH"
+	enemy.state_label.text = PREPARE_SMASH
 	enemy.velocity.x = 0
 	enemy.current_state = DASHING
 	enemy.animation_player.play(idle_animation)
@@ -25,14 +25,10 @@ func physics_update(_delta: float) -> void:
 	enemy.move_and_slide()
 
 func _on_timer_timeout() -> void:
-	
-	
 	pass # Replace with function body.
 
 func exit() -> void:
-	
 	face_player()
-	#enemy.hit_box_shape.disabled = true
 	pass
 
 
@@ -54,7 +50,7 @@ func _on_kapre_is_enraged() -> void:
 
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
-	if anim_name == idle_animation:
+	if anim_name == idle_animation and enemy.current_state == DASHING:
 		enemy.animation_player.play(dash_animation)
 	elif anim_name == dash_animation:
 		var direction = -1 if enemy.sprite.flip_h else 1

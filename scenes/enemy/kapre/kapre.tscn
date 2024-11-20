@@ -1,9 +1,10 @@
-[gd_scene load_steps=34 format=3 uid="uid://50wiqjkiibly"]
+[gd_scene load_steps=43 format=3 uid="uid://50wiqjkiibly"]
 
-[ext_resource type="Script" path="res://scenes/enemy/kapre/kapre.gd" id="1_f8p7u"]
+[ext_resource type="Script" path="res://scenes/enemy/kapre/states/kapre.gd" id="1_f8p7u"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_6c2ch"]
 [ext_resource type="Texture2D" uid="uid://cs3k30lsw7wsd" path="res://scenes/enemy/kapre/kapre_all_movement.png" id="3_6jjhr"]
 [ext_resource type="Texture2D" uid="uid://dr0kskl81ky0d" path="res://assets/img/enemy/Aswang/aswang_all_movementspng.png" id="4_farpc"]
+[ext_resource type="Texture2D" uid="uid://desix6qn5375q" path="res://scenes/enemy/kapre/with_smoke-Sheet.png" id="4_sgx28"]
 [ext_resource type="PackedScene" uid="uid://cmwotsgmrkf85" path="res://scenes/state_machine/state_machine.tscn" id="5_nkgfu"]
 [ext_resource type="Texture2D" uid="uid://cov7fui2huhcp" path="res://scenes/enemy/kapre/kapre_jump_roar.png" id="5_qdult"]
 [ext_resource type="Texture2D" uid="uid://6unc6amwrckl" path="res://scenes/enemy/kapre/kapre_dash_jump.png" id="5_wx12m"]
@@ -18,6 +19,9 @@
 [ext_resource type="Script" path="res://components/hitbox/detect_player.gd" id="12_fa120"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/teleport_1.gd" id="13_x613o"]
 [ext_resource type="Script" path="res://components/hitbox/enemy_hitbox.gd" id="14_1nyxt"]
+[ext_resource type="Script" path="res://scenes/enemy/kapre/smoking.gd" id="15_kfp3r"]
+[ext_resource type="Script" path="res://scenes/enemy/kapre/healing.gd" id="21_bp7ey"]
+[ext_resource type="Script" path="res://scenes/enemy/kapre/smoking_area.gd" id="22_bh54t"]
 
 [sub_resource type="Animation" id="Animation_4gowi"]
 length = 0.001
@@ -84,14 +88,14 @@ tracks/4/keys = {
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("HitBoxComponent/FlippableShape:disabled")
+tracks/5/path = NodePath("SmokeSprite:visible")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 
 [sub_resource type="Animation" id="Animation_rg1gx"]
@@ -160,6 +164,59 @@ tracks/4/keys = {
 "values": [true, false, true]
 }
 
+[sub_resource type="Animation" id="Animation_uf0un"]
+resource_name = "dash"
+length = 0.5
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("5_wx12m")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:hframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:vframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:frame_coords")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.394019, 0.443635),
+"transitions": PackedFloat32Array(1, 4.6256e-05, 1),
+"update": 0,
+"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+}
+
 [sub_resource type="Animation" id="Animation_jg87r"]
 resource_name = "die"
 
@@ -209,10 +266,115 @@ tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
-"transitions": PackedFloat32Array(1e-05, 1, 1, 1, 1, 1, 1, 1e-05),
+"times": PackedFloat32Array(0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1e-05),
 "update": 0,
-"values": [6, 1, 0, 1, 0, 1, 0, 1]
+"values": [1, 0, 1, 0, 1, 0, 1]
+}
+
+[sub_resource type="Animation" id="Animation_medbc"]
+resource_name = "prepare_smash"
+length = 1.50001
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.375),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1e-05, 1, 1, 1),
+"update": 0,
+"values": [6, 1, 0, 1, 0, 1, 0, 1, 5, 6, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("5_qdult")]
+}
+
+[sub_resource type="Animation" id="Animation_5qq14"]
+resource_name = "prepare_teleport"
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("FlippableSprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.375),
+"transitions": PackedFloat32Array(0.000357442, 1, 1, 1, 1, 1, 1, 1e-05, 1, 1, 1),
+"update": 0,
+"values": [6, 1, 0, 1, 0, 1, 0, 1, 5, 6, 6]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("FlippableSprite:vframes")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [2]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("FlippableSprite:hframes")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [5]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("FlippableSprite:texture")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [ExtResource("5_qdult")]
 }
 
 [sub_resource type="Animation" id="Animation_pbpbm"]
@@ -269,59 +431,6 @@ tracks/3/keys = {
 "values": [ExtResource("3_6jjhr")]
 }
 
-[sub_resource type="Animation" id="Animation_4kjr2"]
-resource_name = "test"
-length = 0.500008
-step = 0.0833333
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 1),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
-"update": 0,
-"values": [8, 9, 10, 11, 12, 13, 8]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [3]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [8]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(-0.0333333),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("4_farpc")]
-}
-
 [sub_resource type="Animation" id="Animation_yaweu"]
 resource_name = "smash"
 length = 0.20002
@@ -375,59 +484,6 @@ tracks/3/keys = {
 "values": [Vector2i(1, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_medbc"]
-resource_name = "prepare_smash"
-length = 1.50001
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.375),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1e-05, 1, 1, 1),
-"update": 0,
-"values": [6, 1, 0, 1, 0, 1, 0, 1, 5, 6, 6]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:vframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [2]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:hframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [5]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [ExtResource("5_qdult")]
-}
-
 [sub_resource type="Animation" id="Animation_j4nua"]
 resource_name = "smash_done"
 length = 0.2
@@ -445,10 +501,10 @@ tracks/0/keys = {
 "values": [Vector2i(2, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_uf0un"]
-resource_name = "dash"
-length = 0.5
-step = 0.2
+[sub_resource type="Animation" id="Animation_uno5x"]
+resource_name = "smoking"
+length = 0.583341
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -459,7 +515,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("5_wx12m")]
+"values": [ExtResource("5_qdult")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -471,7 +527,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [3]
+"values": [5]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -488,19 +544,32 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame_coords")
+tracks/3/path = NodePath("FlippableSprite:frame")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0.2, 0.394019, 0.443635),
-"transitions": PackedFloat32Array(1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector2i(0, 1), Vector2i(1, 1), Vector2i(2, 1)]
+"values": [0, 1, 2, 3, 4, 4, 4]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("SmokeSprite:visible")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.518503),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
 }
 
-[sub_resource type="Animation" id="Animation_5qq14"]
-resource_name = "prepare_teleport"
-step = 0.125
+[sub_resource type="Animation" id="Animation_4kjr2"]
+resource_name = "test"
+length = 0.500008
+step = 0.0833333
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -508,10 +577,10 @@ tracks/0/path = NodePath("FlippableSprite:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.25, 1.375),
-"transitions": PackedFloat32Array(0.000357442, 1, 1, 1, 1, 1, 1, 1e-05, 1, 1, 1),
+"times": PackedFloat32Array(0, 0.0833333, 0.166667, 0.25, 0.333333, 0.416667, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [6, 1, 0, 1, 0, 1, 0, 1, 5, 6, 6]
+"values": [8, 9, 10, 11, 12, 13, 8]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -523,7 +592,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [2]
+"values": [3]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -535,7 +604,7 @@ tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [5]
+"values": [8]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -544,10 +613,10 @@ tracks/3/path = NodePath("FlippableSprite:texture")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(-0.0333333),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [ExtResource("5_qdult")]
+"values": [ExtResource("4_farpc")]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_pdwbq"]
@@ -562,7 +631,119 @@ _data = {
 "run": SubResource("Animation_pbpbm"),
 "smash": SubResource("Animation_yaweu"),
 "smash_done": SubResource("Animation_j4nua"),
+"smoking": SubResource("Animation_uno5x"),
 "test": SubResource("Animation_4kjr2")
+}
+
+[sub_resource type="Animation" id="Animation_4lkot"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SmokeSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_sgx28")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SmokeSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SmokeSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-2, 2)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SmokeSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_fotv7"]
+resource_name = "smoking"
+length = 1.12501
+loop_mode = 1
+step = 0.125
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("SmokeSprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("4_sgx28")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SmokeSprite:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5, 6, 7, 10]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("SmokeSprite:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-1.5, 1.5)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SmokeSprite:visible")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.05749),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_hurb6"]
+_data = {
+"RESET": SubResource("Animation_4lkot"),
+"smoking": SubResource("Animation_fotv7")
 }
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkatm"]
@@ -573,6 +754,10 @@ size = Vector2(52, 64.25)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_cu5ks"]
 size = Vector2(16, 64.25)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7wbd4"]
+radius = 96.3
+height = 398.0
 
 [node name="Kapre" type="CharacterBody2D"]
 collision_layer = 4
@@ -592,9 +777,22 @@ rotation = -0.00336929
 target_position = Vector2(125, 0.404)
 collision_mask = 6
 
+[node name="SmokeSprite" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(-337, -31)
+rotation = 0.0767945
+scale = Vector2(-2, 2)
+texture = ExtResource("4_sgx28")
+hframes = 11
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_pdwbq")
+}
+
+[node name="SmokeFX" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_hurb6")
 }
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -602,6 +800,36 @@ light_mask = 4
 position = Vector2(2.5, 4.5)
 scale = Vector2(0.5, 2)
 shape = SubResource("RectangleShape2D_gkatm")
+
+[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
+light_mask = 2
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("14_1nyxt")
+flippable_sprite = NodePath("../FlippableSprite")
+
+[node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]
+light_mask = 0
+position = Vector2(10, 14.875)
+shape = SubResource("RectangleShape2D_fdh32")
+disabled = true
+debug_color = Color(0.334819, 0.622371, 7.70092e-07, 0.42)
+script = ExtResource("11_eusts")
+default_position = Vector2(23, -14)
+
+[node name="DetectPlayer" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
+collision_layer = 2
+collision_mask = 2
+script = ExtResource("12_fa120")
+flippable_sprite = NodePath("../FlippableSprite")
+
+[node name="FlippableShape" type="CollisionShape2D" parent="DetectPlayer"]
+visible = false
+light_mask = 0
+position = Vector2(28, 15.125)
+shape = SubResource("RectangleShape2D_cu5ks")
+script = ExtResource("11_eusts")
+default_position = Vector2(23, -13)
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_nkgfu")]
 initial_state = NodePath("PrepareSmash")
@@ -645,61 +873,46 @@ script = ExtResource("13_x613o")
 wait_time = 3.0
 one_shot = true
 
-[node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
-light_mask = 2
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("14_1nyxt")
-flippable_sprite = NodePath("../FlippableSprite")
+[node name="Smoking" type="Node" parent="StateMachine"]
+script = ExtResource("15_kfp3r")
 
-[node name="FlippableShape" type="CollisionShape2D" parent="HitBoxComponent"]
-light_mask = 0
-position = Vector2(10, 14.875)
-shape = SubResource("RectangleShape2D_fdh32")
-disabled = true
-debug_color = Color(0.334819, 0.622371, 7.70092e-07, 0.42)
-script = ExtResource("11_eusts")
-default_position = Vector2(23, -14)
+[node name="Healing" type="Node" parent="StateMachine"]
+script = ExtResource("21_bp7ey")
 
 [node name="ChaseTimer" type="Timer" parent="."]
 wait_time = 5.0
 one_shot = true
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -23.0
 offset_top = -63.0
 offset_right = 24.0
 offset_bottom = -40.0
 text = "STATE"
 
-[node name="DetectPlayer" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
-collision_layer = 2
-collision_mask = 2
-script = ExtResource("12_fa120")
-flippable_sprite = NodePath("../FlippableSprite")
+[node name="SmokingArea" type="Area2D" parent="."]
+position = Vector2(-90, -836)
+script = ExtResource("22_bh54t")
 
-[node name="FlippableShape" type="CollisionShape2D" parent="DetectPlayer"]
-visible = false
-light_mask = 0
-position = Vector2(28, 15.125)
-shape = SubResource("RectangleShape2D_cu5ks")
-script = ExtResource("11_eusts")
-default_position = Vector2(23, -13)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SmokingArea"]
+position = Vector2(-90, 912)
+rotation = 1.16937
+shape = SubResource("CapsuleShape2D_7wbd4")
 
-[connection signal="is_damaged" from="." to="StateMachine/Smashing" method="_on_kapre_is_damaged"]
-[connection signal="is_enraged" from="." to="StateMachine/Hurting" method="_on_kapre_is_enraged"]
-[connection signal="is_enraged" from="." to="StateMachine/Smashing" method="_on_kapre_is_enraged"]
-[connection signal="is_enraged" from="." to="StateMachine/Idle" method="_on_kapre_is_enraged"]
-[connection signal="is_enraged" from="." to="StateMachine/PrepareSmash" method="_on_kapre_is_enraged"]
-[connection signal="is_enraged" from="." to="StateMachine/Dashing" method="_on_kapre_is_enraged"]
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Smashing" method="_on_animation_player_animation_finished"]
+[connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Idle" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/PrepareSmash" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Dashing" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Teleport1" method="_on_animation_player_animation_finished"]
+[connection signal="body_entered" from="HitBoxComponent" to="StateMachine/Dashing" method="_on_hit_box_component_body_entered"]
 [connection signal="timeout" from="StateMachine/Hurting/Timer" to="StateMachine/Hurting" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Smashing/Timer" to="StateMachine/Smashing" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/PrepareSmash/Timer" to="StateMachine/PrepareSmash" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_timer_timeout"]
-[connection signal="body_entered" from="HitBoxComponent" to="StateMachine/Dashing" method="_on_hit_box_component_body_entered"]
 [connection signal="timeout" from="ChaseTimer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="SmokingArea" to="StateMachine/Healing" method="_on_smoking_area_body_entered"]
+[connection signal="body_entered" from="SmokingArea" to="SmokingArea" method="_on_body_entered"]
+[connection signal="body_exited" from="SmokingArea" to="StateMachine/Smoking" method="_on_smoking_area_body_exited"]
+[connection signal="body_exited" from="SmokingArea" to="SmokingArea" method="_on_body_exited"]

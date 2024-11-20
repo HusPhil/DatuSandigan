@@ -33,12 +33,6 @@ func physics_update(_delta: float) -> void:
 		has_jumped = true
 		enemy.velocity.y += SMASH_GRAVITY * _delta
 		pass
-		
-		
-#func exit() -> void:
-	#has_jumped = false
-	#pass
-
 
 func _on_kapre_is_enraged() -> void:
 	#prepare_atk.stop()

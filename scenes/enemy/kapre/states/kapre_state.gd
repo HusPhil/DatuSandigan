@@ -10,6 +10,8 @@ const DASHING = "Dashing"
 const THROWING = "Throwing"
 const IDLE = "Idle"
 const TELEPORT1 = "Teleport1"
+const SMOKING = "Smoking"
+const HEALING = "Healing"
 
 const prepare_smash_animation = "prepare_smash"
 const prepare_teleport_animation = "prepare_teleport"
@@ -17,6 +19,8 @@ const smash_animation = "smash"
 const smash_done_animation = "smash_done"
 const dash_animation = "dash"
 const teleport1_animation = "teleport1"
+const smoking_animation = "smoking"
+
 
 
 var rage_on = false

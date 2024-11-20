@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://dsino0hflx5po"]
+
+[ext_resource type="Script" path="res://HUD/moon_bar.gd" id="1_jxm4o"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_rh8sm"]
+bg_color = Color(0.746641, 0.105905, 0.0666366, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_58ve4"]
+bg_color = Color(0.0686005, 0.622572, 1, 1)
+
+[node name="MoonBar" type="ProgressBar"]
+offset_left = 23.0
+offset_top = 32.0
+offset_right = 595.0
+offset_bottom = 59.0
+theme_override_styles/background = SubResource("StyleBoxFlat_rh8sm")
+theme_override_styles/fill = SubResource("StyleBoxFlat_58ve4")
+value = 60.0
+show_percentage = false
+script = ExtResource("1_jxm4o")

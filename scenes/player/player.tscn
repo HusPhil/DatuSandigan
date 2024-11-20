@@ -2212,7 +2212,8 @@ scale = Vector2(0.75, 0.75)
 hframes = 6
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("24_odjir")]
-collision_layer = 4
+visible = false
+collision_layer = 2
 collision_mask = 4
 script = ExtResource("7_h4jwq")
 flippable_sprite = NodePath("../FlippableSprite")
@@ -2303,6 +2304,7 @@ script = ExtResource("22_gqsm5")
 script = ExtResource("29_cl1x6")
 
 [node name="Label" type="Label" parent="."]
+visible = false
 offset_left = -21.0
 offset_top = -69.0
 offset_right = 26.0
@@ -2319,6 +2321,7 @@ self_modulate = Color(0, 1, 1, 1)
 [connection signal="is_hurt" from="." to="StateMachine/Falling" method="_on_player_is_hurt"]
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]
 [connection signal="is_flipped" from="FlippableSprite" to="ShootPosition" method="_on_flippable_sprite_is_flipped"]
+[connection signal="area_entered" from="HitBoxComponent" to="HitBoxComponent" method="_on_area_entered"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/BaseAttack1" method="_PLAYER_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/Hurting" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/BaseAttack3" method="_on_animation_tree_animation_finished"]

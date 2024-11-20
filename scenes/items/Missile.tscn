@@ -7,14 +7,14 @@
 offsets = PackedFloat32Array(0, 0.31339, 0.777778, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.930664, 0.798064, 0.112698, 1, 0.933594, 0.072937, 0.072937, 1, 1, 0, 0, 0)
 
-[sub_resource type="GradientTexture1D" id="11"]
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_44ea7"]
 gradient = SubResource("10")
 
 [sub_resource type="Curve" id="13"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.475936, 0.418182), -2.6093, -2.6093, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
-[sub_resource type="CurveTexture" id="14"]
+[sub_resource type="CurveTexture" id="CurveTexture_litxj"]
 curve = SubResource("13")
 
 [sub_resource type="ParticleProcessMaterial" id="12"]
@@ -26,8 +26,8 @@ spread = 10.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.0
 scale_max = 0.0
-scale_curve = SubResource("14")
-color_ramp = SubResource("11")
+scale_curve = SubResource("CurveTexture_litxj")
+color_ramp = SubResource("GradientTexture1D_44ea7")
 
 [sub_resource type="ShaderMaterial" id="15"]
 
@@ -71,6 +71,7 @@ rotation = 1.57079
 shape = SubResource("9")
 
 [node name="EnemyDetector" type="Area2D" parent="."]
+visible = false
 position = Vector2(42, 0)
 collision_layer = 4
 collision_mask = 4

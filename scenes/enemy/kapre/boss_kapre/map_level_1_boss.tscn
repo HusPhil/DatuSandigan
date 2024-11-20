@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://b0dnve3bqits2"]
+[gd_scene load_steps=24 format=3 uid="uid://b0dnve3bqits2"]
 
 [ext_resource type="Texture2D" uid="uid://dl0qbsxiid7en" path="res://scenes/enemy/kapre/boss_kapre/level_1_boss.png" id="1_v5xtv"]
 [ext_resource type="PackedScene" uid="uid://50wiqjkiibly" path="res://scenes/enemy/kapre/kapre.tscn" id="2_bdc68"]
@@ -7,8 +7,15 @@
 [ext_resource type="Script" path="res://scenes/enemy/kapre/boss_kapre/tree_col.gd" id="5_2q7o5"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="5_67xxr"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="6_naj8q"]
+[ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://UI/controls/touch_controls.tscn" id="8_t3xan"]
+[ext_resource type="PackedScene" uid="uid://d3g3bhciw8gw3" path="res://UI/HUD/health_bar.tscn" id="9_darfd"]
+[ext_resource type="Script" path="res://UI/HUD/health_bar_tunay.gd" id="9_lvv3d"]
+[ext_resource type="PackedScene" uid="uid://dsino0hflx5po" path="res://UI/HUD/moon_bar.tscn" id="10_c2j8h"]
+[ext_resource type="Script" path="res://UI/HUD/moon_bar.gd" id="11_detth"]
+[ext_resource type="PackedScene" uid="uid://dkoy4oocq480a" path="res://UI/HUD/pause_menu.tscn" id="11_vmqfp"]
+[ext_resource type="Script" path="res://UI/HUD/pause_menu.gd" id="13_36fk2"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5rg53"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_la3o4"]
 texture = ExtResource("1_v5xtv")
 0:0/0 = 0
 1:0/0 = 0
@@ -1723,7 +1730,7 @@ texture = ExtResource("1_v5xtv")
 
 [sub_resource type="TileSet" id="TileSet_3d0ns"]
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_5rg53")
+sources/0 = SubResource("TileSetAtlasSource_la3o4")
 
 [sub_resource type="Animation" id="Animation_502wh"]
 length = 0.001
@@ -1765,7 +1772,7 @@ _data = {
 offsets = PackedFloat32Array(0.00761421, 0.520305, 1)
 colors = PackedColorArray(0, 0, 0, 1, 0.557545, 0.557545, 0.557545, 1, 1, 1, 1, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_2rhbo"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_kjrst"]
 gradient = SubResource("Gradient_17ywk")
 
 [sub_resource type="Environment" id="Environment_fyjk6"]
@@ -1773,7 +1780,7 @@ background_mode = 3
 tonemap_mode = 3
 tonemap_white = 5.0
 adjustment_enabled = true
-adjustment_color_correction = SubResource("GradientTexture2D_2rhbo")
+adjustment_color_correction = SubResource("GradientTexture2D_kjrst")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_em5ir"]
 size = Vector2(350.155, 0.93108)
@@ -1810,9 +1817,8 @@ shape = SubResource("RectangleShape2D_em5ir")
 one_way_collision = true
 script = ExtResource("5_2q7o5")
 
-[node name="Kapre" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_bdc68")]
-position = Vector2(373, 143)
-player = NodePath("../player")
+[node name="Kapre" parent="." instance=ExtResource("2_bdc68")]
+position = Vector2(501, 143)
 
 [node name="PointLight2D" type="PointLight2D" parent="Kapre"]
 visible = false
@@ -1840,4 +1846,32 @@ position_smoothing_enabled = true
 position_smoothing_speed = 8.0
 script = ExtResource("6_naj8q")
 
-[connection signal="is_enraged" from="Kapre" to="StaticBody2D/tree_col" method="_on_kapre_is_enraged"]
+[node name="CanvasLayer" type="CanvasLayer" parent="player"]
+
+[node name="HealthBar" parent="player/CanvasLayer" instance=ExtResource("9_darfd")]
+anchors_preset = -1
+anchor_right = 0.420139
+offset_left = 32.0
+offset_top = 22.0
+offset_right = 120.0
+offset_bottom = 42.0
+script = ExtResource("9_lvv3d")
+metadata/_edit_use_anchors_ = true
+
+[node name="MoonBar" parent="player/CanvasLayer" instance=ExtResource("10_c2j8h")]
+anchors_preset = -1
+anchor_top = -0.0123457
+anchor_bottom = -0.0123457
+offset_left = 32.0
+offset_top = 61.0
+offset_right = 604.0
+offset_bottom = 88.0
+script = ExtResource("11_detth")
+metadata/_edit_use_anchors_ = true
+
+[node name="PauseMenu" parent="player/CanvasLayer" instance=ExtResource("11_vmqfp")]
+visible = false
+script = ExtResource("13_36fk2")
+metadata/_edit_use_anchors_ = true
+
+[node name="TouchControls" parent="." instance=ExtResource("8_t3xan")]
