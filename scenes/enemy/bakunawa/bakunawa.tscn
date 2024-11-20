@@ -408,7 +408,6 @@ tree_root = SubResource("AnimationNodeStateMachine_ie6mx")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="FlippableShape2D" parent="." instance=ExtResource("3_2fu65")]
-visible = false
 position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_r1k4p")
 

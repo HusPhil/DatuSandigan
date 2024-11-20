@@ -466,11 +466,10 @@ radius = 1371.27
 script = ExtResource("1_wj37v")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-scale = Vector2(2, 2)
 sprite_frames = SubResource("SpriteFrames_krxcd")
 animation = &"new_animation"
 autoplay = "new_animation"
-frame_progress = 0.0338492
+frame_progress = 0.000783066
 
 [node name="HitBox" type="Area2D" parent="."]
 position = Vector2(-3, 0)

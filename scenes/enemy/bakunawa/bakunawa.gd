@@ -2,6 +2,8 @@ extends Enemy
 
 const MissileScene := preload("res://scenes/items/Missile.tscn")
 const MagicBallScene := preload("res://scenes/magic_ball.tscn")
+const Explosion := preload("res://scenes/items/explosion.tscn")
+
 
 
 func _ready() -> void:
