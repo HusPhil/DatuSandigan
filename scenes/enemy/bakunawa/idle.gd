@@ -6,7 +6,6 @@ extends BakunawaState
 func enter(previous_state_path: String, data := {}) -> void:
 	playback.travel(idle_animation)
 	atk_tmr.start()
-	enemy.state_label. text = "IDLE"
 	pass
 
 	

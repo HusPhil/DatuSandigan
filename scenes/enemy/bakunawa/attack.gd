@@ -1,8 +1,9 @@
 extends BakunawaState
+@onready var cast: AudioStreamPlayer2D = $"../../cast"
 
 func enter(previous_state_path: String, data := {}) -> void:
 	playback.travel(casting_animation)
-	enemy.state_label. text = "Cast"
+	cast.play()
 	pass
 
 func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
@@ -22,8 +23,6 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		missile.scale *= 2
 
 		print(missile._attack)
-		
-		enemy.player.camera.apply_shake(5.4)
 		
 		add_child(missile)
 		

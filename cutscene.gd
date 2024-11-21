@@ -8,4 +8,4 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	if(cutscene_1.finished):
-		SceneManager.change_scene("res://scenes/enemy/mangkukulam/boss_manananggal/map_level_2_boss.tscn")
+		SceneManager.change_scene("res://scenes/enemy/kapre/boss_kapre/map_level_1_boss.tscn")

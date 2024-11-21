@@ -1,11 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://d4jeic8wyvack"]
+[gd_scene load_steps=3 format=3 uid="uid://d4jeic8wyvack"]
 
 [ext_resource type="Script" path="res://cutscene.gd" id="1_tkiwh"]
 [ext_resource type="VideoStream" path="res://assets/vid/CompiledCutscenes1.ogv" id="2_2mw1b"]
-[ext_resource type="VideoStream" path="res://assets/vid/CompiledCutscenes2.ogv" id="3_ao6dc"]
-[ext_resource type="VideoStream" path="res://assets/vid/PlayerLose.ogv" id="4_clmsj"]
-[ext_resource type="VideoStream" path="res://assets/vid/Mayari2.ogv" id="5_l8vrf"]
-[ext_resource type="VideoStream" path="res://assets/vid/PlayerWin.ogv" id="6_4dp63"]
 
 [node name="cutscene" type="Node2D"]
 script = ExtResource("1_tkiwh")
@@ -14,28 +10,4 @@ script = ExtResource("1_tkiwh")
 offset_right = 40.0
 offset_bottom = 40.0
 stream = ExtResource("2_2mw1b")
-autoplay = true
-
-[node name="cutscene2" type="VideoStreamPlayer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-stream = ExtResource("3_ao6dc")
-autoplay = true
-
-[node name="cutscene3" type="VideoStreamPlayer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-stream = ExtResource("4_clmsj")
-autoplay = true
-
-[node name="cutscene4" type="VideoStreamPlayer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-stream = ExtResource("5_l8vrf")
-autoplay = true
-
-[node name="cutscene5" type="VideoStreamPlayer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
-stream = ExtResource("6_4dp63")
 autoplay = true

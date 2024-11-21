@@ -1,6 +1,6 @@
-[gd_scene load_steps=25 format=3 uid="uid://wg4tj14ssmnw"]
+[gd_scene load_steps=26 format=3 uid="uid://wg4tj14ssmnw"]
 
-[ext_resource type="Texture2D" uid="uid://dpyiww1g8yd85" path="res://assets/boss_bakunawa/Level_3_Boss_patag.png" id="1_rvu0m"]
+[ext_resource type="Texture2D" uid="uid://dpyiww1g8yd85" path="res://scenes/enemy/boss_bakunawa/Level_3_Boss_patag.png" id="1_rvu0m"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/boss_kapre/tree_col.gd" id="2_1polu"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="3_lce8a"]
 [ext_resource type="Texture2D" uid="uid://d2c6datmedcvu" path="res://assets/img/environment/light.png" id="4_qbq52"]
@@ -15,6 +15,7 @@
 [ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://UI/controls/touch_controls.tscn" id="13_l55w2"]
 [ext_resource type="PackedScene" uid="uid://b26d6cjvoptwq" path="res://particles/particles.tscn" id="14_48pfa"]
 [ext_resource type="PackedScene" uid="uid://bs41hi545o4f2" path="res://music/bgmusic/bgm_3.tscn" id="15_etvd0"]
+[ext_resource type="PackedScene" uid="uid://bnl4sh1w8hpn5" path="res://scenes/enemy/bakunawa/bakunawa.tscn" id="16_ivnpo"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_qt7xw"]
 texture = ExtResource("1_rvu0m")
@@ -4942,33 +4943,9 @@ sources/0 = SubResource("TileSetAtlasSource_qt7xw")
 
 [sub_resource type="Animation" id="Animation_502wh"]
 length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("player/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(0, -92)]
-}
 
 [sub_resource type="Animation" id="Animation_jm8vu"]
 resource_name = "boss_intro"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("player/Camera2D:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(0, -92), Vector2(464, -69)]
-}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_a6rlu"]
 _data = {
@@ -5026,7 +5003,23 @@ shape = SubResource("RectangleShape2D_30jcn")
 one_way_collision = true
 script = ExtResource("2_1polu")
 
+[node name="TouchControls" parent="." instance=ExtResource("13_l55w2")]
+visible = false
+
+[node name="particles" parent="." instance=ExtResource("14_48pfa")]
+modulate = Color(0.282394, 0.64498, 0.96685, 1)
+position = Vector2(173, 502)
+
+[node name="bg3" parent="." instance=ExtResource("15_etvd0")]
+position = Vector2(32, 22)
+autoplay = false
+
+[node name="Bakunawa" parent="." instance=ExtResource("16_ivnpo")]
+position = Vector2(636, 552)
+scale = Vector2(1.86, 1.86)
+
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_lce8a")]
+visible = false
 position = Vector2(-118, 546)
 camera = NodePath("Camera2D")
 
@@ -5073,13 +5066,3 @@ metadata/_edit_use_anchors_ = true
 visible = false
 script = ExtResource("12_dffmq")
 metadata/_edit_use_anchors_ = true
-
-[node name="TouchControls" parent="." instance=ExtResource("13_l55w2")]
-visible = false
-
-[node name="particles" parent="." instance=ExtResource("14_48pfa")]
-modulate = Color(0.282394, 0.64498, 0.96685, 1)
-position = Vector2(173, 502)
-
-[node name="bg3" parent="." instance=ExtResource("15_etvd0")]
-position = Vector2(32, 22)

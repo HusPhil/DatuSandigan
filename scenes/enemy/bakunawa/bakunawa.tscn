@@ -1,4 +1,4 @@
-[gd_scene load_steps=46 format=3 uid="uid://bnl4sh1w8hpn5"]
+[gd_scene load_steps=48 format=3 uid="uid://bnl4sh1w8hpn5"]
 
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/bakunawa.gd" id="1_2dgd2"]
 [ext_resource type="Texture2D" uid="uid://bf4p3e0nhg5cr" path="res://assets/img/enemy/Bakunawa/bakunawa-Sheet.png" id="1_raad1"]
@@ -19,6 +19,8 @@
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/heavy_cast.gd" id="11_wkmp3"]
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/melee.gd" id="12_suwbb"]
 [ext_resource type="Script" path="res://scenes/enemy/bakunawa/beam_attack.gd" id="13_v61b2"]
+[ext_resource type="AudioStream" uid="uid://blcnpd1ldfyfg" path="res://music/sfx/cast.mp3" id="20_glwkr"]
+[ext_resource type="AudioStream" uid="uid://b3m8k0aofmjp6" path="res://music/sfx/bakunawa_slam.mp3" id="20_yhul3"]
 
 [sub_resource type="Animation" id="Animation_ge15b"]
 length = 0.001
@@ -611,6 +613,7 @@ position = Vector2(-63, -20)
 rotation = 3.14159
 
 [node name="MagicFX" type="Sprite2D" parent="."]
+visible = false
 texture = ExtResource("2_aa0k7")
 hframes = 40
 vframes = 2
@@ -679,14 +682,15 @@ position = Vector2(10, 8)
 shape = SubResource("RectangleShape2D_8sllx")
 debug_color = Color(0.926769, 3.83121e-05, 0.671138, 0.42)
 
-[node name="Label" type="Label" parent="."]
-offset_left = -20.0
-offset_top = -91.0
-offset_right = 27.0
-offset_bottom = -68.0
-text = "STATE"
-
 [node name="Timer" type="Timer" parent="."]
+
+[node name="cast" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_glwkr")
+volume_db = 10.0
+
+[node name="bodyslam" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("20_yhul3")
+volume_db = 6.0
 
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/CastingMagicball" method="_on_animation_tree_animation_finished"]
 [connection signal="animation_finished" from="AnimationTree" to="StateMachine/BeamAttack" method="_on_animation_tree_animation_finished"]
