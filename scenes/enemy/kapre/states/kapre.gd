@@ -11,3 +11,4 @@ func _ready() -> void:
 	state_label = $Label
 	animation_tree = $AnimationTree
 	#hit_box_shape.disabled = false
+	
