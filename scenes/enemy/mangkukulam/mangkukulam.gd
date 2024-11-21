@@ -16,5 +16,5 @@ func _ready() -> void:
 	spawnMagicPoint = $SpawnMagic
 	state_label = $Label
 
-func _process(delta: float) -> void:
-	state_label.text = str(health)
+#func _process(delta: float) -> void:
+	#state_label.text = str(health)

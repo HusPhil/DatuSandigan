@@ -903,7 +903,7 @@ shape = SubResource("RectangleShape2D_gkatm")
 
 [node name="HitBoxComponent" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
 light_mask = 2
-collision_layer = 2
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("14_1nyxt")
 flippable_sprite = NodePath("../FlippableSprite")
@@ -918,7 +918,7 @@ script = ExtResource("11_eusts")
 default_position = Vector2(23, -14)
 
 [node name="DetectPlayer" parent="." node_paths=PackedStringArray("flippable_sprite") instance=ExtResource("10_qohqf")]
-collision_layer = 2
+collision_layer = 4
 collision_mask = 2
 script = ExtResource("12_fa120")
 flippable_sprite = NodePath("../FlippableSprite")

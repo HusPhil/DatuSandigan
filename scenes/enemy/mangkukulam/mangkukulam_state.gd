@@ -29,8 +29,14 @@ const melee_animation = "melee"
 const heavy_casting_animation = "heavy_casting"
 const beam_attack_animation = "beam_attack"
 const shoot_animation = "shoot"
+const spawning_animation = "spawning"
 
 var rage_on = false
+
+
+
+var ran
+var spawned_enemies = []
 
 
 func update(delta: float) -> void:

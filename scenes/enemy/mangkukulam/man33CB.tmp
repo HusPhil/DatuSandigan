@@ -3,7 +3,6 @@
 [ext_resource type="Script" path="res://scenes/enemy/mangkukulam/mangkukulam.gd" id="1_vrg0m"]
 [ext_resource type="Texture2D" uid="uid://bxtjmsux54ico" path="res://scenes/enemy/mangkukulam/sprites/mangkukulaml_all_movements.png" id="2_ievsx"]
 [ext_resource type="Script" path="res://components/flippable/flipabble_sprite2d.gd" id="3_m1jry"]
-[ext_resource type="Script" path="res://scenes/enemy/mangkukulam/intro.gd" id="6_3vqbf"]
 [ext_resource type="Script" path="res://scenes/enemy/mangkukulam/idle.gd" id="6_xm4sd"]
 [ext_resource type="PackedScene" uid="uid://km5ncswci6i0" path="res://components/flippable/flippable_shape_2d.tscn" id="7_1wlm7"]
 [ext_resource type="Script" path="res://scenes/enemy/mangkukulam/casting.gd" id="7_cp7sq"]
@@ -264,59 +263,6 @@ tracks/3/keys = {
 "values": [51, 50, 49, 48, 46, 45, 44, 43, 42, 41, 40, 39]
 }
 
-[sub_resource type="Animation" id="Animation_jfxls"]
-resource_name = "spawning"
-length = 1.62501
-step = 0.125
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("FlippableSprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_ievsx")]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("FlippableSprite:hframes")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [13]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("FlippableSprite:vframes")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [4]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("FlippableSprite:frame")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.125, 0.25, 0.375, 0.5, 0.625, 0.75, 0.875, 1, 1.125, 1.25, 1.375, 1.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_owy8q"]
 _data = {
 "RESET": SubResource("Animation_ge15b"),
@@ -324,10 +270,12 @@ _data = {
 "casting": SubResource("Animation_kti66"),
 "idle": SubResource("Animation_80rtm"),
 "shoot": SubResource("Animation_urcjc"),
-"spawning": SubResource("Animation_jfxls"),
 "teleport_in": SubResource("Animation_noud7"),
 "teleport_out": SubResource("Animation_fusxd")
 }
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_to51h"]
+animation = &"attack"
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r6ybw"]
 animation = &"casting"
@@ -335,29 +283,33 @@ animation = &"casting"
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_2erqo"]
 animation = &"idle"
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_54krx"]
-animation = &"spawning"
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dxlti"]
+animation = &"shoot"
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_bkapt"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_2uafn"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s8cxj"]
 
 [sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_48etb"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_xgetq"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_7vpwu"]
 
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_a6to8"]
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_birm4"]
 
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_t477i"]
 states/End/position = Vector2(908, 100)
+states/attack/node = SubResource("AnimationNodeAnimation_to51h")
+states/attack/position = Vector2(570, 176)
 states/casting/node = SubResource("AnimationNodeAnimation_r6ybw")
-states/casting/position = Vector2(310, 202)
+states/casting/position = Vector2(321, 202)
 states/idle/node = SubResource("AnimationNodeAnimation_2erqo")
 states/idle/position = Vector2(439, 100)
-states/spawning/node = SubResource("AnimationNodeAnimation_54krx")
-states/spawning/position = Vector2(612, 202)
-transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bkapt"), "idle", "casting", SubResource("AnimationNodeStateMachineTransition_s8cxj"), "casting", "idle", SubResource("AnimationNodeStateMachineTransition_48etb"), "idle", "spawning", SubResource("AnimationNodeStateMachineTransition_xgetq"), "spawning", "idle", SubResource("AnimationNodeStateMachineTransition_a6to8")]
-graph_offset = Vector2(85, 49)
+states/shoot/node = SubResource("AnimationNodeAnimation_dxlti")
+states/shoot/position = Vector2(490, 237)
+transitions = ["Start", "idle", SubResource("AnimationNodeStateMachineTransition_bkapt"), "idle", "attack", SubResource("AnimationNodeStateMachineTransition_2uafn"), "idle", "casting", SubResource("AnimationNodeStateMachineTransition_s8cxj"), "casting", "idle", SubResource("AnimationNodeStateMachineTransition_48etb"), "casting", "shoot", SubResource("AnimationNodeStateMachineTransition_7vpwu"), "shoot", "idle", SubResource("AnimationNodeStateMachineTransition_birm4")]
+graph_offset = Vector2(-37, 42)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_o44rc"]
 size = Vector2(34, 49)
@@ -397,7 +349,6 @@ tree_root = SubResource("AnimationNodeStateMachine_t477i")
 anim_player = NodePath("../AnimationPlayer")
 
 [node name="FlippableShape2D" parent="." instance=ExtResource("7_1wlm7")]
-visible = false
 light_mask = 4
 position = Vector2(-4, -5)
 shape = SubResource("RectangleShape2D_o44rc")
@@ -406,10 +357,10 @@ shape = SubResource("RectangleShape2D_o44rc")
 initial_state = NodePath("Intro")
 
 [node name="Intro" type="Node" parent="StateMachine"]
-script = ExtResource("6_3vqbf")
+script = ExtResource("6_xm4sd")
 
 [node name="Timer" type="Timer" parent="StateMachine/Intro"]
-wait_time = 0.75
+wait_time = 1.5
 one_shot = true
 
 [node name="Idle" type="Node" parent="StateMachine"]
@@ -460,7 +411,3 @@ offset_top = -91.0
 offset_right = 27.0
 offset_bottom = -68.0
 text = "STATE"
-
-[connection signal="animation_finished" from="AnimationTree" to="StateMachine/Spawning" method="_on_animation_tree_animation_finished"]
-[connection signal="timeout" from="StateMachine/Intro/Timer" to="StateMachine/Intro" method="_on_timer_timeout"]
-[connection signal="timeout" from="StateMachine/Idle/Timer" to="StateMachine/Idle" method="_on_timer_timeout"]

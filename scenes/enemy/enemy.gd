@@ -55,7 +55,6 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	hurt_counter += 1.0/60.0
-	print(hurt_counter)
 	if hurt_counter > 0.2 and sprite.material:
 		sprite.material = null
 	handle_gravity(delta)

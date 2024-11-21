@@ -4,18 +4,19 @@ extends MangkukulamState
 @onready var atk_tmr : Timer = $Timer
 
 func enter(previous_state_path: String, data := {}) -> void:
-	playback.travel(idle_animation)
-	atk_tmr.start()
-	enemy.state_label. text = "IDLE"
+	enemy.state_label. text = "SPAWNING"
+	playback.travel(spawning_animation)
 	pass
 
 	
-func physics_update(_delta : float):
-	if atk_tmr.is_stopped():
-		if !rage_on:
-			finished.emit([CASTING, SPAWNING].pick_random())
-		else:
-			finished.emit(BEAM_ATTACK) 
-	
+func physics_update(_delta : float):	
 	pass
 	
+
+
+func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
+	if anim_name == spawning_animation and name == SPAWNING:
+		print("TRANSITION")
+		finished.emit(IDLE)
+		
+	pass # Replace with function body.
