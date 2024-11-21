@@ -4,7 +4,7 @@ extends Enemy
 func _ready() -> void:
 	# redefine the values from the enemy class	
 	speed = 300
-	max_health = 1000
+	max_health = 9000
 	health = max_health
 	animation_player = $AnimationPlayer
 	hit_box_shape = $HitBoxComponent/FlippableShape

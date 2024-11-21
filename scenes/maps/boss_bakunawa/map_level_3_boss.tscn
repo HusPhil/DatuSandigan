@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://wg4tj14ssmnw"]
+[gd_scene load_steps=25 format=3 uid="uid://wg4tj14ssmnw"]
 
 [ext_resource type="Texture2D" uid="uid://cndw42h1lv47s" path="res://scenes/maps/boss_bakunawa/level_3_boss.png" id="1_8h0r7"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/boss_kapre/tree_col.gd" id="2_dit4s"]
@@ -8,14 +8,12 @@
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="6_powvw"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="7_t4cub"]
 [ext_resource type="PackedScene" uid="uid://d3g3bhciw8gw3" path="res://UI/HUD/health_bar.tscn" id="8_bmo2d"]
-[ext_resource type="Script" path="res://UI/HUD/health_bar_tunay.gd" id="9_12p2i"]
 [ext_resource type="PackedScene" uid="uid://bs41hi545o4f2" path="res://music/bgmusic/bgm_3.tscn" id="10_6w6qe"]
 [ext_resource type="PackedScene" uid="uid://dsino0hflx5po" path="res://UI/HUD/moon_bar.tscn" id="10_ixblv"]
-[ext_resource type="Script" path="res://UI/HUD/moon_bar.gd" id="11_leke8"]
 [ext_resource type="PackedScene" uid="uid://dkoy4oocq480a" path="res://UI/HUD/pause_menu.tscn" id="12_hdirf"]
-[ext_resource type="Script" path="res://UI/HUD/pause_menu.gd" id="13_fmvs2"]
 [ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://UI/controls/touch_controls.tscn" id="14_hvgw7"]
 [ext_resource type="PackedScene" uid="uid://b26d6cjvoptwq" path="res://particles/particles.tscn" id="16_sfapv"]
+[ext_resource type="PackedScene" uid="uid://bnl4sh1w8hpn5" path="res://scenes/enemy/bakunawa/bakunawa.tscn" id="17_6bpq6"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv7hy"]
 texture = ExtResource("1_8h0r7")
@@ -5197,27 +5195,25 @@ script = ExtResource("7_t4cub")
 [node name="HealthBar" parent="player/CanvasLayer" instance=ExtResource("8_bmo2d")]
 anchors_preset = -1
 anchor_right = 0.420139
-offset_left = 32.0
-offset_top = 22.0
-offset_right = 123.0
-offset_bottom = 42.0
-script = ExtResource("9_12p2i")
+offset_left = 39.0
+offset_top = 80.0
+offset_right = 130.0
+offset_bottom = 100.0
 metadata/_edit_use_anchors_ = true
 
 [node name="MoonBar" parent="player/CanvasLayer" instance=ExtResource("10_ixblv")]
 anchors_preset = -1
 anchor_top = -0.0123457
+anchor_right = -0.127604
 anchor_bottom = -0.0123457
-offset_left = 33.0
-offset_top = 84.0
-offset_right = 608.0
-offset_bottom = 104.0
-script = ExtResource("11_leke8")
+offset_left = 38.0
+offset_top = 124.0
+offset_right = 613.0
+offset_bottom = 144.0
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="player/CanvasLayer" instance=ExtResource("12_hdirf")]
 visible = false
-script = ExtResource("13_fmvs2")
 metadata/_edit_use_anchors_ = true
 
 [node name="TouchControls" parent="." instance=ExtResource("14_hvgw7")]
@@ -5228,3 +5224,7 @@ position = Vector2(832, 533)
 
 [node name="bg3" parent="." instance=ExtResource("10_6w6qe")]
 position = Vector2(32, 22)
+
+[node name="Bakunawa" parent="." node_paths=PackedStringArray("player") instance=ExtResource("17_6bpq6")]
+position = Vector2(884, 380)
+player = NodePath("../player")

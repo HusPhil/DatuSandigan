@@ -16,45 +16,45 @@ extends CanvasLayer
 var weapon_index = 0
 
 func _on_tbtn_pause_pressed() -> void:
-	tbtn_pause.modulate = Color(1,1,1,0.5)
+	tbtn_pause.modulate = Color(1,1,1,1)
 
 
 func _on_tbtn_otherweapon_pressed() -> void:
-	var player = get_parent().get_parent().get_child(0).get_node("player")
+	var player = get_parent().get_node("player")
 	weapon_index = (weapon_index + 1) % weapon_list.size()
 	var new_weapon = weapon_list[weapon_index]
-	tbtn_otherweapon.modulate = Color(1,1,1,0.5)
+	tbtn_otherweapon.modulate = Color(1,1,1,1)
 	
 	player.current_weapon = new_weapon
 	print("Current weapon changed to:", player.current_weapon.name)
 
 
 func _on_tbtn_right_pressed() -> void:
-	tbtn_right.modulate = Color(1,1,1,0.5)
-
-func _on_tbtn_right_released() -> void:	
 	tbtn_right.modulate = Color(1,1,1,1)
 
-func _on_tbtn_left_pressed() -> void:
-	tbtn_left.modulate = Color(1,1,1,0.5)
+func _on_tbtn_right_released() -> void:	
+	tbtn_right.modulate = Color(1,1,1,0.5)
 
-func _on_tbtn_left_released() -> void:
+func _on_tbtn_left_pressed() -> void:
 	tbtn_left.modulate = Color(1,1,1,1)
 
-func _on_tbtn_jump_pressed() -> void:
-	tbtn_jump.modulate = Color(1,1,1,0.5)
+func _on_tbtn_left_released() -> void:
+	tbtn_left.modulate = Color(1,1,1,0.5)
 
-func _on_tbtn_jump_released() -> void:
+func _on_tbtn_jump_pressed() -> void:
 	tbtn_jump.modulate = Color(1,1,1,1)
 
+func _on_tbtn_jump_released() -> void:
+	tbtn_jump.modulate = Color(1,1,1,0.5)
+
 func _on_tbtn_otherweapon_released() -> void:
-	tbtn_otherweapon.modulate = Color(1,1,1,1)
+	tbtn_otherweapon.modulate = Color(1,1,1,0.5)
 
 func _on_tbtn_atk_pressed() -> void:
-	tbtn_atk.modulate = Color(1,1,1,0.5)
+	tbtn_atk.modulate = Color(1,1,1,1)
 	
 func _on_tbtn_atk_released() -> void:
-	tbtn_atk.modulate = Color(1,1,1,1)
+	tbtn_atk.modulate = Color(1,1,1,0.5)
 
 func _on_tbtn_pause_released() -> void:
-	tbtn_pause.modulate = Color(1,1,1,1)
+	tbtn_pause.modulate = Color(1,1,1,0.5)

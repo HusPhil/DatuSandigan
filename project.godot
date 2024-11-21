@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="HackNSlash"
-run/main_scene="res://level_2_mangkukulam.tscn"
+run/main_scene="res://scenes/enemy/kapre/boss_kapre/map_level_1_boss.tscn"
 config/features=PackedStringArray("4.3", "GL Compatibility")
 config/icon="res://icon.svg"
 

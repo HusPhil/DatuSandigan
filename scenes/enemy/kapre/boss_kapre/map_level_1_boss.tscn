@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0dnve3bqits2"]
+[gd_scene load_steps=24 format=3 uid="uid://b0dnve3bqits2"]
 
 [ext_resource type="Texture2D" uid="uid://dl0qbsxiid7en" path="res://scenes/enemy/kapre/boss_kapre/level_1_boss.png" id="1_v5xtv"]
 [ext_resource type="PackedScene" uid="uid://50wiqjkiibly" path="res://scenes/enemy/kapre/kapre.tscn" id="2_bdc68"]
@@ -9,11 +9,8 @@
 [ext_resource type="Script" path="res://camera_2d.gd" id="6_naj8q"]
 [ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://UI/controls/touch_controls.tscn" id="8_t3xan"]
 [ext_resource type="PackedScene" uid="uid://d3g3bhciw8gw3" path="res://UI/HUD/health_bar.tscn" id="9_darfd"]
-[ext_resource type="Script" path="res://UI/HUD/health_bar_tunay.gd" id="9_lvv3d"]
 [ext_resource type="PackedScene" uid="uid://dsino0hflx5po" path="res://UI/HUD/moon_bar.tscn" id="10_c2j8h"]
-[ext_resource type="Script" path="res://UI/HUD/moon_bar.gd" id="11_detth"]
 [ext_resource type="PackedScene" uid="uid://dkoy4oocq480a" path="res://UI/HUD/pause_menu.tscn" id="11_vmqfp"]
-[ext_resource type="Script" path="res://UI/HUD/pause_menu.gd" id="13_36fk2"]
 [ext_resource type="PackedScene" uid="uid://cup1bbxnd870u" path="res://powerups/powerups.tscn" id="16_uiw6i"]
 [ext_resource type="PackedScene" uid="uid://b26d6cjvoptwq" path="res://particles/particles.tscn" id="17_le4g4"]
 
@@ -1863,23 +1860,20 @@ offset_left = 32.0
 offset_top = 22.0
 offset_right = 120.0
 offset_bottom = 42.0
-script = ExtResource("9_lvv3d")
 metadata/_edit_use_anchors_ = true
 
 [node name="MoonBar" parent="player/CanvasLayer" instance=ExtResource("10_c2j8h")]
 anchors_preset = -1
 anchor_top = -0.0123457
-anchor_bottom = -0.0123457
-offset_left = 32.0
-offset_top = 61.0
-offset_right = 604.0
-offset_bottom = 88.0
-script = ExtResource("11_detth")
+anchor_bottom = -0.021605
+offset_left = 31.0
+offset_top = 55.0
+offset_right = 603.0
+offset_bottom = 82.0
 metadata/_edit_use_anchors_ = true
 
 [node name="PauseMenu" parent="player/CanvasLayer" instance=ExtResource("11_vmqfp")]
 visible = false
-script = ExtResource("13_36fk2")
 metadata/_edit_use_anchors_ = true
 
 [node name="TouchControls" parent="." instance=ExtResource("8_t3xan")]

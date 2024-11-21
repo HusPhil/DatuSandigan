@@ -73,6 +73,7 @@ func ready_for_input() -> void:
 
 func take_damage(attack : Attack):
 	is_hurt.emit(attack)
+	health -=attack.atk_damage/100
 	hit_flash_animation_player.play("hit_flash")
 	pass
 

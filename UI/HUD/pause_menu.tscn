@@ -1,8 +1,8 @@
 [gd_scene load_steps=8 format=3 uid="uid://dkoy4oocq480a"]
 
-[ext_resource type="Script" path="res://HUD/pause_menu.gd" id="1_j1v3i"]
-[ext_resource type="Shader" path="res://HUD/pause_menu.gdshader" id="2_1sfop"]
-[ext_resource type="FontFile" uid="uid://dpchcnevcggay" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_mxx47"]
+[ext_resource type="Script" path="res://UI/HUD/pause_menu.gd" id="1_j1v3i"]
+[ext_resource type="Shader" path="res://UI/HUD/pause_menu.gdshader" id="2_1sfop"]
+[ext_resource type="FontFile" uid="uid://dpchcnevcggay" path="res://UI/fonts/PixelOperator8-Bold.ttf" id="3_mxx47"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_cxduy"]
 shader = ExtResource("2_1sfop")

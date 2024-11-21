@@ -22,7 +22,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/kapre/smoking.gd" id="15_kfp3r"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/healing.gd" id="21_bp7ey"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/smoking_area.gd" id="22_bh54t"]
-[ext_resource type="AudioStream" uid="uid://b17eqjc42l15j" path="res://music/bgmusic/kapreBgm/bgm_kapre.mp3" id="24_a6skl"]
+[ext_resource type="AudioStream" uid="uid://cd8koi7ja5bsl" path="res://music/sfx/kapre.mp3" id="23_e4l21"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_qf018"]
 shader = ExtResource("3_s6d6y")
@@ -994,7 +994,7 @@ rotation = 1.16937
 shape = SubResource("CapsuleShape2D_7wbd4")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
-stream = ExtResource("24_a6skl")
+stream = ExtResource("23_e4l21")
 
 [connection signal="timeout" from="hurtShadeTimer" to="." method="_on_hurt_shade_timer_timeout"]
 [connection signal="is_flipped" from="FlippableSprite" to="." method="_on_flippable_sprite_is_flipped"]

@@ -1,6 +1,7 @@
 extends KapreState
 
 #@onready var prepare_tmr : Timer = $Timer
+@onready var jump: AudioStreamPlayer2D = $"../../AudioStreamPlayer2D"
 
 const SMASH_GRAVITY: float = 10.0
 
@@ -12,6 +13,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 	has_jumped = false
 	enemy.current_state = SMASHING
 	enemy.animation_player.play(smash_animation)
+	jump.play()
 	pass
 
 ## Called by the state machine on the engine's physics update tick.

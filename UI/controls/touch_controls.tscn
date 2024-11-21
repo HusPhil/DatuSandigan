@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://dngivgyn5hrfx"]
+[gd_scene load_steps=7 format=3 uid="uid://dngivgyn5hrfx"]
 
+[ext_resource type="Script" path="res://UI/controls/touch_controls.gd" id="1_e3rju"]
 [ext_resource type="Texture2D" uid="uid://c2vykuci4nckd" path="res://UI/control_buttons/SolidArrow-Left@2x.png" id="2_arxk8"]
 [ext_resource type="Texture2D" uid="uid://cps12eofpkqb7" path="res://UI/control_buttons/SolidArrow-Right@2x.png" id="3_l14y8"]
 [ext_resource type="Texture2D" uid="uid://cq80exhry8fo7" path="res://UI/control_buttons/Pause@2x.png" id="5_w72yo"]
@@ -7,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dwp26yox7cxyy" path="res://UI/control_buttons/newwepaon.png" id="7_w771j"]
 
 [node name="TouchControls" type="CanvasLayer"]
+script = ExtResource("1_e3rju")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 anchors_preset = 2

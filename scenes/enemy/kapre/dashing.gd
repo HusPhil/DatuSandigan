@@ -36,7 +36,7 @@ func _on_hit_box_component_body_entered(body: Node2D) -> void:
 	if body.has_method("take_damage"):
 		var atk : Attack = Attack.new()
 		atk.atk_damage = enemy.damage;
-		atk.knockback_force = 100;
+		atk.knockback_force = 35.5;
 		atk.source_entity = enemy
 		atk.target_entity = body as Player
 		body.take_damage(atk);
