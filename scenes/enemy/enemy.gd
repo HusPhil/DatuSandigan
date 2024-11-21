@@ -59,7 +59,11 @@ func take_damage(attack : Attack) -> void:
 	
 	if health <= 0:
 		queue_free()
-
+		if (get_parent().name) == "Map_Level_1_Boss":
+			SceneManager.change_scene("res://scenes/enemy/mangkukulam/boss_manananggal/map_level_2_boss.tscn")
+		if (get_parent().name) == "Map_Level_2_Boss":
+			SceneManager.change_scene("res://scenes/enemy/boss_bakunawa/map_level_3_boss.tscn")
+	print(get_parent().name)
 func _ready() -> void:
 	left_bound = self.position + Vector2(-125, 0)
 	right_bound = self.position + Vector2(125, 0)
