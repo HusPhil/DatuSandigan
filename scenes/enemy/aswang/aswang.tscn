@@ -1,6 +1,6 @@
 [gd_scene load_steps=21 format=3 uid="uid://btco8640jytd1"]
 
-[ext_resource type="Script" path="res://scenes/enemy/enemy.gd" id="1_st8ni"]
+[ext_resource type="Script" path="res://scenes/enemy/aswang/aswang.gd" id="1_w7285"]
 [ext_resource type="PackedScene" uid="uid://bghn804k1k3i8" path="res://components/flippable/flippable_sprite_2d.tscn" id="2_2l1wn"]
 [ext_resource type="Texture2D" uid="uid://dr0kskl81ky0d" path="res://assets/img/enemy/Aswang/aswang_all_movementspng.png" id="2_xeh48"]
 [ext_resource type="PackedScene" uid="uid://cmwotsgmrkf85" path="res://scenes/state_machine/state_machine.tscn" id="5_clq5g"]
@@ -283,7 +283,7 @@ size = Vector2(42, 49)
 
 [node name="Aswang" type="CharacterBody2D"]
 collision_layer = 4
-script = ExtResource("1_st8ni")
+script = ExtResource("1_w7285")
 
 [node name="FlippableSprite" parent="." instance=ExtResource("2_2l1wn")]
 texture_filter = 1

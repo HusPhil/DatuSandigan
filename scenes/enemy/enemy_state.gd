@@ -21,7 +21,8 @@ var animation_tree : AnimationTree
 func _ready() -> void:
 	await owner.ready
 	enemy = owner as Enemy
-	playback = enemy.animation_tree["parameters/playback"]
+	if enemy.animation_tree:
+		playback = enemy.animation_tree["parameters/playback"]
 	assert(enemy != null, "The EnemyState state type must be used only in the enemy scene. It needs the owner to be a Enemy node.")
 
 func physics_update(_delta: float) -> void:

@@ -56,6 +56,9 @@ func take_damage(attack : Attack) -> void:
 	shader.shader = custom_material
 	shader.set_shader_parameter("enabled", true)
 	sprite.material = shader
+	
+	if health <= 0:
+		queue_free()
 
 func _ready() -> void:
 	left_bound = self.position + Vector2(-125, 0)
