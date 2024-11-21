@@ -8,7 +8,7 @@ extends EnemyState
 
 func enter(previous_state_path: String, data := {}) -> void:
 	enemy.state_label.text = "WANDERING"
-	enemy.animation_player.play(run_animation)
+	enemy.animation_player.play(run_animation) 
 
 	
 func change_direction() -> void:
@@ -35,7 +35,5 @@ func change_direction() -> void:
 	
 
 func _on_aswang_is_damaged(attack: Attack) -> void:
-	
 	finished.emit(HURTING, {"attack": attack})
-	#enemy.plouy()
 	pass # Replace with function body.

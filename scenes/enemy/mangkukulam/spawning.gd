@@ -22,7 +22,7 @@ func _on_animation_tree_animation_finished(anim_name: StringName) -> void:
 		print("TRANSITION")
 		var enemy_to_spawn : PackedScene = [enemy.Aswang, enemy.Manananggal].pick_random()
 	
-		var spawnedEnemy = enemy.Aswang.instantiate()
+		var spawnedEnemy = enemy.Aswang.instantiate() as Enemy
 
 		spawnedEnemy.position = enemy.player.position
 		spawnedEnemy.player = enemy.player

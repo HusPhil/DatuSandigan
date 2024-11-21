@@ -1,8 +1,9 @@
-[gd_scene load_steps=25 format=3 uid="uid://catvgvms1bps"]
+[gd_scene load_steps=26 format=3 uid="uid://catvgvms1bps"]
 
 [ext_resource type="Texture2D" uid="uid://dxxvvitwc0wq0" path="res://powerups/sarimanok/sarimanok.png" id="1_6hkvu"]
 [ext_resource type="Script" path="res://powerups/sarimanok/sarimanok.gd" id="1_kwvr2"]
 [ext_resource type="PackedScene" uid="uid://c566x1xucatqs" path="res://particles/explosion.tscn" id="3_unpjy"]
+[ext_resource type="PackedScene" uid="uid://bfuw0fw6a6l5q" path="res://music/sfx/powerup_sfx.tscn" id="4_8x4bt"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_tm3he"]
 atlas = ExtResource("1_6hkvu")
@@ -164,5 +165,7 @@ shape = SubResource("CircleShape2D_bbi5h")
 
 [node name="explosion" parent="." instance=ExtResource("3_unpjy")]
 modulate = Color(0.964782, 0.953927, 0, 1)
+
+[node name="powerup_sfx" parent="." instance=ExtResource("4_8x4bt")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

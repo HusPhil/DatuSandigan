@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://b0dnve3bqits2"]
+[gd_scene load_steps=28 format=3 uid="uid://b0dnve3bqits2"]
 
 [ext_resource type="Texture2D" uid="uid://dl0qbsxiid7en" path="res://scenes/enemy/kapre/boss_kapre/level_1_boss.png" id="1_v5xtv"]
 [ext_resource type="PackedScene" uid="uid://50wiqjkiibly" path="res://scenes/enemy/kapre/kapre.tscn" id="2_bdc68"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://scenes/enemy/kapre/boss_kapre/tree_col.gd" id="5_2q7o5"]
 [ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="5_67xxr"]
 [ext_resource type="Script" path="res://camera_2d.gd" id="6_naj8q"]
+[ext_resource type="PackedScene" uid="uid://dvoo6r3ou2omf" path="res://Shaders/light_player.tscn" id="7_4fj6q"]
 [ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://UI/controls/touch_controls.tscn" id="8_t3xan"]
 [ext_resource type="PackedScene" uid="uid://d3g3bhciw8gw3" path="res://UI/HUD/health_bar.tscn" id="9_darfd"]
 [ext_resource type="Script" path="res://UI/HUD/health_bar_tunay.gd" id="9_lvv3d"]
@@ -1840,12 +1841,7 @@ script = ExtResource("4_ym5p1")
 position = Vector2(-53, 345)
 camera = NodePath("Camera2D")
 
-[node name="PointLight2D" type="PointLight2D" parent="player"]
-energy = 0.5
-shadow_enabled = true
-texture = ExtResource("3_n1rjp")
-texture_scale = 0.5
-script = ExtResource("4_ym5p1")
+[node name="PointLight2D" parent="player" instance=ExtResource("7_4fj6q")]
 
 [node name="Camera2D" type="Camera2D" parent="player"]
 position = Vector2(0, -92)

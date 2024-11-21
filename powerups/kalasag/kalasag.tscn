@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://guci86ej7114"]
+[gd_scene load_steps=11 format=3 uid="uid://guci86ej7114"]
 
 [ext_resource type="Script" path="res://powerups/kalasag/kalasag.gd" id="1_evour"]
 [ext_resource type="Texture2D" uid="uid://bxji5lniaj3vy" path="res://powerups/kalasag/shield.png" id="1_tmct7"]
 [ext_resource type="PackedScene" uid="uid://c566x1xucatqs" path="res://particles/explosion.tscn" id="3_iccok"]
+[ext_resource type="PackedScene" uid="uid://bfuw0fw6a6l5q" path="res://music/sfx/powerup_sfx.tscn" id="4_lvjag"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_mibc4"]
 atlas = ExtResource("1_tmct7")
@@ -58,5 +59,7 @@ shape = SubResource("CircleShape2D_rsspb")
 
 [node name="explosion" parent="." instance=ExtResource("3_iccok")]
 modulate = Color(0, 0.952047, 0.452962, 1)
+
+[node name="powerup_sfx" parent="." instance=ExtResource("4_lvjag")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

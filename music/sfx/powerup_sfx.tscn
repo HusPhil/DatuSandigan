@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfuw0fw6a6l5q"]
+
+[ext_resource type="AudioStream" uid="uid://dx40538tdd3ua" path="res://music/sfx/powerups.mp3" id="1_xofpk"]
+
+[node name="powerup_sfx" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_xofpk")

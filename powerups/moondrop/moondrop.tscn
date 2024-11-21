@@ -1,8 +1,9 @@
-[gd_scene load_steps=10 format=3 uid="uid://0vcjsdorsvp5"]
+[gd_scene load_steps=11 format=3 uid="uid://0vcjsdorsvp5"]
 
 [ext_resource type="Texture2D" uid="uid://4omt6375wnlb" path="res://powerups/moondrop/moondrop.png" id="1_1hqsh"]
 [ext_resource type="Script" path="res://powerups/moondrop/moondrop.gd" id="1_f5lbn"]
 [ext_resource type="PackedScene" uid="uid://c566x1xucatqs" path="res://particles/explosion.tscn" id="3_jer4x"]
+[ext_resource type="PackedScene" uid="uid://bfuw0fw6a6l5q" path="res://music/sfx/powerup_sfx.tscn" id="4_56du2"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_k6m3d"]
 atlas = ExtResource("1_1hqsh")
@@ -60,5 +61,7 @@ shape = SubResource("CircleShape2D_f4rjt")
 
 [node name="explosion" parent="." instance=ExtResource("3_jer4x")]
 modulate = Color(1, 0.82103, 0.543161, 1)
+
+[node name="powerup_sfx" parent="." instance=ExtResource("4_56du2")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

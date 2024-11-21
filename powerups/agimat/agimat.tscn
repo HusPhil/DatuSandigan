@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://c7hlarmls0ej7"]
+[gd_scene load_steps=13 format=3 uid="uid://c7hlarmls0ej7"]
 
 [ext_resource type="Script" path="res://powerups/agimat/agimat.gd" id="1_sgaat"]
 [ext_resource type="Texture2D" uid="uid://ckkm5px7x2f0o" path="res://powerups/agimat/agimat.png" id="1_y353t"]
 [ext_resource type="PackedScene" uid="uid://c566x1xucatqs" path="res://particles/explosion.tscn" id="3_bbeyb"]
+[ext_resource type="PackedScene" uid="uid://bfuw0fw6a6l5q" path="res://music/sfx/powerup_sfx.tscn" id="4_idiax"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_uh2tw"]
 atlas = ExtResource("1_y353t")
@@ -74,5 +75,7 @@ shape = SubResource("CircleShape2D_bdd03")
 [node name="explosion" parent="." instance=ExtResource("3_bbeyb")]
 self_modulate = Color(0, 0.636013, 0.749178, 1)
 position = Vector2(0, 1)
+
+[node name="powerup_sfx" parent="." instance=ExtResource("4_idiax")]
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
