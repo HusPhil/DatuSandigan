@@ -31,6 +31,7 @@ func _on_area_entered(area: Area2D) -> void:
 		var projectile = area.owner as Projectile
 		projectile._current_velocity *= -1
 		projectile.rotation = 0
+		projectile._target = null
 		area.set_collision_mask_value(3, true)
 		print("DEFLECTED THE PROJECTILE to: ", projectile.get_parent())
 		projectile._is_deflected = true
