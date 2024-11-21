@@ -10,7 +10,6 @@
 [ext_resource type="Texture2D" uid="uid://cov7fui2huhcp" path="res://scenes/enemy/kapre/kapre_jump_roar.png" id="5_qdult"]
 [ext_resource type="Texture2D" uid="uid://6unc6amwrckl" path="res://scenes/enemy/kapre/kapre_dash_jump.png" id="5_wx12m"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/throwing.gd" id="8_uv62s"]
-[ext_resource type="Script" path="res://scenes/enemy/aswang/states/aswang_hurting.gd" id="9_ds20t"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/idle.gd" id="10_aij13"]
 [ext_resource type="PackedScene" uid="uid://de6rqhh7nx1o5" path="res://components/hitbox/hit_box_component.tscn" id="10_qohqf"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/melee_attack.gd" id="10_r6llu"]
@@ -837,6 +836,8 @@ _data = {
 "smoking": SubResource("Animation_fotv7")
 }
 
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_c20j7"]
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gkatm"]
 size = Vector2(114, 42.5)
 
@@ -891,6 +892,9 @@ libraries = {
 "": SubResource("AnimationLibrary_hurb6")
 }
 
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_c20j7")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 light_mask = 4
 position = Vector2(2.5, 4.5)
@@ -908,7 +912,6 @@ flippable_sprite = NodePath("../FlippableSprite")
 light_mask = 0
 position = Vector2(10, 14.875)
 shape = SubResource("RectangleShape2D_fdh32")
-disabled = true
 debug_color = Color(0.334819, 0.622371, 7.70092e-07, 0.42)
 script = ExtResource("11_eusts")
 default_position = Vector2(23, -14)
@@ -929,13 +932,6 @@ default_position = Vector2(23, -13)
 
 [node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("5_nkgfu")]
 initial_state = NodePath("PrepareSmash")
-
-[node name="Hurting" type="Node" parent="StateMachine"]
-script = ExtResource("9_ds20t")
-
-[node name="Timer" type="Timer" parent="StateMachine/Hurting"]
-wait_time = 0.5
-one_shot = true
 
 [node name="Smashing" type="Node" parent="StateMachine"]
 script = ExtResource("10_r6llu")
@@ -1007,7 +1003,6 @@ stream = ExtResource("24_a6skl")
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Dashing" method="_on_animation_player_animation_finished"]
 [connection signal="animation_finished" from="AnimationPlayer" to="StateMachine/Teleport1" method="_on_animation_player_animation_finished"]
 [connection signal="body_entered" from="HitBoxComponent" to="StateMachine/Dashing" method="_on_hit_box_component_body_entered"]
-[connection signal="timeout" from="StateMachine/Hurting/Timer" to="StateMachine/Hurting" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Smashing/Timer" to="StateMachine/Smashing" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/PrepareSmash/Timer" to="StateMachine/PrepareSmash" method="_on_timer_timeout"]
 [connection signal="timeout" from="StateMachine/Dashing/Timer" to="StateMachine/Dashing" method="_on_timer_timeout"]

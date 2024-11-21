@@ -1,7 +1,9 @@
 extends Enemy
 
 const MissileScene := preload("res://scenes/items/Missile.tscn")
-const MagicBallScene := preload("res://scenes/magic_ball.tscn")
+const MagicBall := preload("res://scenes/magic_ball.tscn")
+const Explosion := preload("res://scenes/items/explosion.tscn")
+
 
 
 func _ready() -> void:
@@ -19,6 +21,8 @@ func _ready() -> void:
 	
 	#hit_box_shape.disabled = false
 
+#func _process(delta: float) -> void:
+	#state_label.text = str(health)
 
 func _on_hurt_box_component_body_entered(body: Node2D) -> void:
 	print("HITBOx NG BAKUNAWA: ", body)
