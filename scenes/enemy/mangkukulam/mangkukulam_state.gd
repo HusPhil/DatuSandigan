@@ -33,12 +33,6 @@ const spawning_animation = "spawning"
 
 var rage_on = false
 
-
-
-var ran
-var spawned_enemies = []
-
-
 func update(delta: float) -> void:
 	if enemy.health <= (enemy.max_health / 2) and not rage_on:
 		rage_on = true

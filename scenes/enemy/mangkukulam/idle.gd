@@ -16,7 +16,9 @@ func _on_timer_timeout() -> void:
 	face_player()
 	
 	if !rage_on:
-		finished.emit(SPAWNING)
+		if not enemy.spawned_enemies:
+			print("BUMALIK NA DIN AGAD")
+			finished.emit(SPAWNING)
 	else:
 		finished.emit(CASTING)
 	pass # Replace with function body.

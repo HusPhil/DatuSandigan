@@ -6,6 +6,14 @@ extends MangkukulamState
 func enter(previous_state_path: String, data := {}) -> void:
 	enemy.state_label. text = "SPAWNING"
 	playback.travel(spawning_animation)
+	
+	var enemy_to_spawn : PackedScene = [enemy.Aswang, enemy.Manananggal].pick_random()
+	
+	var spawnedEnemy = enemy.Aswang.instantiate()
+
+	spawnedEnemy.global_position = enemy.player.global_position
+	
+	enemy.spawned_enemies.append(spawnedEnemy)
 	pass
 
 	

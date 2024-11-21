@@ -4,6 +4,9 @@ var speed := 10.0
 const CHASE_SPEED : float = 50.0
 const ACCELERATION : float = 300.0
 
+var randomSpawn
+var spawned_enemies = []
+
 var health: float 
 var max_health: float
 var hit_box_shape : FlippableShape
@@ -12,6 +15,12 @@ var damage : float = 100;
 var knock_back_force : float = 200;
 var hurt_counter : float
 var current_state : String 
+
+const MissileScene := preload("res://scenes/items/Missile.tscn")
+const MagicBallScene := preload("res://scenes/magic_ball.tscn")
+
+const Aswang := preload("res://scenes/enemy/aswang/aswang.tscn")
+const Manananggal := preload("res://scenes/enemy/manananggal/mananaggal.tscn")
 
 
 @onready var spawnMagicPoint : Marker2D

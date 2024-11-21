@@ -1,8 +1,5 @@
 extends Enemy
 
-const MissileScene := preload("res://scenes/items/Missile.tscn")
-const MagicBallScene := preload("res://scenes/magic_ball.tscn")
-
 func _ready() -> void:
 	# redefine the values from the enemy class	
 	speed = 300
@@ -15,6 +12,7 @@ func _ready() -> void:
 	animation_tree = $AnimationTree
 	spawnMagicPoint = $SpawnMagic
 	state_label = $Label
+	spawned_enemies = []
 
 #func _process(delta: float) -> void:
 	#state_label.text = str(health)
