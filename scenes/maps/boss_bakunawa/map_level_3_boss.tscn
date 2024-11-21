@@ -5170,7 +5170,7 @@ texture = ExtResource("4_eb4w4")
 texture_scale = 0.5
 script = ExtResource("5_rdl5n")
 
-[node name="AnimationTree" type="AnimationTree" parent="Kapre"]
+[node name="AnimationTree2" type="AnimationTree" parent="Kapre"]
 tree_root = SubResource("AnimationNodeStateMachine_0yl4v")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_powvw")]

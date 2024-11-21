@@ -6,7 +6,7 @@ const MagicBallScene := preload("res://scenes/magic_ball.tscn")
 func _ready() -> void:
 	# redefine the values from the enemy class	
 	speed = 300
-	max_health = 50000
+	max_health = 9000
 	health = max_health
 	animation_player = $AnimationPlayer
 	smoke_fx = $SmokeFX

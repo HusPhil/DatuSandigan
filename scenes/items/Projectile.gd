@@ -71,7 +71,10 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_HitBox_body_entered(_body: Node) -> void:
-	if _body == _target:
+	if _body != _target:
+		return
+	if _body.has_method("take_damage"):
+		_body.take_damage(_attack)
 		queue_free()
 		
 func _on_ActivationTime_timeout():

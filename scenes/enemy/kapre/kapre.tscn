@@ -912,6 +912,7 @@ flippable_sprite = NodePath("../FlippableSprite")
 light_mask = 0
 position = Vector2(10, 14.875)
 shape = SubResource("RectangleShape2D_fdh32")
+disabled = true
 debug_color = Color(0.334819, 0.622371, 7.70092e-07, 0.42)
 script = ExtResource("11_eusts")
 default_position = Vector2(23, -14)

@@ -1825,7 +1825,7 @@ script = ExtResource("5_2q7o5")
 position = Vector2(501, 143)
 player = NodePath("../player")
 
-[node name="AnimationTree" type="AnimationTree" parent="Kapre"]
+[node name="AnimationTree2" type="AnimationTree" parent="Kapre"]
 tree_root = SubResource("AnimationNodeStateMachine_ojbnu")
 
 [node name="PointLight2D" type="PointLight2D" parent="Kapre"]

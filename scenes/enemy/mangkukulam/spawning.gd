@@ -1,4 +1,4 @@
-extends BakunawaState
+extends MangkukulamState
 
 
 @onready var atk_tmr : Timer = $Timer
@@ -13,7 +13,7 @@ func enter(previous_state_path: String, data := {}) -> void:
 func physics_update(_delta : float):
 	if atk_tmr.is_stopped():
 		if !rage_on:
-			finished.emit([CASTING_MAGIC_BALL, MELEE].pick_random())
+			finished.emit([CASTING, SPAWNING].pick_random())
 		else:
 			finished.emit(BEAM_ATTACK) 
 	
