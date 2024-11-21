@@ -35,5 +35,6 @@ func _on_hurt_box_component_area_entered(area: Area2D) -> void:
 		var projectile = area.owner as Projectile
 		if projectile._is_deflected:
 			self.state_label.text = "-dmg 10"
+			take_damage(projectile._attack)
 			projectile.queue_free()
 	pass # Replace with function body.

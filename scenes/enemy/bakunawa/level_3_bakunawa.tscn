@@ -9,6 +9,7 @@
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("3_h4tvt")]
 position = Vector2(282, 435)
+collision_mask = 5
 camera = NodePath("../ShakingCamera")
 
 [node name="TileMapLayer" type="TileMapLayer" parent="."]

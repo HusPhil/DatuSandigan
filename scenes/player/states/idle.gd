@@ -31,8 +31,6 @@ func physics_update(_delta: float) -> void:
 			finished.emit(MAGIC_ATK)
 		elif player.current_weapon.type in [Item.wp_types.sword, Item.wp_types.arnis]:
 			finished.emit(BASE_ATK1)
-		
-		
 
 
 func _on_player_is_hurt(attack: Attack) -> void:

@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://cup1bbxnd870u"]
+
+[ext_resource type="PackedScene" uid="uid://c7hlarmls0ej7" path="res://powerups/agimat/agimat.tscn" id="1_t0jjq"]
+[ext_resource type="PackedScene" uid="uid://catvgvms1bps" path="res://powerups/sarimanok/sarimanok.tscn" id="2_x3207"]
+[ext_resource type="PackedScene" uid="uid://0vcjsdorsvp5" path="res://powerups/moondrop/moondrop.tscn" id="3_2p1ba"]
+[ext_resource type="PackedScene" uid="uid://guci86ej7114" path="res://powerups/kalasag/kalasag.tscn" id="4_f7if0"]
+
+[node name="powerups" type="Node"]
+
+[node name="agimat" parent="." instance=ExtResource("1_t0jjq")]
+position = Vector2(-6, 342)
+scale = Vector2(0.25, 0.25)
+collision_mask = 7
+
+[node name="sarimanok" parent="." instance=ExtResource("2_x3207")]
+position = Vector2(46, 341)
+scale = Vector2(0.35, 0.35)
+collision_mask = 7
+
+[node name="moondrop" parent="." instance=ExtResource("3_2p1ba")]
+position = Vector2(125, 342)
+scale = Vector2(0.175, 0.175)
+collision_mask = 7
+
+[node name="kalasag" parent="." instance=ExtResource("4_f7if0")]
+position = Vector2(94, 340)
+collision_mask = 7

@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://wg4tj14ssmnw"]
+[gd_scene load_steps=27 format=3 uid="uid://wg4tj14ssmnw"]
 
 [ext_resource type="Texture2D" uid="uid://cndw42h1lv47s" path="res://scenes/maps/boss_bakunawa/level_3_boss.png" id="1_8h0r7"]
 [ext_resource type="Script" path="res://scenes/enemy/kapre/boss_kapre/tree_col.gd" id="2_dit4s"]
@@ -9,11 +9,13 @@
 [ext_resource type="Script" path="res://camera_2d.gd" id="7_t4cub"]
 [ext_resource type="PackedScene" uid="uid://d3g3bhciw8gw3" path="res://UI/HUD/health_bar.tscn" id="8_bmo2d"]
 [ext_resource type="Script" path="res://UI/HUD/health_bar_tunay.gd" id="9_12p2i"]
+[ext_resource type="PackedScene" uid="uid://bs41hi545o4f2" path="res://music/bgmusic/bgm_3.tscn" id="10_6w6qe"]
 [ext_resource type="PackedScene" uid="uid://dsino0hflx5po" path="res://UI/HUD/moon_bar.tscn" id="10_ixblv"]
 [ext_resource type="Script" path="res://UI/HUD/moon_bar.gd" id="11_leke8"]
 [ext_resource type="PackedScene" uid="uid://dkoy4oocq480a" path="res://UI/HUD/pause_menu.tscn" id="12_hdirf"]
 [ext_resource type="Script" path="res://UI/HUD/pause_menu.gd" id="13_fmvs2"]
 [ext_resource type="PackedScene" uid="uid://dngivgyn5hrfx" path="res://UI/controls/touch_controls.tscn" id="14_hvgw7"]
+[ext_resource type="PackedScene" uid="uid://b26d6cjvoptwq" path="res://particles/particles.tscn" id="16_sfapv"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rv7hy"]
 texture = ExtResource("1_8h0r7")
@@ -5121,6 +5123,8 @@ adjustment_color_correction = SubResource("GradientTexture2D_2rhbo")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_30jcn"]
 size = Vector2(350.155, 0.93108)
 
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_0yl4v"]
+
 [node name="Map_Level_3_Boss" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -5154,8 +5158,9 @@ shape = SubResource("RectangleShape2D_30jcn")
 one_way_collision = true
 script = ExtResource("2_dit4s")
 
-[node name="Kapre" parent="." instance=ExtResource("3_it3h0")]
+[node name="Kapre" parent="." node_paths=PackedStringArray("player") instance=ExtResource("3_it3h0")]
 position = Vector2(-398, 344)
+player = NodePath("../player")
 
 [node name="PointLight2D" type="PointLight2D" parent="Kapre"]
 visible = false
@@ -5164,6 +5169,9 @@ shadow_enabled = true
 texture = ExtResource("4_eb4w4")
 texture_scale = 0.5
 script = ExtResource("5_rdl5n")
+
+[node name="AnimationTree" type="AnimationTree" parent="Kapre"]
+tree_root = SubResource("AnimationNodeStateMachine_0yl4v")
 
 [node name="player" parent="." node_paths=PackedStringArray("camera") instance=ExtResource("6_powvw")]
 position = Vector2(687, 636)
@@ -5213,3 +5221,10 @@ script = ExtResource("13_fmvs2")
 metadata/_edit_use_anchors_ = true
 
 [node name="TouchControls" parent="." instance=ExtResource("14_hvgw7")]
+
+[node name="particles" parent="." instance=ExtResource("16_sfapv")]
+modulate = Color(0.282394, 0.64498, 0.96685, 1)
+position = Vector2(832, 533)
+
+[node name="bg3" parent="." instance=ExtResource("10_6w6qe")]
+position = Vector2(32, 22)

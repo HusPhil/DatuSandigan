@@ -1,0 +1,62 @@
+[gd_scene load_steps=10 format=3 uid="uid://guci86ej7114"]
+
+[ext_resource type="Script" path="res://powerups/kalasag/kalasag.gd" id="1_evour"]
+[ext_resource type="Texture2D" uid="uid://bxji5lniaj3vy" path="res://powerups/kalasag/shield.png" id="1_tmct7"]
+[ext_resource type="PackedScene" uid="uid://c566x1xucatqs" path="res://particles/explosion.tscn" id="3_iccok"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_mibc4"]
+atlas = ExtResource("1_tmct7")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1mw1o"]
+atlas = ExtResource("1_tmct7")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cloau"]
+atlas = ExtResource("1_tmct7")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_prke5"]
+atlas = ExtResource("1_tmct7")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_xsub5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_mibc4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1mw1o")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cloau")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_prke5")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_rsspb"]
+radius = 40.1019
+
+[node name="kalasag" type="Area2D"]
+position = Vector2(7.62939e-06, -0.999969)
+scale = Vector2(0.35, 0.35)
+script = ExtResource("1_evour")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_xsub5")
+autoplay = "default"
+frame_progress = 0.185458
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_rsspb")
+
+[node name="explosion" parent="." instance=ExtResource("3_iccok")]
+modulate = Color(0, 0.952047, 0.452962, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

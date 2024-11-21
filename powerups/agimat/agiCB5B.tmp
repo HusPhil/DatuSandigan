@@ -1,0 +1,78 @@
+[gd_scene load_steps=12 format=3 uid="uid://c7hlarmls0ej7"]
+
+[ext_resource type="Script" path="res://powerups/agimat/agimat.gd" id="1_sgaat"]
+[ext_resource type="Texture2D" uid="uid://ckkm5px7x2f0o" path="res://powerups/agimat/agimat.png" id="1_y353t"]
+[ext_resource type="PackedScene" uid="uid://c566x1xucatqs" path="res://powerups/explosion.tscn" id="3_bbeyb"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uh2tw"]
+atlas = ExtResource("1_y353t")
+region = Rect2(0, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0ag2v"]
+atlas = ExtResource("1_y353t")
+region = Rect2(100, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4mnyy"]
+atlas = ExtResource("1_y353t")
+region = Rect2(200, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3cpj8"]
+atlas = ExtResource("1_y353t")
+region = Rect2(300, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sfgkh"]
+atlas = ExtResource("1_y353t")
+region = Rect2(400, 0, 100, 100)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8n4mt"]
+atlas = ExtResource("1_y353t")
+region = Rect2(500, 0, 100, 100)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_vo6mt"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uh2tw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0ag2v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4mnyy")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3cpj8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sfgkh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8n4mt")
+}],
+"loop": true,
+"name": &"default",
+"speed": 8.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_bdd03"]
+radius = 46.0109
+
+[node name="agimat" type="Area2D"]
+script = ExtResource("1_sgaat")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+position = Vector2(6, -8)
+sprite_frames = SubResource("SpriteFrames_vo6mt")
+autoplay = "default"
+frame_progress = 0.363505
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -1)
+shape = SubResource("CircleShape2D_bdd03")
+
+[node name="explosion" parent="." instance=ExtResource("3_bbeyb")]
+self_modulate = Color(0, 0.636013, 0.749178, 1)
+position = Vector2(0, 1)
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

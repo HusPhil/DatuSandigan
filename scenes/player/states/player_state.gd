@@ -4,6 +4,7 @@ const IDLE = "Idle"
 const RUNNING = "Running"
 const JUMPING = "Jumping"
 const HURTING = "Hurting"
+const DASHING = "Dashing"
 const FALLING = "Falling"
 const BASE_ATK1 = "BaseAttack1"
 const BASE_ATK2 = "BaseAttack2"
@@ -37,6 +38,10 @@ var sword_atk3_animation := "sword_atk3"
 
 var player: Player
 
+func _process(delta: float) -> void:
+	if Input.is_action_just_pressed("jump"):
+		finished.emit(JUMPING)
+
 func _ready() -> void:
 	await owner.ready
 	player = owner as Player
@@ -53,4 +58,3 @@ func step_abit(move_speed : float, delta: float):
 	player.velocity.x = move_speed * player.get_current_direction()
 	player.velocity.y += player.base_gravity * delta
 	player.move_and_slide()
-	

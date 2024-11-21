@@ -1,0 +1,60 @@
+[gd_scene load_steps=8 format=3 uid="uid://bjmabv0le231m"]
+
+[ext_resource type="PackedScene" uid="uid://b1y1hw2jiax7i" path="res://scenes/player/player.tscn" id="1_j3dp7"]
+[ext_resource type="Shader" path="res://Shaders/clouds2D.gdshader" id="2_ax3rh"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_sbq6y"]
+shader = ExtResource("2_ax3rh")
+shader_parameter/tint = Color(0, 0, 0, 0)
+shader_parameter/scroll_direction_1 = Vector2(0.7, -0.7)
+shader_parameter/time_scale_1 = 0.012
+shader_parameter/tile_factor_1 = 0.6
+shader_parameter/scroll_direction_2 = Vector2(0.75, 0.25)
+shader_parameter/time_scale_2 = 0.005
+shader_parameter/tile_factor_2 = 0.3
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_k2m2r"]
+particles_animation = true
+particles_anim_h_frames = 24
+particles_anim_v_frames = 1
+particles_anim_loop = false
+
+[sub_resource type="Curve" id="Curve_ma0wn"]
+min_value = -554.02
+max_value = 360.0
+_data = [Vector2(0.0449438, -360), 0.0, 0.0, 0, 0, Vector2(0.752809, -554.02), 0.0, 0.0, 0, 0, Vector2(0.988764, -323.004), 0.0, 0.0, 0, 0, Vector2(0.99998, -554.02), 0.0, 0.0, 0, 0, Vector2(0.99999, -543.976), 0.0, 0.0, 0, 0, Vector2(1, -352.088), 0.0, 0.0, 0, 0]
+point_count = 6
+
+[sub_resource type="Curve" id="Curve_ej2s6"]
+_data = [Vector2(0.0280899, 0.274725), 0.0, 0.0, 0, 0, Vector2(0.533708, 1), 0.0, 0.0, 0, 0, Vector2(0.949438, 0.593407), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="Gradient" id="Gradient_s2tay"]
+offsets = PackedFloat32Array(0, 0.293333, 0.693333, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0.58)
+
+[node name="level" type="Node2D"]
+
+[node name="player" parent="." instance=ExtResource("1_j3dp7")]
+material = SubResource("ShaderMaterial_sbq6y")
+position = Vector2(22, 31)
+
+[node name="CPUParticles2D" type="CPUParticles2D" parent="."]
+texture_filter = 1
+material = SubResource("CanvasItemMaterial_k2m2r")
+position = Vector2(16, 50)
+emitting = false
+amount = 10
+one_shot = true
+explosiveness = 0.28
+emission_shape = 3
+emission_rect_extents = Vector2(10, 1)
+direction = Vector2(0, 0)
+gravity = Vector2(0, -79)
+initial_velocity_min = 10.0
+initial_velocity_max = 15.0
+angular_velocity_curve = SubResource("Curve_ma0wn")
+scale_amount_min = 15.0
+scale_amount_max = 30.0
+scale_amount_curve = SubResource("Curve_ej2s6")
+color_ramp = SubResource("Gradient_s2tay")

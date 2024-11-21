@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b0dnve3bqits2"]
+[gd_scene load_steps=27 format=3 uid="uid://b0dnve3bqits2"]
 
 [ext_resource type="Texture2D" uid="uid://dl0qbsxiid7en" path="res://scenes/enemy/kapre/boss_kapre/level_1_boss.png" id="1_v5xtv"]
 [ext_resource type="PackedScene" uid="uid://50wiqjkiibly" path="res://scenes/enemy/kapre/kapre.tscn" id="2_bdc68"]
@@ -14,6 +14,8 @@
 [ext_resource type="Script" path="res://UI/HUD/moon_bar.gd" id="11_detth"]
 [ext_resource type="PackedScene" uid="uid://dkoy4oocq480a" path="res://UI/HUD/pause_menu.tscn" id="11_vmqfp"]
 [ext_resource type="Script" path="res://UI/HUD/pause_menu.gd" id="13_36fk2"]
+[ext_resource type="PackedScene" uid="uid://cup1bbxnd870u" path="res://powerups/powerups.tscn" id="16_uiw6i"]
+[ext_resource type="PackedScene" uid="uid://b26d6cjvoptwq" path="res://particles/particles.tscn" id="17_le4g4"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_la3o4"]
 texture = ExtResource("1_v5xtv")
@@ -1785,6 +1787,8 @@ adjustment_color_correction = SubResource("GradientTexture2D_kjrst")
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_em5ir"]
 size = Vector2(350.155, 0.93108)
 
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_ojbnu"]
+
 [node name="Map_Level_1_Boss" type="Node2D"]
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -1817,8 +1821,12 @@ shape = SubResource("RectangleShape2D_em5ir")
 one_way_collision = true
 script = ExtResource("5_2q7o5")
 
-[node name="Kapre" parent="." instance=ExtResource("2_bdc68")]
+[node name="Kapre" parent="." node_paths=PackedStringArray("player") instance=ExtResource("2_bdc68")]
 position = Vector2(501, 143)
+player = NodePath("../player")
+
+[node name="AnimationTree" type="AnimationTree" parent="Kapre"]
+tree_root = SubResource("AnimationNodeStateMachine_ojbnu")
 
 [node name="PointLight2D" type="PointLight2D" parent="Kapre"]
 visible = false
@@ -1843,7 +1851,7 @@ script = ExtResource("4_ym5p1")
 position = Vector2(0, -92)
 zoom = Vector2(2, 2)
 position_smoothing_enabled = true
-position_smoothing_speed = 8.0
+position_smoothing_speed = 7.0
 script = ExtResource("6_naj8q")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="player"]
@@ -1875,3 +1883,9 @@ script = ExtResource("13_36fk2")
 metadata/_edit_use_anchors_ = true
 
 [node name="TouchControls" parent="." instance=ExtResource("8_t3xan")]
+
+[node name="particles" parent="." instance=ExtResource("17_le4g4")]
+modulate = Color(0.367442, 1, 0.328963, 1)
+position = Vector2(271, 264)
+
+[node name="powerups" parent="." instance=ExtResource("16_uiw6i")]

@@ -29,6 +29,7 @@ var state: States = States.IDLE
 @onready var animation_tree : AnimationTree = $AnimationTree
 @onready var weapon_animation_player : AnimationPlayer = $WeaponFX
 @onready var animation_player : AnimationPlayer = $AnimationPlayer
+@onready var hit_flash_animation_player: AnimationPlayer = $"HitFlashAnimationPlayer"
 
 @onready var state_label : Label = $Label
 @onready var _shoot_position : Marker2D = $ShootPosition
@@ -50,6 +51,8 @@ func _physics_process(_delta: float) -> void:
 	# Horizontal movement and gravity.
 	var input_direction_x := get_input_direction()
 	animation_tree.set("parameters/Move/blend_position", input_direction_x)
+	
+	
 
 	
 func get_input_direction() -> float:
@@ -70,6 +73,7 @@ func ready_for_input() -> void:
 
 func take_damage(attack : Attack):
 	is_hurt.emit(attack)
+	hit_flash_animation_player.play("hit_flash")
 	pass
 
 func handle_change_direction() -> void:
@@ -91,3 +95,4 @@ func shoot() -> void:
 	missile.rotation = rotation
 
 	add_child(missile)
+	
