@@ -25,8 +25,16 @@ func physics_update(_delta: float) -> void:
 	if not enemy.is_on_floor() and roundf(enemy.velocity.y) == 0:
 		enemy.position.x = tree_pos_x
 	elif enemy.is_on_floor() and has_jumped:
-		enemy.player.camera.apply_shake(12.3)
-		finished.emit(SMOKING)
+		var acc = Input.get_accelerometer()
+		
+		enemy.velocity.x = acc.x * 10
+		enemy.velocity.y = acc.y * 10
+		enemy.move_and_slide()
+		pass
+		
+	
+		#enemy.player.camera.apply_shake(12.3)
+		#finished.emit(SMOKING)
 
 func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	if anim_name == prepare_teleport_animation and enemy.current_state == TELEPORT1:

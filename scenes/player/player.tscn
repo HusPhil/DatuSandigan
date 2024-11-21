@@ -1,4 +1,4 @@
-[gd_scene load_steps=121 format=3 uid="uid://b1y1hw2jiax7i"]
+[gd_scene load_steps=122 format=3 uid="uid://b1y1hw2jiax7i"]
 
 [ext_resource type="Texture2D" uid="uid://2immqxdtao56" path="res://assets/img/player_sprites/placeholder/char_blue_1.png" id="1_80ydq"]
 [ext_resource type="Script" path="res://scenes/player/player.gd" id="1_w5kx2"]
@@ -31,6 +31,8 @@
 [ext_resource type="Script" path="res://scenes/player/hurting.gd" id="26_wajv6"]
 [ext_resource type="PackedScene" uid="uid://byfogc7xoykel" path="res://scenes/items/projectile.tscn" id="28_0ia63"]
 [ext_resource type="Script" path="res://scenes/player/cut_scene.gd" id="29_cl1x6"]
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_3yf4q"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_mng1t"]
 resource_local_to_scene = true
@@ -2313,6 +2315,14 @@ script = ExtResource("1_w5kx2")
 current_projectile = ExtResource("28_0ia63")
 current_weapon = ExtResource("3_4nbqn")
 
+[node name="mic_input" type="AudioStreamPlayer2D" parent="."]
+stream = SubResource("AudioStreamMicrophone_3yf4q")
+autoplay = true
+bus = &"Record"
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+autoplay = true
+
 [node name="FlippableSprite" parent="." instance=ExtResource("3_7o64b")]
 show_behind_parent = true
 texture_filter = 1
@@ -2421,7 +2431,6 @@ script = ExtResource("22_gqsm5")
 script = ExtResource("29_cl1x6")
 
 [node name="Label" type="Label" parent="."]
-visible = false
 offset_left = -21.0
 offset_top = -69.0
 offset_right = 26.0

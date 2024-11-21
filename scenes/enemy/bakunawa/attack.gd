@@ -1,6 +1,9 @@
 extends BakunawaState
 @onready var cast: AudioStreamPlayer2D = $"../../cast"
 
+
+
+
 func enter(previous_state_path: String, data := {}) -> void:
 	playback.travel(casting_animation)
 	cast.play()

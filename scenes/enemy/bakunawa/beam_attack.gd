@@ -1,5 +1,7 @@
 extends BakunawaState
 
+
+
 func enter(previous_state_path: String, data := {}) -> void:
 	playback.travel(beam_attack_animation)
 	enemy.state_label.text = beam_attack_animation
