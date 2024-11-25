@@ -6,7 +6,6 @@ class_name StateMachine extends Node
 	return initial_state if initial_state != null else get_child(0)
 ).call()
 
-
 func _ready() -> void:
 	for state_node: State in find_children("*", "State"):
 		state_node.finished.connect(_transition_to_next_state)
@@ -14,18 +13,14 @@ func _ready() -> void:
 	await owner.ready
 	state.enter("")
 
-
 func _unhandled_input(event: InputEvent) -> void:
 	state.handle_input(event)
-
 
 func _process(delta: float) -> void:
 	state.update(delta)
 
-
 func _physics_process(delta: float) -> void:
 	state.physics_update(delta)
-
 
 func _transition_to_next_state(target_state_path: String, data: Dictionary = {}) -> void:
 	

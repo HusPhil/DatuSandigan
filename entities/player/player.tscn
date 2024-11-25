@@ -1,8 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://67o4k8j73nuv"]
+[gd_scene load_steps=13 format=3 uid="uid://67o4k8j73nuv"]
 
 [ext_resource type="Texture2D" uid="uid://b7g5rf58dawyh" path="res://entities/player/asset/img/player_movement.png" id="1_7nlc4"]
 [ext_resource type="Script" path="res://entities/player/player.gd" id="1_jihlm"]
 [ext_resource type="PackedScene" uid="uid://dufq24pkpksnv" path="res://common/camera/smooth_shaking_camera.tscn" id="3_p1u0q"]
+[ext_resource type="PackedScene" uid="uid://dodacnhm5ann0" path="res://common/state_machine/state_machine.tscn" id="4_lgh2j"]
+[ext_resource type="Script" path="res://entities/player/states/idle.gd" id="5_1vgsf"]
 
 [sub_resource type="Animation" id="Animation_tcm45"]
 length = 0.001
@@ -151,3 +153,9 @@ position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_d3nkq")
 
 [node name="smooth_shaking_camera" parent="." instance=ExtResource("3_p1u0q")]
+
+[node name="StateMachine" parent="." node_paths=PackedStringArray("initial_state") instance=ExtResource("4_lgh2j")]
+initial_state = NodePath("IDLE")
+
+[node name="IDLE" type="Node" parent="StateMachine"]
+script = ExtResource("5_1vgsf")
