@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://453k0lm8exls"]
+
+[ext_resource type="PackedScene" uid="uid://dbpbcnp1a56f8" path="res://maps/level_1_kapre/map_level_1_kapre.tscn" id="1_dwjog"]
+[ext_resource type="PackedScene" uid="uid://67o4k8j73nuv" path="res://entities/player/player.tscn" id="2_uotfc"]
+
+[node name="main" type="Node2D"]
+
+[node name="map_level_1_kapre" parent="." instance=ExtResource("1_dwjog")]
+
+[node name="player" parent="map_level_1_kapre" instance=ExtResource("2_uotfc")]
+position = Vector2(239, 517)
