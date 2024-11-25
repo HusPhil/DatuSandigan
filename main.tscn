@@ -1,9 +1,11 @@
-[gd_scene load_steps=3 format=3 uid="uid://453k0lm8exls"]
+[gd_scene load_steps=4 format=3 uid="uid://453k0lm8exls"]
 
 [ext_resource type="PackedScene" uid="uid://dbpbcnp1a56f8" path="res://maps/level_1_kapre/map_level_1_kapre.tscn" id="1_dwjog"]
+[ext_resource type="Script" path="res://main.gd" id="1_v4p75"]
 [ext_resource type="PackedScene" uid="uid://67o4k8j73nuv" path="res://entities/player/player.tscn" id="2_uotfc"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_v4p75")
 
 [node name="map_level_1_kapre" parent="." instance=ExtResource("1_dwjog")]
 
