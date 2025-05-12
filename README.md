@@ -1,6 +1,7 @@
 # Datu Sandigan: The Moonborne Oath
 
 **Genre:** 2D Platformer Hack-and-Slash  
+**Engine:** Built with Godot Engine  
 **Setting:** Philippine Mythical Folklore & Precolonial Mindanao  
 **Player Role:** Datu Sandigan, the warrior sworn to protect the last moon  
 **Stages:** 3 epic chapters  
